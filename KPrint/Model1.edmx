@@ -1,0 +1,131 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="2.0" xmlns:edmx="http://schemas.microsoft.com/ado/2008/10/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="rtbskdyModel.Store" Alias="Self" Provider="System.Data.SqlClient" ProviderManifestToken="2008" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/02/edm/ssdl">
+        <EntityContainer Name="rtbskdyModelStoreContainer">
+          <EntitySet Name="chanpin" EntityType="rtbskdyModel.Store.chanpin" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="dayin" EntityType="rtbskdyModel.Store.dayin" store:Type="Tables" Schema="dbo" />
+        </EntityContainer>
+        <EntityType Name="chanpin">
+          <Key>
+            <PropertyRef Name="lingjianbh" />
+          </Key>
+          <Property Name="lingjianbh" Type="nvarchar" Nullable="false" MaxLength="200" />
+          <Property Name="chanpinmc" Type="nvarchar" MaxLength="200" />
+          <Property Name="chexing" Type="nvarchar" MaxLength="200" />
+          <Property Name="shourongs" Type="nvarchar" MaxLength="200" />
+          <Property Name="jiantufx" Type="nvarchar" MaxLength="200" />
+          <Property Name="jiantu" Type="image" />
+          <Property Name="beizhu" Type="nvarchar" MaxLength="200" />
+        </EntityType>
+        <EntityType Name="dayin">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="lingjianbh" Type="nvarchar" Nullable="false" MaxLength="200" />
+          <Property Name="chanpinmc" Type="nvarchar" MaxLength="200" />
+          <Property Name="chexing" Type="nvarchar" MaxLength="200" />
+          <Property Name="shourongs" Type="nvarchar" MaxLength="200" />
+          <Property Name="jiantufx" Type="nvarchar" MaxLength="200" />
+          <Property Name="jiantu" Type="image" />
+          <Property Name="beizhu" Type="nvarchar" MaxLength="200" />
+          <Property Name="rongqixh" Type="nvarchar" MaxLength="200" />
+          <Property Name="erweima" Type="nvarchar" MaxLength="200" />
+        </EntityType>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="rtbskdyModel" Alias="Self" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns="http://schemas.microsoft.com/ado/2008/09/edm">
+        <EntityContainer Name="Entities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="chanpin" EntityType="rtbskdyModel.chanpin" />
+          <EntitySet Name="dayin" EntityType="rtbskdyModel.dayin" />
+        </EntityContainer>
+        <EntityType Name="chanpin">
+          <Key>
+            <PropertyRef Name="lingjianbh" />
+          </Key>
+          <Property Name="lingjianbh" Type="String" Nullable="false" MaxLength="200" Unicode="true" FixedLength="false" />
+          <Property Name="chanpinmc" Type="String" MaxLength="200" Unicode="true" FixedLength="false" />
+          <Property Name="chexing" Type="String" MaxLength="200" Unicode="true" FixedLength="false" />
+          <Property Name="shourongs" Type="String" MaxLength="200" Unicode="true" FixedLength="false" />
+          <Property Name="jiantufx" Type="String" MaxLength="200" Unicode="true" FixedLength="false" />
+          <Property Name="jiantu" Type="Binary" MaxLength="Max" FixedLength="false" />
+          <Property Name="beizhu" Type="String" MaxLength="200" Unicode="true" FixedLength="false" />
+        </EntityType>
+        <EntityType Name="dayin">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Guid" Nullable="false" />
+          <Property Name="lingjianbh" Type="String" Nullable="false" MaxLength="200" Unicode="true" FixedLength="false" />
+          <Property Name="chanpinmc" Type="String" MaxLength="200" Unicode="true" FixedLength="false" />
+          <Property Name="chexing" Type="String" MaxLength="200" Unicode="true" FixedLength="false" />
+          <Property Name="shourongs" Type="String" MaxLength="200" Unicode="true" FixedLength="false" />
+          <Property Name="jiantufx" Type="String" MaxLength="200" Unicode="true" FixedLength="false" />
+          <Property Name="jiantu" Type="Binary" MaxLength="Max" FixedLength="false" />
+          <Property Name="beizhu" Type="String" MaxLength="200" Unicode="true" FixedLength="false" />
+          <Property Name="rongqixh" Type="String" MaxLength="200" Unicode="true" FixedLength="false" />
+          <Property Name="erweima" Type="String" MaxLength="200" Unicode="true" FixedLength="false" />
+        </EntityType>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2008/09/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="rtbskdyModelStoreContainer" CdmEntityContainer="Entities">
+          <EntitySetMapping Name="chanpin">
+            <EntityTypeMapping TypeName="rtbskdyModel.chanpin">
+              <MappingFragment StoreEntitySet="chanpin">
+                <ScalarProperty Name="lingjianbh" ColumnName="lingjianbh" />
+                <ScalarProperty Name="chanpinmc" ColumnName="chanpinmc" />
+                <ScalarProperty Name="chexing" ColumnName="chexing" />
+                <ScalarProperty Name="shourongs" ColumnName="shourongs" />
+                <ScalarProperty Name="jiantufx" ColumnName="jiantufx" />
+                <ScalarProperty Name="jiantu" ColumnName="jiantu" />
+                <ScalarProperty Name="beizhu" ColumnName="beizhu" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="dayin">
+            <EntityTypeMapping TypeName="rtbskdyModel.dayin">
+              <MappingFragment StoreEntitySet="dayin">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="lingjianbh" ColumnName="lingjianbh" />
+                <ScalarProperty Name="chanpinmc" ColumnName="chanpinmc" />
+                <ScalarProperty Name="chexing" ColumnName="chexing" />
+                <ScalarProperty Name="shourongs" ColumnName="shourongs" />
+                <ScalarProperty Name="jiantufx" ColumnName="jiantufx" />
+                <ScalarProperty Name="jiantu" ColumnName="jiantu" />
+                <ScalarProperty Name="beizhu" ColumnName="beizhu" />
+                <ScalarProperty Name="rongqixh" ColumnName="rongqixh" />
+                <ScalarProperty Name="erweima" ColumnName="erweima" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2008/10/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="False" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="True" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="无" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>
