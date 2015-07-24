@@ -58,6 +58,12 @@
     <Compile Include="dayin.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
+    <Compile Include="FDatabase.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FDatabase.Designer.cs">
+      <DependentUpon>FDatabase.cs</DependentUpon>
+    </Compile>
     <Compile Include="FMain.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -99,6 +105,9 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="FDatabase.resx">
+      <DependentUpon>FDatabase.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="FMain.resx">
       <DependentUpon>FMain.cs</DependentUpon>
     </EmbeddedResource>
