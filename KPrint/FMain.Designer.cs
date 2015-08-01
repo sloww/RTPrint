@@ -32,14 +32,19 @@
             this.panel1 = new System.Windows.Forms.Panel();
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabPage2 = new System.Windows.Forms.TabPage();
+            this.label29 = new System.Windows.Forms.Label();
+            this.label28 = new System.Windows.Forms.Label();
+            this.label26 = new System.Windows.Forms.Label();
             this.textBox4 = new System.Windows.Forms.TextBox();
             this.label23 = new System.Windows.Forms.Label();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.label4 = new System.Windows.Forms.Label();
             this.panel4 = new System.Windows.Forms.Panel();
+            this.label24 = new System.Windows.Forms.Label();
+            this.label9 = new System.Windows.Forms.Label();
+            this.button11 = new System.Windows.Forms.Button();
             this.label17 = new System.Windows.Forms.Label();
             this.label22 = new System.Windows.Forms.Label();
-            this.label9 = new System.Windows.Forms.Label();
             this.button10 = new System.Windows.Forms.Button();
             this.label21 = new System.Windows.Forms.Label();
             this.label20 = new System.Windows.Forms.Label();
@@ -47,8 +52,8 @@
             this.button9 = new System.Windows.Forms.Button();
             this.button7 = new System.Windows.Forms.Button();
             this.button8 = new System.Windows.Forms.Button();
-            this.textBox5 = new System.Windows.Forms.TextBox();
-            this.label5 = new System.Windows.Forms.Label();
+            this.label27 = new System.Windows.Forms.Label();
+            this.label25 = new System.Windows.Forms.Label();
             this.textBox6 = new System.Windows.Forms.TextBox();
             this.label6 = new System.Windows.Forms.Label();
             this.textBox7 = new System.Windows.Forms.TextBox();
@@ -77,28 +82,19 @@
             this.button1 = new System.Windows.Forms.Button();
             this.button3 = new System.Windows.Forms.Button();
             this.panel2 = new System.Windows.Forms.Panel();
+            this.label32 = new System.Windows.Forms.Label();
+            this.label31 = new System.Windows.Forms.Label();
             this.statusStrip1 = new System.Windows.Forms.StatusStrip();
             this.toolStripStatusLabel1 = new System.Windows.Forms.ToolStripStatusLabel();
             this.toolStripStatusLabel2 = new System.Windows.Forms.ToolStripStatusLabel();
             this.toolStripStatusLabel3 = new System.Windows.Forms.ToolStripStatusLabel();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
+            this.label11 = new System.Windows.Forms.Label();
             this.dgcSelect = new System.Windows.Forms.DataGridViewCheckBoxColumn();
             this.Column1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column5 = new System.Windows.Forms.DataGridViewImageColumn();
-            this.label11 = new System.Windows.Forms.Label();
-            this.button11 = new System.Windows.Forms.Button();
-            this.label24 = new System.Windows.Forms.Label();
-            this.label25 = new System.Windows.Forms.Label();
-            this.label26 = new System.Windows.Forms.Label();
-            this.label27 = new System.Windows.Forms.Label();
-            this.label28 = new System.Windows.Forms.Label();
-            this.label29 = new System.Windows.Forms.Label();
-            this.label30 = new System.Windows.Forms.Label();
-            this.label31 = new System.Windows.Forms.Label();
-            this.label32 = new System.Windows.Forms.Label();
             this.panel1.SuspendLayout();
             this.tabControl1.SuspendLayout();
             this.tabPage2.SuspendLayout();
@@ -133,7 +129,6 @@
             // 
             // tabPage2
             // 
-            this.tabPage2.Controls.Add(this.label30);
             this.tabPage2.Controls.Add(this.label29);
             this.tabPage2.Controls.Add(this.label28);
             this.tabPage2.Controls.Add(this.label26);
@@ -142,8 +137,6 @@
             this.tabPage2.Controls.Add(this.pictureBox1);
             this.tabPage2.Controls.Add(this.label4);
             this.tabPage2.Controls.Add(this.panel4);
-            this.tabPage2.Controls.Add(this.textBox5);
-            this.tabPage2.Controls.Add(this.label5);
             this.tabPage2.Controls.Add(this.label27);
             this.tabPage2.Controls.Add(this.label25);
             this.tabPage2.Controls.Add(this.textBox6);
@@ -159,6 +152,42 @@
             this.tabPage2.TabIndex = 1;
             this.tabPage2.Text = "编辑";
             this.tabPage2.UseVisualStyleBackColor = true;
+            // 
+            // label29
+            // 
+            this.label29.AutoSize = true;
+            this.label29.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.label29.Font = new System.Drawing.Font("微软雅黑", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.label29.ForeColor = System.Drawing.Color.Red;
+            this.label29.Location = new System.Drawing.Point(725, 0);
+            this.label29.Name = "label29";
+            this.label29.Size = new System.Drawing.Size(21, 23);
+            this.label29.TabIndex = 33;
+            this.label29.Text = "4";
+            // 
+            // label28
+            // 
+            this.label28.AutoSize = true;
+            this.label28.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.label28.Font = new System.Drawing.Font("微软雅黑", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.label28.ForeColor = System.Drawing.Color.Red;
+            this.label28.Location = new System.Drawing.Point(627, 0);
+            this.label28.Name = "label28";
+            this.label28.Size = new System.Drawing.Size(21, 23);
+            this.label28.TabIndex = 33;
+            this.label28.Text = "3";
+            // 
+            // label26
+            // 
+            this.label26.AutoSize = true;
+            this.label26.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.label26.Font = new System.Drawing.Font("微软雅黑", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.label26.ForeColor = System.Drawing.Color.Red;
+            this.label26.Location = new System.Drawing.Point(234, 3);
+            this.label26.Name = "label26";
+            this.label26.Size = new System.Drawing.Size(21, 23);
+            this.label26.TabIndex = 33;
+            this.label26.Text = "1";
             // 
             // textBox4
             // 
@@ -222,29 +251,17 @@
             this.panel4.Size = new System.Drawing.Size(970, 49);
             this.panel4.TabIndex = 25;
             // 
-            // label17
+            // label24
             // 
-            this.label17.AutoSize = true;
-            this.label17.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.label17.Font = new System.Drawing.Font("微软雅黑", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.label17.ForeColor = System.Drawing.Color.Red;
-            this.label17.Location = new System.Drawing.Point(468, 3);
-            this.label17.Name = "label17";
-            this.label17.Size = new System.Drawing.Size(21, 23);
-            this.label17.TabIndex = 12;
-            this.label17.Text = "9";
-            // 
-            // label22
-            // 
-            this.label22.AutoSize = true;
-            this.label22.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.label22.Font = new System.Drawing.Font("微软雅黑", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.label22.ForeColor = System.Drawing.Color.Red;
-            this.label22.Location = new System.Drawing.Point(338, 3);
-            this.label22.Name = "label22";
-            this.label22.Size = new System.Drawing.Size(21, 23);
-            this.label22.TabIndex = 31;
-            this.label22.Text = "8";
+            this.label24.AutoSize = true;
+            this.label24.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.label24.Font = new System.Drawing.Font("微软雅黑", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.label24.ForeColor = System.Drawing.Color.Red;
+            this.label24.Location = new System.Drawing.Point(588, 3);
+            this.label24.Name = "label24";
+            this.label24.Size = new System.Drawing.Size(21, 23);
+            this.label24.TabIndex = 33;
+            this.label24.Text = "9";
             // 
             // label9
             // 
@@ -256,7 +273,41 @@
             this.label9.Name = "label9";
             this.label9.Size = new System.Drawing.Size(21, 23);
             this.label9.TabIndex = 28;
-            this.label9.Text = "7";
+            this.label9.Text = "6";
+            // 
+            // button11
+            // 
+            this.button11.Font = new System.Drawing.Font("宋体", 12F);
+            this.button11.Location = new System.Drawing.Point(131, 12);
+            this.button11.Name = "button11";
+            this.button11.Size = new System.Drawing.Size(105, 30);
+            this.button11.TabIndex = 32;
+            this.button11.Text = "编辑 (&E)";
+            this.button11.UseVisualStyleBackColor = true;
+            // 
+            // label17
+            // 
+            this.label17.AutoSize = true;
+            this.label17.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.label17.Font = new System.Drawing.Font("微软雅黑", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.label17.ForeColor = System.Drawing.Color.Red;
+            this.label17.Location = new System.Drawing.Point(468, 3);
+            this.label17.Name = "label17";
+            this.label17.Size = new System.Drawing.Size(21, 23);
+            this.label17.TabIndex = 12;
+            this.label17.Text = "8";
+            // 
+            // label22
+            // 
+            this.label22.AutoSize = true;
+            this.label22.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.label22.Font = new System.Drawing.Font("微软雅黑", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.label22.ForeColor = System.Drawing.Color.Red;
+            this.label22.Location = new System.Drawing.Point(338, 3);
+            this.label22.Name = "label22";
+            this.label22.Size = new System.Drawing.Size(21, 23);
+            this.label22.TabIndex = 31;
+            this.label22.Text = "7";
             // 
             // button10
             // 
@@ -278,7 +329,7 @@
             this.label21.Name = "label21";
             this.label21.Size = new System.Drawing.Size(21, 23);
             this.label21.TabIndex = 30;
-            this.label21.Text = "6";
+            this.label21.Text = "5";
             // 
             // label20
             // 
@@ -290,7 +341,7 @@
             this.label20.Name = "label20";
             this.label20.Size = new System.Drawing.Size(30, 23);
             this.label20.TabIndex = 29;
-            this.label20.Text = "11";
+            this.label20.Text = "10";
             // 
             // button2
             // 
@@ -332,23 +383,29 @@
             this.button8.Text = "上传图片";
             this.button8.UseVisualStyleBackColor = true;
             // 
-            // textBox5
+            // label27
             // 
-            this.textBox5.Location = new System.Drawing.Point(823, 40);
-            this.textBox5.Name = "textBox5";
-            this.textBox5.Size = new System.Drawing.Size(24, 21);
-            this.textBox5.TabIndex = 23;
-            this.textBox5.Text = "左";
+            this.label27.AutoSize = true;
+            this.label27.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.label27.Font = new System.Drawing.Font("微软雅黑", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.label27.ForeColor = System.Drawing.Color.Red;
+            this.label27.Location = new System.Drawing.Point(938, 0);
+            this.label27.Name = "label27";
+            this.label27.Size = new System.Drawing.Size(21, 23);
+            this.label27.TabIndex = 29;
+            this.label27.Text = "1";
             // 
-            // label5
+            // label25
             // 
-            this.label5.AutoSize = true;
-            this.label5.Font = new System.Drawing.Font("宋体", 12F);
-            this.label5.Location = new System.Drawing.Point(781, 13);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(72, 16);
-            this.label5.TabIndex = 22;
-            this.label5.Text = "图片标识";
+            this.label25.AutoSize = true;
+            this.label25.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.label25.Font = new System.Drawing.Font("微软雅黑", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.label25.ForeColor = System.Drawing.Color.Red;
+            this.label25.Location = new System.Drawing.Point(516, 3);
+            this.label25.Name = "label25";
+            this.label25.Size = new System.Drawing.Size(21, 23);
+            this.label25.TabIndex = 29;
+            this.label25.Text = "2";
             // 
             // textBox6
             // 
@@ -658,6 +715,30 @@
             this.panel2.Size = new System.Drawing.Size(984, 511);
             this.panel2.TabIndex = 1;
             // 
+            // label32
+            // 
+            this.label32.AutoSize = true;
+            this.label32.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.label32.Font = new System.Drawing.Font("微软雅黑", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.label32.ForeColor = System.Drawing.Color.Red;
+            this.label32.Location = new System.Drawing.Point(406, 22);
+            this.label32.Name = "label32";
+            this.label32.Size = new System.Drawing.Size(21, 23);
+            this.label32.TabIndex = 34;
+            this.label32.Text = "9";
+            // 
+            // label31
+            // 
+            this.label31.AutoSize = true;
+            this.label31.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.label31.Font = new System.Drawing.Font("微软雅黑", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.label31.ForeColor = System.Drawing.Color.Red;
+            this.label31.Location = new System.Drawing.Point(138, 479);
+            this.label31.Name = "label31";
+            this.label31.Size = new System.Drawing.Size(30, 23);
+            this.label31.TabIndex = 34;
+            this.label31.Text = "10";
+            // 
             // statusStrip1
             // 
             this.statusStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
@@ -696,7 +777,6 @@
             this.Column1,
             this.Column2,
             this.Column3,
-            this.Column4,
             this.Column5});
             this.dataGridView1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dataGridView1.Location = new System.Drawing.Point(0, 0);
@@ -705,6 +785,18 @@
             this.dataGridView1.Size = new System.Drawing.Size(984, 511);
             this.dataGridView1.TabIndex = 0;
             this.dataGridView1.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellContentClick);
+            // 
+            // label11
+            // 
+            this.label11.AutoSize = true;
+            this.label11.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.label11.Font = new System.Drawing.Font("微软雅黑", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.label11.ForeColor = System.Drawing.Color.Red;
+            this.label11.Location = new System.Drawing.Point(530, 107);
+            this.label11.Name = "label11";
+            this.label11.Size = new System.Drawing.Size(21, 23);
+            this.label11.TabIndex = 12;
+            this.label11.Text = "1";
             // 
             // dgcSelect
             // 
@@ -728,145 +820,10 @@
             this.Column3.HeaderText = "车型";
             this.Column3.Name = "Column3";
             // 
-            // Column4
-            // 
-            this.Column4.HeaderText = "图片标识";
-            this.Column4.Name = "Column4";
-            // 
             // Column5
             // 
             this.Column5.HeaderText = "图片";
             this.Column5.Name = "Column5";
-            // 
-            // label11
-            // 
-            this.label11.AutoSize = true;
-            this.label11.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.label11.Font = new System.Drawing.Font("微软雅黑", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.label11.ForeColor = System.Drawing.Color.Red;
-            this.label11.Location = new System.Drawing.Point(530, 107);
-            this.label11.Name = "label11";
-            this.label11.Size = new System.Drawing.Size(21, 23);
-            this.label11.TabIndex = 12;
-            this.label11.Text = "1";
-            // 
-            // button11
-            // 
-            this.button11.Font = new System.Drawing.Font("宋体", 12F);
-            this.button11.Location = new System.Drawing.Point(131, 12);
-            this.button11.Name = "button11";
-            this.button11.Size = new System.Drawing.Size(105, 30);
-            this.button11.TabIndex = 32;
-            this.button11.Text = "编辑 (&E)";
-            this.button11.UseVisualStyleBackColor = true;
-            // 
-            // label24
-            // 
-            this.label24.AutoSize = true;
-            this.label24.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.label24.Font = new System.Drawing.Font("微软雅黑", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.label24.ForeColor = System.Drawing.Color.Red;
-            this.label24.Location = new System.Drawing.Point(588, 3);
-            this.label24.Name = "label24";
-            this.label24.Size = new System.Drawing.Size(30, 23);
-            this.label24.TabIndex = 33;
-            this.label24.Text = "10";
-            // 
-            // label25
-            // 
-            this.label25.AutoSize = true;
-            this.label25.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.label25.Font = new System.Drawing.Font("微软雅黑", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.label25.ForeColor = System.Drawing.Color.Red;
-            this.label25.Location = new System.Drawing.Point(516, 3);
-            this.label25.Name = "label25";
-            this.label25.Size = new System.Drawing.Size(21, 23);
-            this.label25.TabIndex = 29;
-            this.label25.Text = "2";
-            // 
-            // label26
-            // 
-            this.label26.AutoSize = true;
-            this.label26.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.label26.Font = new System.Drawing.Font("微软雅黑", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.label26.ForeColor = System.Drawing.Color.Red;
-            this.label26.Location = new System.Drawing.Point(234, 3);
-            this.label26.Name = "label26";
-            this.label26.Size = new System.Drawing.Size(21, 23);
-            this.label26.TabIndex = 33;
-            this.label26.Text = "1";
-            // 
-            // label27
-            // 
-            this.label27.AutoSize = true;
-            this.label27.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.label27.Font = new System.Drawing.Font("微软雅黑", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.label27.ForeColor = System.Drawing.Color.Red;
-            this.label27.Location = new System.Drawing.Point(938, 0);
-            this.label27.Name = "label27";
-            this.label27.Size = new System.Drawing.Size(21, 23);
-            this.label27.TabIndex = 29;
-            this.label27.Text = "1";
-            // 
-            // label28
-            // 
-            this.label28.AutoSize = true;
-            this.label28.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.label28.Font = new System.Drawing.Font("微软雅黑", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.label28.ForeColor = System.Drawing.Color.Red;
-            this.label28.Location = new System.Drawing.Point(627, 0);
-            this.label28.Name = "label28";
-            this.label28.Size = new System.Drawing.Size(21, 23);
-            this.label28.TabIndex = 33;
-            this.label28.Text = "3";
-            // 
-            // label29
-            // 
-            this.label29.AutoSize = true;
-            this.label29.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.label29.Font = new System.Drawing.Font("微软雅黑", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.label29.ForeColor = System.Drawing.Color.Red;
-            this.label29.Location = new System.Drawing.Point(725, 0);
-            this.label29.Name = "label29";
-            this.label29.Size = new System.Drawing.Size(21, 23);
-            this.label29.TabIndex = 33;
-            this.label29.Text = "4";
-            // 
-            // label30
-            // 
-            this.label30.AutoSize = true;
-            this.label30.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.label30.Font = new System.Drawing.Font("微软雅黑", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.label30.ForeColor = System.Drawing.Color.Red;
-            this.label30.Location = new System.Drawing.Point(796, 38);
-            this.label30.Name = "label30";
-            this.label30.Size = new System.Drawing.Size(21, 23);
-            this.label30.TabIndex = 33;
-            this.label30.Text = "5";
-            // 
-            // label31
-            // 
-            this.label31.AutoSize = true;
-            this.label31.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.label31.Font = new System.Drawing.Font("微软雅黑", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.label31.ForeColor = System.Drawing.Color.Red;
-            this.label31.Location = new System.Drawing.Point(138, 479);
-            this.label31.Name = "label31";
-            this.label31.Size = new System.Drawing.Size(30, 23);
-            this.label31.TabIndex = 34;
-            this.label31.Text = "10";
-            // 
-            // label32
-            // 
-            this.label32.AutoSize = true;
-            this.label32.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.label32.Font = new System.Drawing.Font("微软雅黑", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.label32.ForeColor = System.Drawing.Color.Red;
-            this.label32.Location = new System.Drawing.Point(406, 22);
-            this.label32.Name = "label32";
-            this.label32.Size = new System.Drawing.Size(21, 23);
-            this.label32.TabIndex = 34;
-            this.label32.Text = "9";
             // 
             // FMain
             // 
@@ -913,8 +870,6 @@
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.TextBox textBox1;
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.TextBox textBox5;
-        private System.Windows.Forms.Label label5;
         private System.Windows.Forms.TextBox textBox6;
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.TextBox textBox7;
@@ -922,12 +877,6 @@
         private System.Windows.Forms.TextBox textBox8;
         private System.Windows.Forms.Label label8;
         private System.Windows.Forms.DataGridView dataGridView1;
-        private System.Windows.Forms.DataGridViewCheckBoxColumn dgcSelect;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column1;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column2;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column3;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column4;
-        private System.Windows.Forms.DataGridViewImageColumn Column5;
         private System.Windows.Forms.PictureBox pictureBox1;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Panel panel4;
@@ -959,7 +908,6 @@
         private System.Windows.Forms.Label label18;
         private System.Windows.Forms.TextBox textBox4;
         private System.Windows.Forms.Label label23;
-        private System.Windows.Forms.Label label30;
         private System.Windows.Forms.Label label29;
         private System.Windows.Forms.Label label28;
         private System.Windows.Forms.Label label26;
@@ -969,5 +917,10 @@
         private System.Windows.Forms.Label label25;
         private System.Windows.Forms.Label label32;
         private System.Windows.Forms.Label label31;
+        private System.Windows.Forms.DataGridViewCheckBoxColumn dgcSelect;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column1;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column2;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column3;
+        private System.Windows.Forms.DataGridViewImageColumn Column5;
     }
 }
