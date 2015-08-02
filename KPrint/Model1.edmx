@@ -24,6 +24,11 @@
           <Property Name="model" Type="nvarchar" MaxLength="200" Nullable="false" />
           <Property Name="capacity" Type="int" Nullable="false" />
           <Property Name="img_id" Type="uniqueidentifier" />
+          <Property Name="img" Type="image" />
+          <Property Name="production_date" Type="datetime" Nullable="false" />
+          <Property Name="container_No" Type="int" Nullable="false" />
+          <Property Name="serial_number" Type="nvarchar" MaxLength="200" Nullable="false" />
+          <Property Name="qr" Type="nvarchar" MaxLength="200" Nullable="false" />
           <Property Name="remark" Type="nvarchar" MaxLength="200" Nullable="false" />
           <Property Name="deleted" Type="int" Nullable="false" />
           <Property Name="create_time" Type="datetime" Nullable="false" />
@@ -38,6 +43,7 @@
           <Property Name="model" Type="nvarchar" MaxLength="200" Nullable="false" />
           <Property Name="capacity" Type="int" Nullable="false" />
           <Property Name="img_id" Type="uniqueidentifier" />
+          <Property Name="img" Type="image" />
           <Property Name="remark" Type="nvarchar" MaxLength="200" Nullable="false" />
           <Property Name="deleted" Type="int" Nullable="false" />
           <Property Name="modify_time" Type="datetime" Nullable="false" />
@@ -73,6 +79,11 @@
           <Property Name="remark" Type="String" MaxLength="200" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="deleted" Type="Int32" Nullable="false" />
           <Property Name="create_time" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="production_date" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="container_No" Type="Int32" Nullable="false" />
+          <Property Name="serial_number" Type="String" Nullable="false" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Name="qr" Type="String" Nullable="false" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Name="img" Type="Binary" MaxLength="Max" FixedLength="false" />
         </EntityType>
         <EntityType Name="rt_product">
           <Key>
@@ -87,6 +98,7 @@
           <Property Name="remark" Type="String" MaxLength="200" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="deleted" Type="Int32" Nullable="false" />
           <Property Name="modify_time" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="img" Type="Binary" MaxLength="Max" FixedLength="false" />
         </EntityType>
         <EntityContainer Name="DB" annotation:LazyLoadingEnabled="true">
           <EntitySet Name="rt_img" EntityType="Self.rt_img" />
@@ -112,6 +124,11 @@
           <EntitySetMapping Name="rt_print_log">
             <EntityTypeMapping TypeName="DBModel.rt_print_log">
               <MappingFragment StoreEntitySet="rt_print_log">
+                <ScalarProperty Name="img" ColumnName="img" />
+                <ScalarProperty Name="qr" ColumnName="qr" />
+                <ScalarProperty Name="serial_number" ColumnName="serial_number" />
+                <ScalarProperty Name="container_No" ColumnName="container_No" />
+                <ScalarProperty Name="production_date" ColumnName="production_date" />
                 <ScalarProperty Name="id" ColumnName="id" />
                 <ScalarProperty Name="part_No" ColumnName="part_No" />
                 <ScalarProperty Name="name" ColumnName="name" />
@@ -127,6 +144,7 @@
           <EntitySetMapping Name="rt_product">
             <EntityTypeMapping TypeName="DBModel.rt_product">
               <MappingFragment StoreEntitySet="rt_product">
+                <ScalarProperty Name="img" ColumnName="img" />
                 <ScalarProperty Name="id" ColumnName="id" />
                 <ScalarProperty Name="part_No" ColumnName="part_No" />
                 <ScalarProperty Name="name" ColumnName="name" />

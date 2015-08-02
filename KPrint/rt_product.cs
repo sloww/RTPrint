@@ -23,5 +23,6 @@ namespace KPrint
         public string remark { get; set; }
         public int deleted { get; set; }
         public System.DateTime modify_time { get; set; }
+        public byte[] img { get; set; }
     }
 }

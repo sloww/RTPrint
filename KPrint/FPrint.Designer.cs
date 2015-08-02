@@ -30,12 +30,12 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FPrint));
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
-            this.textBox6 = new System.Windows.Forms.TextBox();
+            this.txbCount = new System.Windows.Forms.TextBox();
             this.label6 = new System.Windows.Forms.Label();
             this.label7 = new System.Windows.Forms.Label();
             this.label8 = new System.Windows.Forms.Label();
             this.btnPrint = new System.Windows.Forms.Button();
-            this.comboBox1 = new System.Windows.Forms.ComboBox();
+            this.cbdRemark = new System.Windows.Forms.ComboBox();
             this.dateTimePicker1 = new System.Windows.Forms.DateTimePicker();
             this.statusStrip1 = new System.Windows.Forms.StatusStrip();
             this.toolStripStatusLabel1 = new System.Windows.Forms.ToolStripStatusLabel();
@@ -57,14 +57,14 @@
             this.pictureBox1.TabIndex = 36;
             this.pictureBox1.TabStop = false;
             // 
-            // textBox6
+            // txbCount
             // 
-            this.textBox6.Location = new System.Drawing.Point(609, 135);
-            this.textBox6.Name = "textBox6";
-            this.textBox6.Size = new System.Drawing.Size(85, 21);
-            this.textBox6.TabIndex = 33;
-            this.textBox6.Text = "3";
-            this.textBox6.TextChanged += new System.EventHandler(this.textBox6_TextChanged);
+            this.txbCount.Location = new System.Drawing.Point(609, 135);
+            this.txbCount.Name = "txbCount";
+            this.txbCount.Size = new System.Drawing.Size(85, 21);
+            this.txbCount.TabIndex = 33;
+            this.txbCount.Text = "3";
+            this.txbCount.TextChanged += new System.EventHandler(this.textBox6_TextChanged);
             // 
             // label6
             // 
@@ -110,17 +110,17 @@
             this.btnPrint.UseVisualStyleBackColor = true;
             this.btnPrint.Click += new System.EventHandler(this.btnPrint_Click);
             // 
-            // comboBox1
+            // cbdRemark
             // 
-            this.comboBox1.FlatStyle = System.Windows.Forms.FlatStyle.System;
-            this.comboBox1.FormattingEnabled = true;
-            this.comboBox1.Items.AddRange(new object[] {
+            this.cbdRemark.FlatStyle = System.Windows.Forms.FlatStyle.System;
+            this.cbdRemark.FormattingEnabled = true;
+            this.cbdRemark.Items.AddRange(new object[] {
             "量产"});
-            this.comboBox1.Location = new System.Drawing.Point(609, 99);
-            this.comboBox1.Name = "comboBox1";
-            this.comboBox1.Size = new System.Drawing.Size(85, 20);
-            this.comboBox1.TabIndex = 38;
-            this.comboBox1.Text = "量产";
+            this.cbdRemark.Location = new System.Drawing.Point(609, 99);
+            this.cbdRemark.Name = "cbdRemark";
+            this.cbdRemark.Size = new System.Drawing.Size(85, 20);
+            this.cbdRemark.TabIndex = 38;
+            this.cbdRemark.Text = "量产";
             // 
             // dateTimePicker1
             // 
@@ -180,10 +180,10 @@
             this.Controls.Add(this.label21);
             this.Controls.Add(this.statusStrip1);
             this.Controls.Add(this.dateTimePicker1);
-            this.Controls.Add(this.comboBox1);
+            this.Controls.Add(this.cbdRemark);
             this.Controls.Add(this.btnPrint);
             this.Controls.Add(this.pictureBox1);
-            this.Controls.Add(this.textBox6);
+            this.Controls.Add(this.txbCount);
             this.Controls.Add(this.label6);
             this.Controls.Add(this.label7);
             this.Controls.Add(this.label8);
@@ -201,12 +201,12 @@
         #endregion
 
         private System.Windows.Forms.PictureBox pictureBox1;
-        private System.Windows.Forms.TextBox textBox6;
+        private System.Windows.Forms.TextBox txbCount;
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.Label label8;
         private System.Windows.Forms.Button btnPrint;
-        private System.Windows.Forms.ComboBox comboBox1;
+        private System.Windows.Forms.ComboBox cbdRemark;
         private System.Windows.Forms.DateTimePicker dateTimePicker1;
         private System.Windows.Forms.StatusStrip statusStrip1;
         private System.Windows.Forms.ToolStripStatusLabel toolStripStatusLabel1;

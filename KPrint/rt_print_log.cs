@@ -23,5 +23,10 @@ namespace KPrint
         public string remark { get; set; }
         public int deleted { get; set; }
         public System.DateTime create_time { get; set; }
+        public System.DateTime production_date { get; set; }
+        public int container_No { get; set; }
+        public string serial_number { get; set; }
+        public string qr { get; set; }
+        public byte[] img { get; set; }
     }
 }
