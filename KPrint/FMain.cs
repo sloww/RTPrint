@@ -97,5 +97,14 @@ namespace KPrint
         {
             PublicTools.SaveColumnWidth(dataGridView1, KPrint.Properties.Settings.Default.productDatagridview);
         }
+
+        private void btnPrint_Click(object sender, EventArgs e)
+        {
+            if (bdsProduct.Current != null)
+            {
+                FPrint fp = new FPrint((rt_product)bdsProduct.Current);
+                fp.ShowDialog();
+            }
+        }
     }
 }

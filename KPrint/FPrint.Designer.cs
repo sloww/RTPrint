@@ -34,7 +34,7 @@
             this.label6 = new System.Windows.Forms.Label();
             this.label7 = new System.Windows.Forms.Label();
             this.label8 = new System.Windows.Forms.Label();
-            this.button1 = new System.Windows.Forms.Button();
+            this.btnPrint = new System.Windows.Forms.Button();
             this.comboBox1 = new System.Windows.Forms.ComboBox();
             this.dateTimePicker1 = new System.Windows.Forms.DateTimePicker();
             this.statusStrip1 = new System.Windows.Forms.StatusStrip();
@@ -99,15 +99,16 @@
             this.label8.Text = "生产日期";
             this.label8.Click += new System.EventHandler(this.label8_Click);
             // 
-            // button1
+            // btnPrint
             // 
-            this.button1.Font = new System.Drawing.Font("宋体", 12F);
-            this.button1.Location = new System.Drawing.Point(538, 191);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(156, 43);
-            this.button1.TabIndex = 37;
-            this.button1.Text = "打印";
-            this.button1.UseVisualStyleBackColor = true;
+            this.btnPrint.Font = new System.Drawing.Font("宋体", 12F);
+            this.btnPrint.Location = new System.Drawing.Point(538, 191);
+            this.btnPrint.Name = "btnPrint";
+            this.btnPrint.Size = new System.Drawing.Size(156, 43);
+            this.btnPrint.TabIndex = 37;
+            this.btnPrint.Text = "打印";
+            this.btnPrint.UseVisualStyleBackColor = true;
+            this.btnPrint.Click += new System.EventHandler(this.btnPrint_Click);
             // 
             // comboBox1
             // 
@@ -180,7 +181,7 @@
             this.Controls.Add(this.statusStrip1);
             this.Controls.Add(this.dateTimePicker1);
             this.Controls.Add(this.comboBox1);
-            this.Controls.Add(this.button1);
+            this.Controls.Add(this.btnPrint);
             this.Controls.Add(this.pictureBox1);
             this.Controls.Add(this.textBox6);
             this.Controls.Add(this.label6);
@@ -188,6 +189,7 @@
             this.Controls.Add(this.label8);
             this.Name = "FPrint";
             this.Text = "打印界面";
+            this.Load += new System.EventHandler(this.FPrint_Load);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.statusStrip1.ResumeLayout(false);
             this.statusStrip1.PerformLayout();
@@ -203,7 +205,7 @@
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.Label label8;
-        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button btnPrint;
         private System.Windows.Forms.ComboBox comboBox1;
         private System.Windows.Forms.DateTimePicker dateTimePicker1;
         private System.Windows.Forms.StatusStrip statusStrip1;

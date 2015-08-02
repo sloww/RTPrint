@@ -44,7 +44,7 @@
             this.button5 = new System.Windows.Forms.Button();
             this.button4 = new System.Windows.Forms.Button();
             this.btnSearch = new System.Windows.Forms.Button();
-            this.button3 = new System.Windows.Forms.Button();
+            this.btnPrint = new System.Windows.Forms.Button();
             this.tabPage2 = new System.Windows.Forms.TabPage();
             this.txbCapacity = new System.Windows.Forms.TextBox();
             this.label23 = new System.Windows.Forms.Label();
@@ -194,7 +194,7 @@
             this.panel3.Controls.Add(this.button5);
             this.panel3.Controls.Add(this.button4);
             this.panel3.Controls.Add(this.btnSearch);
-            this.panel3.Controls.Add(this.button3);
+            this.panel3.Controls.Add(this.btnPrint);
             this.panel3.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.panel3.Location = new System.Drawing.Point(3, 72);
             this.panel3.Name = "panel3";
@@ -242,15 +242,16 @@
             this.btnSearch.UseVisualStyleBackColor = true;
             this.btnSearch.Click += new System.EventHandler(this.btnSearch_Click);
             // 
-            // button3
+            // btnPrint
             // 
-            this.button3.Font = new System.Drawing.Font("宋体", 12F);
-            this.button3.Location = new System.Drawing.Point(129, 12);
-            this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(105, 30);
-            this.button3.TabIndex = 2;
-            this.button3.Text = "打印 (&P)";
-            this.button3.UseVisualStyleBackColor = true;
+            this.btnPrint.Font = new System.Drawing.Font("宋体", 12F);
+            this.btnPrint.Location = new System.Drawing.Point(129, 12);
+            this.btnPrint.Name = "btnPrint";
+            this.btnPrint.Size = new System.Drawing.Size(105, 30);
+            this.btnPrint.TabIndex = 2;
+            this.btnPrint.Text = "打印 (&P)";
+            this.btnPrint.UseVisualStyleBackColor = true;
+            this.btnPrint.Click += new System.EventHandler(this.btnPrint_Click);
             // 
             // tabPage2
             // 
@@ -630,7 +631,7 @@
         private System.Windows.Forms.TabPage tabPage1;
         private System.Windows.Forms.TabPage tabPage2;
         private System.Windows.Forms.Panel panel3;
-        private System.Windows.Forms.Button button3;
+        private System.Windows.Forms.Button btnPrint;
         private System.Windows.Forms.Button btnSearch;
         private System.Windows.Forms.Panel panel2;
         private System.Windows.Forms.TextBox txbModelForSearch;

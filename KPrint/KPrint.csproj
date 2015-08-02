@@ -61,6 +61,12 @@
     <Compile Include="FDatabase.Designer.cs">
       <DependentUpon>FDatabase.cs</DependentUpon>
     </Compile>
+    <Compile Include="FEXHelper.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FEXHelper.Designer.cs">
+      <DependentUpon>FEXHelper.cs</DependentUpon>
+    </Compile>
     <Compile Include="FMain.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -108,6 +114,9 @@
     </Compile>
     <EmbeddedResource Include="FDatabase.resx">
       <DependentUpon>FDatabase.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FEXHelper.resx">
+      <DependentUpon>FEXHelper.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="FMain.resx">
       <DependentUpon>FMain.cs</DependentUpon>
