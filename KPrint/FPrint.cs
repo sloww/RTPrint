@@ -7,6 +7,7 @@ using System.Drawing.Printing;
 using System.Linq;
 using System.Text;
 using System.Windows.Forms;
+using ThoughtWorks.QRCode.Codec;
 
 namespace KPrint
 {
@@ -85,6 +86,7 @@ namespace KPrint
                     printObj.img_id = this.product.img_id;
                     printObj.img = this.product.img;
                     printObj.production_date = dateTimePicker1.Value;
+                    printObj.qr = product.part_No + "099" + "201508050000";
                     printObj.remark = "量产";
                     printObj.deleted = 0;
                     printObj.create_time = DateTime.Now;
@@ -207,7 +209,10 @@ namespace KPrint
 
             //draw QR cell
             cursor = new Point(location.X + 48, location.Y + 46);
-            g.DrawString("QR码占位符", smallFont, Brushes.Black, new Point(cursor.X + 1, cursor.Y + 1));
+            //g.DrawString("QR码占位符", smallFont, Brushes.Black, new Point(cursor.X + 1, cursor.Y + 1));
+            Bitmap bimg = PublicTools.CreateQRCode(printObj.qr);
+            g.DrawImage(bimg, new Point(cursor.X + 1, cursor.Y + 1));
+
 
             //draw production name cell
             cursor = new Point(location.X + 88, location.Y + 28);

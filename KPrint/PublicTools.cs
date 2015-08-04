@@ -5,6 +5,7 @@ using System.IO;
 using System.Linq;
 using System.Text;
 using System.Windows.Forms;
+using ThoughtWorks.QRCode.Codec;
 
 namespace KPrint
 {
@@ -118,6 +119,28 @@ namespace KPrint
                 ctl.Location = new Point(p.X, p.Y + 2);
                 ReSizeTextbox(ctl);
 
+            }
+        }
+
+        public static Bitmap CreateQRCode(string content)
+        {
+            QRCodeEncoder qrEncoder = new QRCodeEncoder();
+            qrEncoder.QRCodeEncodeMode = QRCodeEncoder.ENCODE_MODE.BYTE;
+            qrEncoder.QRCodeScale = Convert.ToInt32(4);
+            qrEncoder.QRCodeVersion = Convert.ToInt32(3);
+            qrEncoder.QRCodeErrorCorrect = QRCodeEncoder.ERROR_CORRECTION.M;
+            try
+            {
+                Bitmap qrcode = qrEncoder.Encode(content, Encoding.UTF8);
+                return qrcode;
+            }
+            catch (IndexOutOfRangeException ex)
+            {
+                return new Bitmap(100, 100);
+            }
+            catch (Exception ex)
+            {
+                return new Bitmap(100, 100);
             }
         }
     }
