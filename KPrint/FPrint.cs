@@ -25,36 +25,6 @@ namespace KPrint
             this.product = product;
         }
 
-        private void label8_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void textBox8_TextChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void label7_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void label6_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void textBox7_TextChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void textBox6_TextChanged(object sender, EventArgs e)
-        {
-
-        }
-
         private void btnPrint_Click(object sender, EventArgs e)
         {
             int printCount = 0;
@@ -64,46 +34,60 @@ namespace KPrint
                 List<rt_print_log> printObjs = new List<rt_print_log>();
                 pd.PrintPage += (sender2, args) => DrawPaper(printObjs, args.Graphics);
 
+
                 using (var db = new DB())
                 {
-                    var img = (from i in db.rt_img
-                               where i.id == this.product.img_id
-                               select i).FirstOrDefault();
-                    if (img != null)
+                    for (int i = 0; i < printCount; i++)
                     {
-                        this.product.img = img.img;
-                    }
-                }
+                        rt_print_log printObj = new rt_print_log();
+                        printObj.id = Guid.NewGuid();
 
-                for(int i=0;i<printCount;i++)
-                {
-                    rt_print_log printObj = new rt_print_log();
-                    printObj.model = this.product.model;
-                    printObj.part_No = this.product.part_No;
-                    printObj.id = Guid.NewGuid();
-                    printObj.name = this.product.name;
-                    printObj.capacity = this.product.capacity;
-                    printObj.img_id = this.product.img_id;
-                    printObj.img = this.product.img;
-                    printObj.production_date = dateTimePicker1.Value;
-                    printObj.qr = product.part_No + "099" + "201508050000";
-                    printObj.remark = "量产";
-                    printObj.deleted = 0;
-                    printObj.create_time = DateTime.Now;
-                    printObj.container_No = i + 1;
-                    printObjs.Add(printObj);
+                        this.CopyProductToPrintLog(printObj, this.product);
+                        printObj.serial_number = PublicDB.GetDailyCount(DateTime.Now).ToString();
+                        printObj.production_date = dateTimePicker1.Value;
+                        printObj.qr = product.part_No.PadLeft(20, '0') + product.capacity.ToString().PadLeft(3, '0') + DateTime.Now.ToString("yyyyMMdd") + PublicDB.GetDailyCount(DateTime.Now);
+                        printObj.remark = "量产";
+                        printObj.deleted = 0;
+                        printObj.create_time = DateTime.Now;
+                        printObj.container_No = i + 1;
+                        
+                        printObjs.Add(printObj);
+                        PublicDB.AddDailyCount(DateTime.Now);
 
-                    if (i + 1 == printCount || i%3==2)
-                    {
-                        pd.Print();
-                        printObjs.Clear();
+                        if (i + 1 == printCount || i % 3 == 2)
+                        {
+                            pd.Print();
+
+                            printObjs.Clear();
+                        }
+
+                        //todo 如果性能不佳 去掉image字段的保存
+                        printObj.img = null;
+                        db.rt_print_log.Add(printObj);
+                        db.Entry(printObj).State = System.Data.Entity.EntityState.Added;
+                        db.SaveChanges();
+                        PublicDB.AddDailyCount(DateTime.Now);
                     }
-                    
                 }
             }
         }
 
-
+        /// <summary>
+        /// 产品属性复制给打印对象 包含 part_No name model img_id img remark capacity 共7项
+        /// </summary>
+        /// <param name="printObj"></param>
+        /// <param name="productObj"></param>
+        private void CopyProductToPrintLog(rt_print_log printObj, rt_product productObj)
+        {
+            printObj.capacity = productObj.capacity;
+            printObj.part_No = productObj.part_No;
+            printObj.name = productObj.name;
+            printObj.model = productObj.model;
+            printObj.img_id = productObj.img_id;
+            printObj.img = productObj.img;
+            printObj.remark = productObj.remark;
+            
+        }
 
 
 
@@ -113,6 +97,16 @@ namespace KPrint
             {
                 this.DrawSingle(printObjs[i], g, i * 94);
             }
+
+        }
+
+        private void DrawPictureBox(rt_product product, Graphics g,DateTime dt)
+        {
+            rt_print_log printObj = new rt_print_log();
+            this.CopyProductToPrintLog(printObj, this.product);
+            printObj.production_date = dt;
+            printObj.container_No = 1;
+            this.DrawSingle(printObj, g, 0);
 
         }
 
@@ -225,14 +219,28 @@ namespace KPrint
 
             //get img 
 
-            System.Drawing.Image img = PublicTools.byteArrayToImage(printObj.img);
-            g.DrawImage(img, cursor.X + 1, cursor.Y + 10, 70, 36);
+            if (printObj.img != null)
+            {
+                System.Drawing.Image img = PublicTools.byteArrayToImage(printObj.img);
+                g.DrawImage(img, cursor.X + 1, cursor.Y + 10, 70, 36);
+            }
 
         }
 
         private void FPrint_Load(object sender, EventArgs e)
         {
+            using (var db = new DB())
+            {
+                var img = (from i in db.rt_img
+                           where i.id == this.product.img_id
+                           select i).FirstOrDefault();
+                if (img != null)
+                {
+                    this.product.img = img.img;
+                }
+            }
 
+            this.DrawPictureBox(this.product, Graphics.FromImage(pictureBox1.Image),dateTimePicker1.Value);
         }
 
     }

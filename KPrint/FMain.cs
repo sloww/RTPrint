@@ -47,12 +47,12 @@ namespace KPrint
                 img.deleted = 0;
                 img.modify_time = DateTime.Now;
                 db.rt_img.Add(img);
+                db.Entry(img).State = System.Data.Entity.EntityState.Added;
 
-                db.SaveChanges();
+                //db.SaveChanges();
 
 
                 rt_product p = new rt_product();
-                p.id = System.Guid.NewGuid();
                 p.part_No = txbPart_No.Text;
                 p.model = txbModel.Text;
                 p.name = txbName.Text;
@@ -61,7 +61,21 @@ namespace KPrint
                 p.deleted = 0;
                 p.remark = "量产";
                 p.img_id = img.id;
-                db.rt_product.Add(p);
+
+                var q = (from a in db.rt_product
+                         where a.part_No == p.part_No && a.deleted==0
+                         select a).FirstOrDefault();
+                if (q == null)
+                {
+                    p.id = System.Guid.NewGuid();
+                    db.rt_product.Add(p);
+                }
+                else
+                {
+
+                    q.part_No = txbPart_No.Text;
+                    db.rt_product.Attach(q);
+                }
 
                 db.SaveChanges();
             }
@@ -105,6 +119,17 @@ namespace KPrint
                 FPrint fp = new FPrint((rt_product)bdsProduct.Current);
                 fp.ShowDialog();
             }
+        }
+
+        private void dataGridView1_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
+        {
+            this.btnPrint_Click(null, null);
+        }
+
+        private void btnPrintList_Click(object sender, EventArgs e)
+        {
+            FPrintLIst m = new FPrintLIst();
+            m.ShowDialog();
         }
     }
 }

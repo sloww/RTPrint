@@ -41,7 +41,7 @@
             this.label1 = new System.Windows.Forms.Label();
             this.panel3 = new System.Windows.Forms.Panel();
             this.button6 = new System.Windows.Forms.Button();
-            this.button5 = new System.Windows.Forms.Button();
+            this.btnPrintList = new System.Windows.Forms.Button();
             this.button4 = new System.Windows.Forms.Button();
             this.btnSearch = new System.Windows.Forms.Button();
             this.btnPrint = new System.Windows.Forms.Button();
@@ -191,7 +191,7 @@
             // 
             this.panel3.BackColor = System.Drawing.SystemColors.Control;
             this.panel3.Controls.Add(this.button6);
-            this.panel3.Controls.Add(this.button5);
+            this.panel3.Controls.Add(this.btnPrintList);
             this.panel3.Controls.Add(this.button4);
             this.panel3.Controls.Add(this.btnSearch);
             this.panel3.Controls.Add(this.btnPrint);
@@ -211,15 +211,16 @@
             this.button6.Text = "导出 (&O)";
             this.button6.UseVisualStyleBackColor = true;
             // 
-            // button5
+            // btnPrintList
             // 
-            this.button5.Font = new System.Drawing.Font("宋体", 12F);
-            this.button5.Location = new System.Drawing.Point(498, 12);
-            this.button5.Name = "button5";
-            this.button5.Size = new System.Drawing.Size(152, 30);
-            this.button5.TabIndex = 4;
-            this.button5.Text = "查看打印记录 (&L)";
-            this.button5.UseVisualStyleBackColor = true;
+            this.btnPrintList.Font = new System.Drawing.Font("宋体", 12F);
+            this.btnPrintList.Location = new System.Drawing.Point(498, 12);
+            this.btnPrintList.Name = "btnPrintList";
+            this.btnPrintList.Size = new System.Drawing.Size(152, 30);
+            this.btnPrintList.TabIndex = 4;
+            this.btnPrintList.Text = "查看打印记录 (&L)";
+            this.btnPrintList.UseVisualStyleBackColor = true;
+            this.btnPrintList.Click += new System.EventHandler(this.btnPrintList_Click);
             // 
             // button4
             // 
@@ -525,6 +526,7 @@
             this.dataGridView1.RowTemplate.Height = 23;
             this.dataGridView1.Size = new System.Drawing.Size(984, 511);
             this.dataGridView1.TabIndex = 0;
+            this.dataGridView1.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellDoubleClick);
             // 
             // Column1
             // 
@@ -602,6 +604,7 @@
             this.Controls.Add(this.panel1);
             this.DoubleBuffered = true;
             this.Name = "FMain";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "标识卡打印软件";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.FMain_FormClosing);
             this.Load += new System.EventHandler(this.FMain_Load);
@@ -652,7 +655,7 @@
         private System.Windows.Forms.Button btnADD;
         private System.Windows.Forms.Button btnUploadImg;
         private System.Windows.Forms.Button button4;
-        private System.Windows.Forms.Button button5;
+        private System.Windows.Forms.Button btnPrintList;
         private System.Windows.Forms.Button button6;
         private System.Windows.Forms.StatusStrip statusStrip1;
         private System.Windows.Forms.ToolStripStatusLabel toolStripStatusLabel1;

@@ -18,8 +18,6 @@ namespace KPrint
             return ms.ToArray();
         }
 
-
-
         public static Image byteArrayToImage(byte[] byteArrayIn)
         {
             MemoryStream ms = new MemoryStream(byteArrayIn);

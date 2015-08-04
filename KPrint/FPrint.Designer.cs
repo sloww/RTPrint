@@ -52,57 +52,53 @@
             this.pictureBox1.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox1.Image")));
             this.pictureBox1.Location = new System.Drawing.Point(0, 0);
             this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(487, 311);
+            this.pictureBox1.Size = new System.Drawing.Size(601, 431);
             this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.pictureBox1.TabIndex = 36;
             this.pictureBox1.TabStop = false;
             // 
             // txbCount
             // 
-            this.txbCount.Location = new System.Drawing.Point(609, 135);
+            this.txbCount.Location = new System.Drawing.Point(775, 142);
             this.txbCount.Name = "txbCount";
             this.txbCount.Size = new System.Drawing.Size(85, 21);
             this.txbCount.TabIndex = 33;
             this.txbCount.Text = "3";
-            this.txbCount.TextChanged += new System.EventHandler(this.textBox6_TextChanged);
             // 
             // label6
             // 
             this.label6.AutoSize = true;
             this.label6.Font = new System.Drawing.Font("宋体", 12F);
-            this.label6.Location = new System.Drawing.Point(541, 134);
+            this.label6.Location = new System.Drawing.Point(707, 141);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(40, 16);
             this.label6.TabIndex = 32;
             this.label6.Text = "数量";
-            this.label6.Click += new System.EventHandler(this.label6_Click);
             // 
             // label7
             // 
             this.label7.AutoSize = true;
             this.label7.Font = new System.Drawing.Font("宋体", 12F);
-            this.label7.Location = new System.Drawing.Point(541, 99);
+            this.label7.Location = new System.Drawing.Point(707, 106);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(40, 16);
             this.label7.TabIndex = 30;
             this.label7.Text = "备注";
-            this.label7.Click += new System.EventHandler(this.label7_Click);
             // 
             // label8
             // 
             this.label8.AutoSize = true;
             this.label8.Font = new System.Drawing.Font("宋体", 12F);
-            this.label8.Location = new System.Drawing.Point(509, 68);
+            this.label8.Location = new System.Drawing.Point(675, 75);
             this.label8.Name = "label8";
             this.label8.Size = new System.Drawing.Size(72, 16);
             this.label8.TabIndex = 28;
             this.label8.Text = "生产日期";
-            this.label8.Click += new System.EventHandler(this.label8_Click);
             // 
             // btnPrint
             // 
             this.btnPrint.Font = new System.Drawing.Font("宋体", 12F);
-            this.btnPrint.Location = new System.Drawing.Point(538, 191);
+            this.btnPrint.Location = new System.Drawing.Point(704, 198);
             this.btnPrint.Name = "btnPrint";
             this.btnPrint.Size = new System.Drawing.Size(156, 43);
             this.btnPrint.TabIndex = 37;
@@ -116,7 +112,7 @@
             this.cbdRemark.FormattingEnabled = true;
             this.cbdRemark.Items.AddRange(new object[] {
             "量产"});
-            this.cbdRemark.Location = new System.Drawing.Point(609, 99);
+            this.cbdRemark.Location = new System.Drawing.Point(775, 106);
             this.cbdRemark.Name = "cbdRemark";
             this.cbdRemark.Size = new System.Drawing.Size(85, 20);
             this.cbdRemark.TabIndex = 38;
@@ -125,7 +121,7 @@
             // dateTimePicker1
             // 
             this.dateTimePicker1.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.dateTimePicker1.Location = new System.Drawing.Point(609, 68);
+            this.dateTimePicker1.Location = new System.Drawing.Point(775, 75);
             this.dateTimePicker1.Name = "dateTimePicker1";
             this.dateTimePicker1.Size = new System.Drawing.Size(85, 21);
             this.dateTimePicker1.TabIndex = 39;
@@ -134,10 +130,10 @@
             // 
             this.statusStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.toolStripStatusLabel1});
-            this.statusStrip1.Location = new System.Drawing.Point(487, 289);
+            this.statusStrip1.Location = new System.Drawing.Point(601, 409);
             this.statusStrip1.Name = "statusStrip1";
             this.statusStrip1.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
-            this.statusStrip1.Size = new System.Drawing.Size(263, 22);
+            this.statusStrip1.Size = new System.Drawing.Size(350, 22);
             this.statusStrip1.TabIndex = 40;
             this.statusStrip1.Text = "statusStrip1";
             // 
@@ -175,7 +171,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(750, 311);
+            this.ClientSize = new System.Drawing.Size(951, 431);
             this.Controls.Add(this.label9);
             this.Controls.Add(this.label21);
             this.Controls.Add(this.statusStrip1);
@@ -188,6 +184,7 @@
             this.Controls.Add(this.label7);
             this.Controls.Add(this.label8);
             this.Name = "FPrint";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "打印界面";
             this.Load += new System.EventHandler(this.FPrint_Load);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();

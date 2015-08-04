@@ -28,5 +28,6 @@ namespace KPrint
         public virtual DbSet<rt_img> rt_img { get; set; }
         public virtual DbSet<rt_print_log> rt_print_log { get; set; }
         public virtual DbSet<rt_product> rt_product { get; set; }
+        public virtual DbSet<rt_daily_count> rt_daily_count { get; set; }
     }
 }
