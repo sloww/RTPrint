@@ -43,10 +43,15 @@ namespace KPrint
                         printObj.id = Guid.NewGuid();
 
                         this.CopyProductToPrintLog(printObj, this.product);
-                        printObj.serial_number = PublicDB.GetDailyCount(DateTime.Now).ToString();
+                        printObj.serial_number = (PublicDB.GetDailyCount(dateTimePicker1.Value)+1).ToString();
                         printObj.production_date = dateTimePicker1.Value;
-                        printObj.qr = product.part_No.PadLeft(20, '0') + product.capacity.ToString().PadLeft(3, '0') + DateTime.Now.ToString("yyyyMMdd") + PublicDB.GetDailyCount(DateTime.Now);
-                        printObj.remark = "量产";
+                        printObj.qr = product.part_No.PadLeft(20, '0') + product.capacity.ToString().PadLeft(3, '0') + DateTime.Now.ToString("yyMM") + PublicDB.GetDailyCount(DateTime.Now).ToString().PadLeft(4,'0');
+                        printObj.remark = cbdRemark.Text;
+
+                        this.product.remark = cbdRemark.Text;
+                        db.rt_product.Attach(this.product);
+                        db.Entry(this.product).State = System.Data.Entity.EntityState.Modified;
+
                         printObj.deleted = 0;
                         printObj.create_time = DateTime.Now;
                         printObj.container_No = i + 1;
@@ -62,11 +67,11 @@ namespace KPrint
                         }
 
                         //todo 如果性能不佳 去掉image字段的保存
-                        printObj.img = null;
+                       // printObj.img = null;
                         db.rt_print_log.Add(printObj);
                         db.Entry(printObj).State = System.Data.Entity.EntityState.Added;
                         db.SaveChanges();
-                        PublicDB.AddDailyCount(DateTime.Now);
+                        PublicDB.AddDailyCount(dateTimePicker1.Value);
                     }
                 }
             }
@@ -89,8 +94,6 @@ namespace KPrint
             
         }
 
-
-
         private void DrawPaper(List<rt_print_log> printObjs, Graphics g)
         {
             for (int i = 0; i < printObjs.Count; i++)
@@ -107,7 +110,6 @@ namespace KPrint
             printObj.production_date = dt;
             printObj.container_No = 1;
             this.DrawSingle(printObj, g, 0);
-
         }
 
         private void DrawSingle(rt_print_log printObj, Graphics g,int yoffset)
@@ -192,7 +194,7 @@ namespace KPrint
             //draw remark cell
             cursor = new Point(location.X + 1, location.Y + 66);
             g.DrawString("备注", smallFont, Brushes.Black, new Point(cursor.X + 1, cursor.Y + 1));
-            g.DrawString(printObj.remark, new Font ("SimSun",28), Brushes.Black, new Point(cursor.X + 9, cursor.Y + 4));
+            g.DrawString(printObj.remark, new Font ("SimSun",28), Brushes.Black, new Point(cursor.X + 6, cursor.Y + 4));
 
             //draw Container No. cell
             cursor = new Point(location.X + 48, location.Y + 28);
@@ -203,9 +205,10 @@ namespace KPrint
 
             //draw QR cell
             cursor = new Point(location.X + 48, location.Y + 46);
-            //g.DrawString("QR码占位符", smallFont, Brushes.Black, new Point(cursor.X + 1, cursor.Y + 1));
+            if(printObj.serial_number !=null)
+            g.DrawString(DateTime.Now.ToString("yyMM")+ printObj.serial_number.PadLeft(4,'0'), smallFont, Brushes.Black, new Point(cursor.X + 8, cursor.Y + 1));
             Bitmap bimg = PublicTools.CreateQRCode(printObj.qr);
-            g.DrawImage(bimg, new Point(cursor.X + 1, cursor.Y + 1));
+            g.DrawImage(bimg, new Point(cursor.X + 2, cursor.Y + 5));
 
 
             //draw production name cell
@@ -241,6 +244,12 @@ namespace KPrint
             }
 
             this.DrawPictureBox(this.product, Graphics.FromImage(pictureBox1.Image),dateTimePicker1.Value);
+            cbdRemark.Text = this.product.remark;
+        }
+
+        private void dateTimePicker1_ValueChanged(object sender, EventArgs e)
+        {
+            this.DrawPictureBox(this.product, Graphics.FromImage(pictureBox1.Image), dateTimePicker1.Value);
         }
 
     }

@@ -42,22 +42,22 @@
             this.panel3 = new System.Windows.Forms.Panel();
             this.button6 = new System.Windows.Forms.Button();
             this.btnPrintList = new System.Windows.Forms.Button();
-            this.button4 = new System.Windows.Forms.Button();
+            this.btnImport = new System.Windows.Forms.Button();
             this.btnSearch = new System.Windows.Forms.Button();
             this.btnPrint = new System.Windows.Forms.Button();
             this.tabPage2 = new System.Windows.Forms.TabPage();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.txbCapacity = new System.Windows.Forms.TextBox();
             this.label23 = new System.Windows.Forms.Label();
-            this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.label4 = new System.Windows.Forms.Label();
             this.panel4 = new System.Windows.Forms.Panel();
-            this.button11 = new System.Windows.Forms.Button();
+            this.btnClear = new System.Windows.Forms.Button();
+            this.btnEdit = new System.Windows.Forms.Button();
             this.button10 = new System.Windows.Forms.Button();
-            this.button2 = new System.Windows.Forms.Button();
-            this.button9 = new System.Windows.Forms.Button();
+            this.btnSave = new System.Windows.Forms.Button();
+            this.btnDelete = new System.Windows.Forms.Button();
             this.btnADD = new System.Windows.Forms.Button();
             this.btnUploadImg = new System.Windows.Forms.Button();
-            this.label27 = new System.Windows.Forms.Label();
             this.txbModel = new System.Windows.Forms.TextBox();
             this.label6 = new System.Windows.Forms.Label();
             this.txbName = new System.Windows.Forms.TextBox();
@@ -65,21 +65,16 @@
             this.txbPart_No = new System.Windows.Forms.TextBox();
             this.label8 = new System.Windows.Forms.Label();
             this.panel2 = new System.Windows.Forms.Panel();
+            this.dataGridView1 = new System.Windows.Forms.DataGridView();
             this.statusStrip1 = new System.Windows.Forms.StatusStrip();
             this.toolStripStatusLabel1 = new System.Windows.Forms.ToolStripStatusLabel();
-            this.toolStripStatusLabel2 = new System.Windows.Forms.ToolStripStatusLabel();
-            this.toolStripStatusLabel3 = new System.Windows.Forms.ToolStripStatusLabel();
-            this.dataGridView1 = new System.Windows.Forms.DataGridView();
             this.Column1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.img = new System.Windows.Forms.DataGridViewImageColumn();
             this.partNoDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.nameDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.modelDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.remarkDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.capacityDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.imgidDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.deletedDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.modifytimeDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.idDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.bdsProduct = new System.Windows.Forms.BindingSource(this.components);
             this.panel1.SuspendLayout();
             this.tabControl1.SuspendLayout();
@@ -89,8 +84,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.panel4.SuspendLayout();
             this.panel2.SuspendLayout();
-            this.statusStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
+            this.statusStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.bdsProduct)).BeginInit();
             this.SuspendLayout();
             // 
@@ -100,7 +95,7 @@
             this.panel1.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel1.Location = new System.Drawing.Point(0, 0);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(984, 150);
+            this.panel1.Size = new System.Drawing.Size(1004, 150);
             this.panel1.TabIndex = 0;
             // 
             // tabControl1
@@ -111,8 +106,9 @@
             this.tabControl1.Location = new System.Drawing.Point(0, 0);
             this.tabControl1.Name = "tabControl1";
             this.tabControl1.SelectedIndex = 0;
-            this.tabControl1.Size = new System.Drawing.Size(984, 150);
+            this.tabControl1.Size = new System.Drawing.Size(1004, 150);
             this.tabControl1.TabIndex = 1;
+            this.tabControl1.Selecting += new System.Windows.Forms.TabControlCancelEventHandler(this.tabControl1_Selecting);
             // 
             // tabPage1
             // 
@@ -126,7 +122,7 @@
             this.tabPage1.Location = new System.Drawing.Point(4, 22);
             this.tabPage1.Name = "tabPage1";
             this.tabPage1.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage1.Size = new System.Drawing.Size(976, 124);
+            this.tabPage1.Size = new System.Drawing.Size(996, 124);
             this.tabPage1.TabIndex = 0;
             this.tabPage1.Text = "查询";
             this.tabPage1.UseVisualStyleBackColor = true;
@@ -192,13 +188,13 @@
             this.panel3.BackColor = System.Drawing.SystemColors.Control;
             this.panel3.Controls.Add(this.button6);
             this.panel3.Controls.Add(this.btnPrintList);
-            this.panel3.Controls.Add(this.button4);
+            this.panel3.Controls.Add(this.btnImport);
             this.panel3.Controls.Add(this.btnSearch);
             this.panel3.Controls.Add(this.btnPrint);
             this.panel3.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.panel3.Location = new System.Drawing.Point(3, 72);
             this.panel3.Name = "panel3";
-            this.panel3.Size = new System.Drawing.Size(970, 49);
+            this.panel3.Size = new System.Drawing.Size(990, 49);
             this.panel3.TabIndex = 0;
             // 
             // button6
@@ -210,6 +206,7 @@
             this.button6.TabIndex = 5;
             this.button6.Text = "导出 (&O)";
             this.button6.UseVisualStyleBackColor = true;
+            this.button6.Click += new System.EventHandler(this.button6_Click);
             // 
             // btnPrintList
             // 
@@ -222,15 +219,17 @@
             this.btnPrintList.UseVisualStyleBackColor = true;
             this.btnPrintList.Click += new System.EventHandler(this.btnPrintList_Click);
             // 
-            // button4
+            // btnImport
             // 
-            this.button4.Font = new System.Drawing.Font("宋体", 12F);
-            this.button4.Location = new System.Drawing.Point(252, 12);
-            this.button4.Name = "button4";
-            this.button4.Size = new System.Drawing.Size(105, 30);
-            this.button4.TabIndex = 3;
-            this.button4.Text = "导入 (&I)";
-            this.button4.UseVisualStyleBackColor = true;
+            this.btnImport.AccessibleRole = System.Windows.Forms.AccessibleRole.SplitButton;
+            this.btnImport.Font = new System.Drawing.Font("宋体", 12F);
+            this.btnImport.Location = new System.Drawing.Point(252, 12);
+            this.btnImport.Name = "btnImport";
+            this.btnImport.Size = new System.Drawing.Size(105, 30);
+            this.btnImport.TabIndex = 3;
+            this.btnImport.Text = "导入 (&I)";
+            this.btnImport.UseVisualStyleBackColor = true;
+            this.btnImport.Click += new System.EventHandler(this.btnImport_Click);
             // 
             // btnSearch
             // 
@@ -256,12 +255,11 @@
             // 
             // tabPage2
             // 
+            this.tabPage2.Controls.Add(this.pictureBox1);
             this.tabPage2.Controls.Add(this.txbCapacity);
             this.tabPage2.Controls.Add(this.label23);
-            this.tabPage2.Controls.Add(this.pictureBox1);
             this.tabPage2.Controls.Add(this.label4);
             this.tabPage2.Controls.Add(this.panel4);
-            this.tabPage2.Controls.Add(this.label27);
             this.tabPage2.Controls.Add(this.txbModel);
             this.tabPage2.Controls.Add(this.label6);
             this.tabPage2.Controls.Add(this.txbName);
@@ -271,15 +269,27 @@
             this.tabPage2.Location = new System.Drawing.Point(4, 22);
             this.tabPage2.Name = "tabPage2";
             this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage2.Size = new System.Drawing.Size(976, 124);
+            this.tabPage2.Size = new System.Drawing.Size(996, 124);
             this.tabPage2.TabIndex = 1;
             this.tabPage2.Text = "编辑";
             this.tabPage2.UseVisualStyleBackColor = true;
+            // 
+            // pictureBox1
+            // 
+            this.pictureBox1.Dock = System.Windows.Forms.DockStyle.Right;
+            this.pictureBox1.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox1.Image")));
+            this.pictureBox1.Location = new System.Drawing.Point(876, 3);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(117, 69);
+            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pictureBox1.TabIndex = 27;
+            this.pictureBox1.TabStop = false;
             // 
             // txbCapacity
             // 
             this.txbCapacity.Font = new System.Drawing.Font("宋体", 12F);
             this.txbCapacity.Location = new System.Drawing.Point(611, 21);
+            this.txbCapacity.MaxLength = 3;
             this.txbCapacity.Name = "txbCapacity";
             this.txbCapacity.Size = new System.Drawing.Size(37, 26);
             this.txbCapacity.TabIndex = 29;
@@ -296,18 +306,6 @@
             this.label23.TabIndex = 28;
             this.label23.Text = "收容数";
             // 
-            // pictureBox1
-            // 
-            this.pictureBox1.BackColor = System.Drawing.Color.Maroon;
-            this.pictureBox1.Dock = System.Windows.Forms.DockStyle.Right;
-            this.pictureBox1.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox1.Image")));
-            this.pictureBox1.Location = new System.Drawing.Point(856, 3);
-            this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(117, 69);
-            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.pictureBox1.TabIndex = 27;
-            this.pictureBox1.TabStop = false;
-            // 
             // label4
             // 
             this.label4.AutoSize = true;
@@ -320,62 +318,77 @@
             // panel4
             // 
             this.panel4.BackColor = System.Drawing.SystemColors.Control;
-            this.panel4.Controls.Add(this.button11);
+            this.panel4.Controls.Add(this.btnClear);
+            this.panel4.Controls.Add(this.btnEdit);
             this.panel4.Controls.Add(this.button10);
-            this.panel4.Controls.Add(this.button2);
-            this.panel4.Controls.Add(this.button9);
+            this.panel4.Controls.Add(this.btnSave);
+            this.panel4.Controls.Add(this.btnDelete);
             this.panel4.Controls.Add(this.btnADD);
             this.panel4.Controls.Add(this.btnUploadImg);
             this.panel4.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.panel4.Location = new System.Drawing.Point(3, 72);
             this.panel4.Name = "panel4";
-            this.panel4.Size = new System.Drawing.Size(970, 49);
+            this.panel4.Size = new System.Drawing.Size(990, 49);
             this.panel4.TabIndex = 25;
             // 
-            // button11
+            // btnClear
             // 
-            this.button11.Font = new System.Drawing.Font("宋体", 12F);
-            this.button11.Location = new System.Drawing.Point(131, 12);
-            this.button11.Name = "button11";
-            this.button11.Size = new System.Drawing.Size(105, 30);
-            this.button11.TabIndex = 32;
-            this.button11.Text = "编辑 (&E)";
-            this.button11.UseVisualStyleBackColor = true;
+            this.btnClear.Font = new System.Drawing.Font("宋体", 12F);
+            this.btnClear.Location = new System.Drawing.Point(6, 12);
+            this.btnClear.Name = "btnClear";
+            this.btnClear.Size = new System.Drawing.Size(105, 30);
+            this.btnClear.TabIndex = 33;
+            this.btnClear.Text = "清空 (&C)";
+            this.btnClear.UseVisualStyleBackColor = true;
+            this.btnClear.Click += new System.EventHandler(this.btnClear_Click);
+            // 
+            // btnEdit
+            // 
+            this.btnEdit.Font = new System.Drawing.Font("宋体", 12F);
+            this.btnEdit.Location = new System.Drawing.Point(250, 12);
+            this.btnEdit.Name = "btnEdit";
+            this.btnEdit.Size = new System.Drawing.Size(105, 30);
+            this.btnEdit.TabIndex = 32;
+            this.btnEdit.Text = "编辑 (&E)";
+            this.btnEdit.UseVisualStyleBackColor = true;
+            this.btnEdit.Click += new System.EventHandler(this.btnEdit_Click);
             // 
             // button10
             // 
             this.button10.Font = new System.Drawing.Font("宋体", 12F);
-            this.button10.Location = new System.Drawing.Point(256, 12);
+            this.button10.Location = new System.Drawing.Point(372, 12);
             this.button10.Name = "button10";
             this.button10.Size = new System.Drawing.Size(105, 30);
             this.button10.TabIndex = 4;
             this.button10.Text = "导入 (&I)";
             this.button10.UseVisualStyleBackColor = true;
             // 
-            // button2
+            // btnSave
             // 
-            this.button2.Font = new System.Drawing.Font("宋体", 12F);
-            this.button2.Location = new System.Drawing.Point(506, 12);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(105, 30);
-            this.button2.TabIndex = 3;
-            this.button2.Text = "保存 (&S)";
-            this.button2.UseVisualStyleBackColor = true;
+            this.btnSave.Font = new System.Drawing.Font("宋体", 12F);
+            this.btnSave.Location = new System.Drawing.Point(616, 12);
+            this.btnSave.Name = "btnSave";
+            this.btnSave.Size = new System.Drawing.Size(105, 30);
+            this.btnSave.TabIndex = 3;
+            this.btnSave.Text = "保存 (&S)";
+            this.btnSave.UseVisualStyleBackColor = true;
+            this.btnSave.Click += new System.EventHandler(this.btnSave_Click);
             // 
-            // button9
+            // btnDelete
             // 
-            this.button9.Font = new System.Drawing.Font("宋体", 12F);
-            this.button9.Location = new System.Drawing.Point(381, 12);
-            this.button9.Name = "button9";
-            this.button9.Size = new System.Drawing.Size(105, 30);
-            this.button9.TabIndex = 3;
-            this.button9.Text = "删除 (&S)";
-            this.button9.UseVisualStyleBackColor = true;
+            this.btnDelete.Font = new System.Drawing.Font("宋体", 12F);
+            this.btnDelete.Location = new System.Drawing.Point(494, 12);
+            this.btnDelete.Name = "btnDelete";
+            this.btnDelete.Size = new System.Drawing.Size(105, 30);
+            this.btnDelete.TabIndex = 3;
+            this.btnDelete.Text = "删除 (&S)";
+            this.btnDelete.UseVisualStyleBackColor = true;
+            this.btnDelete.Click += new System.EventHandler(this.btnDelete_Click);
             // 
             // btnADD
             // 
             this.btnADD.Font = new System.Drawing.Font("宋体", 12F);
-            this.btnADD.Location = new System.Drawing.Point(6, 12);
+            this.btnADD.Location = new System.Drawing.Point(128, 12);
             this.btnADD.Name = "btnADD";
             this.btnADD.Size = new System.Drawing.Size(105, 30);
             this.btnADD.TabIndex = 2;
@@ -394,22 +407,11 @@
             this.btnUploadImg.UseVisualStyleBackColor = true;
             this.btnUploadImg.Click += new System.EventHandler(this.btnUploadImg_Click);
             // 
-            // label27
-            // 
-            this.label27.AutoSize = true;
-            this.label27.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.label27.Font = new System.Drawing.Font("微软雅黑", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.label27.ForeColor = System.Drawing.Color.Red;
-            this.label27.Location = new System.Drawing.Point(938, 0);
-            this.label27.Name = "label27";
-            this.label27.Size = new System.Drawing.Size(21, 23);
-            this.label27.TabIndex = 29;
-            this.label27.Text = "1";
-            // 
             // txbModel
             // 
             this.txbModel.Font = new System.Drawing.Font("宋体", 12F);
             this.txbModel.Location = new System.Drawing.Point(706, 21);
+            this.txbModel.MaxLength = 10;
             this.txbModel.Name = "txbModel";
             this.txbModel.Size = new System.Drawing.Size(40, 26);
             this.txbModel.TabIndex = 21;
@@ -430,6 +432,7 @@
             // 
             this.txbName.Font = new System.Drawing.Font("宋体", 10F);
             this.txbName.Location = new System.Drawing.Point(345, 23);
+            this.txbName.MaxLength = 20;
             this.txbName.Name = "txbName";
             this.txbName.Size = new System.Drawing.Size(192, 23);
             this.txbName.TabIndex = 19;
@@ -447,8 +450,10 @@
             // 
             // txbPart_No
             // 
+            this.txbPart_No.Enabled = false;
             this.txbPart_No.Font = new System.Drawing.Font("宋体", 10F);
             this.txbPart_No.Location = new System.Drawing.Point(87, 23);
+            this.txbPart_No.MaxLength = 20;
             this.txbPart_No.Name = "txbPart_No";
             this.txbPart_No.Size = new System.Drawing.Size(168, 23);
             this.txbPart_No.TabIndex = 17;
@@ -466,43 +471,13 @@
             // 
             // panel2
             // 
-            this.panel2.Controls.Add(this.statusStrip1);
             this.panel2.Controls.Add(this.dataGridView1);
+            this.panel2.Controls.Add(this.statusStrip1);
             this.panel2.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel2.Location = new System.Drawing.Point(0, 150);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(984, 511);
+            this.panel2.Size = new System.Drawing.Size(1004, 531);
             this.panel2.TabIndex = 1;
-            // 
-            // statusStrip1
-            // 
-            this.statusStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.toolStripStatusLabel1,
-            this.toolStripStatusLabel2,
-            this.toolStripStatusLabel3});
-            this.statusStrip1.Location = new System.Drawing.Point(0, 489);
-            this.statusStrip1.Name = "statusStrip1";
-            this.statusStrip1.Size = new System.Drawing.Size(984, 22);
-            this.statusStrip1.TabIndex = 1;
-            this.statusStrip1.Text = "statusStrip1";
-            // 
-            // toolStripStatusLabel1
-            // 
-            this.toolStripStatusLabel1.Name = "toolStripStatusLabel1";
-            this.toolStripStatusLabel1.Size = new System.Drawing.Size(159, 17);
-            this.toolStripStatusLabel1.Text = "数据库地址：192.168.1.100";
-            // 
-            // toolStripStatusLabel2
-            // 
-            this.toolStripStatusLabel2.Name = "toolStripStatusLabel2";
-            this.toolStripStatusLabel2.Size = new System.Drawing.Size(112, 17);
-            this.toolStripStatusLabel2.Text = "零件库总计：1200 ";
-            // 
-            // toolStripStatusLabel3
-            // 
-            this.toolStripStatusLabel3.Name = "toolStripStatusLabel3";
-            this.toolStripStatusLabel3.Size = new System.Drawing.Size(51, 17);
-            this.toolStripStatusLabel3.Text = "选择：0";
             // 
             // dataGridView1
             // 
@@ -515,23 +490,44 @@
             this.modelDataGridViewTextBoxColumn,
             this.remarkDataGridViewTextBoxColumn,
             this.capacityDataGridViewTextBoxColumn,
-            this.imgidDataGridViewTextBoxColumn,
-            this.deletedDataGridViewTextBoxColumn,
-            this.modifytimeDataGridViewTextBoxColumn,
-            this.idDataGridViewTextBoxColumn});
+            this.img});
             this.dataGridView1.DataSource = this.bdsProduct;
             this.dataGridView1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dataGridView1.Location = new System.Drawing.Point(0, 0);
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.RowTemplate.Height = 23;
-            this.dataGridView1.Size = new System.Drawing.Size(984, 511);
+            this.dataGridView1.Size = new System.Drawing.Size(1004, 509);
             this.dataGridView1.TabIndex = 0;
             this.dataGridView1.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellDoubleClick);
+            // 
+            // statusStrip1
+            // 
+            this.statusStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.toolStripStatusLabel1});
+            this.statusStrip1.Location = new System.Drawing.Point(0, 509);
+            this.statusStrip1.Name = "statusStrip1";
+            this.statusStrip1.Size = new System.Drawing.Size(1004, 22);
+            this.statusStrip1.TabIndex = 1;
+            this.statusStrip1.Text = "statusStrip1";
+            // 
+            // toolStripStatusLabel1
+            // 
+            this.toolStripStatusLabel1.Name = "toolStripStatusLabel1";
+            this.toolStripStatusLabel1.Size = new System.Drawing.Size(164, 17);
+            this.toolStripStatusLabel1.Text = "数据库地址：远程测试数据库";
             // 
             // Column1
             // 
             this.Column1.HeaderText = "序号";
             this.Column1.Name = "Column1";
+            // 
+            // img
+            // 
+            this.img.DataPropertyName = "img";
+            this.img.HeaderText = "图片";
+            this.img.ImageLayout = System.Windows.Forms.DataGridViewImageCellLayout.Zoom;
+            this.img.Name = "img";
+            this.img.ReadOnly = true;
             // 
             // partNoDataGridViewTextBoxColumn
             // 
@@ -563,34 +559,6 @@
             this.capacityDataGridViewTextBoxColumn.HeaderText = "收容数";
             this.capacityDataGridViewTextBoxColumn.Name = "capacityDataGridViewTextBoxColumn";
             // 
-            // imgidDataGridViewTextBoxColumn
-            // 
-            this.imgidDataGridViewTextBoxColumn.DataPropertyName = "img_id";
-            this.imgidDataGridViewTextBoxColumn.HeaderText = "img_id";
-            this.imgidDataGridViewTextBoxColumn.Name = "imgidDataGridViewTextBoxColumn";
-            this.imgidDataGridViewTextBoxColumn.Visible = false;
-            // 
-            // deletedDataGridViewTextBoxColumn
-            // 
-            this.deletedDataGridViewTextBoxColumn.DataPropertyName = "deleted";
-            this.deletedDataGridViewTextBoxColumn.HeaderText = "deleted";
-            this.deletedDataGridViewTextBoxColumn.Name = "deletedDataGridViewTextBoxColumn";
-            this.deletedDataGridViewTextBoxColumn.Visible = false;
-            // 
-            // modifytimeDataGridViewTextBoxColumn
-            // 
-            this.modifytimeDataGridViewTextBoxColumn.DataPropertyName = "modify_time";
-            this.modifytimeDataGridViewTextBoxColumn.HeaderText = "modify_time";
-            this.modifytimeDataGridViewTextBoxColumn.Name = "modifytimeDataGridViewTextBoxColumn";
-            this.modifytimeDataGridViewTextBoxColumn.Visible = false;
-            // 
-            // idDataGridViewTextBoxColumn
-            // 
-            this.idDataGridViewTextBoxColumn.DataPropertyName = "id";
-            this.idDataGridViewTextBoxColumn.HeaderText = "id";
-            this.idDataGridViewTextBoxColumn.Name = "idDataGridViewTextBoxColumn";
-            this.idDataGridViewTextBoxColumn.Visible = false;
-            // 
             // bdsProduct
             // 
             this.bdsProduct.DataSource = typeof(KPrint.rt_product);
@@ -599,13 +567,15 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(984, 661);
+            this.ClientSize = new System.Drawing.Size(1004, 681);
             this.Controls.Add(this.panel2);
             this.Controls.Add(this.panel1);
             this.DoubleBuffered = true;
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "FMain";
+            this.ShowIcon = false;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "标识卡打印软件";
+            this.Text = "社内标签打印系统";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.FMain_FormClosing);
             this.Load += new System.EventHandler(this.FMain_Load);
             this.panel1.ResumeLayout(false);
@@ -619,9 +589,9 @@
             this.panel4.ResumeLayout(false);
             this.panel2.ResumeLayout(false);
             this.panel2.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             this.statusStrip1.ResumeLayout(false);
             this.statusStrip1.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.bdsProduct)).EndInit();
             this.ResumeLayout(false);
 
@@ -654,31 +624,26 @@
         private System.Windows.Forms.Panel panel4;
         private System.Windows.Forms.Button btnADD;
         private System.Windows.Forms.Button btnUploadImg;
-        private System.Windows.Forms.Button button4;
+        private System.Windows.Forms.Button btnImport;
         private System.Windows.Forms.Button btnPrintList;
         private System.Windows.Forms.Button button6;
         private System.Windows.Forms.StatusStrip statusStrip1;
         private System.Windows.Forms.ToolStripStatusLabel toolStripStatusLabel1;
-        private System.Windows.Forms.ToolStripStatusLabel toolStripStatusLabel2;
-        private System.Windows.Forms.ToolStripStatusLabel toolStripStatusLabel3;
         private System.Windows.Forms.Button button10;
-        private System.Windows.Forms.Button button9;
-        private System.Windows.Forms.Button button2;
+        private System.Windows.Forms.Button btnDelete;
+        private System.Windows.Forms.Button btnSave;
         private System.Windows.Forms.TextBox txbCapacity;
         private System.Windows.Forms.Label label23;
-        private System.Windows.Forms.Button button11;
-        private System.Windows.Forms.Label label27;
+        private System.Windows.Forms.Button btnEdit;
         private System.Windows.Forms.DataGridView dataGridView1;
         private System.Windows.Forms.BindingSource bdsProduct;
+        private System.Windows.Forms.Button btnClear;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column1;
         private System.Windows.Forms.DataGridViewTextBoxColumn partNoDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn nameDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn modelDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn remarkDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn capacityDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn imgidDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn deletedDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn modifytimeDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn idDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewImageColumn img;
     }
 }

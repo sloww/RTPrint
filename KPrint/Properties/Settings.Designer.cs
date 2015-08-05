@@ -31,5 +31,14 @@ namespace KPrint.Properties {
                 return ((string)(this["productDatagridview"]));
             }
         }
+        
+        [global::System.Configuration.ApplicationScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("1020, 720")]
+        public global::System.Drawing.Size FmainSize {
+            get {
+                return ((global::System.Drawing.Size)(this["FmainSize"]));
+            }
+        }
     }
 }

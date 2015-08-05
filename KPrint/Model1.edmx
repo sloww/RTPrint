@@ -53,7 +53,7 @@
           <Property Name="capacity" Type="int" Nullable="false" />
           <Property Name="img_id" Type="uniqueidentifier" />
           <Property Name="img" Type="image" />
-          <Property Name="remark" Type="nvarchar" MaxLength="200" Nullable="false" />
+          <Property Name="remark" Type="nvarchar" MaxLength="200" />
           <Property Name="deleted" Type="int" Nullable="false" />
           <Property Name="modify_time" Type="datetime" Nullable="false" />
         </EntityType>
@@ -105,7 +105,7 @@
           <Property Name="model" Type="String" MaxLength="200" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="capacity" Type="Int32" Nullable="false" />
           <Property Name="img_id" Type="Guid" />
-          <Property Name="remark" Type="String" MaxLength="200" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="remark" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
           <Property Name="deleted" Type="Int32" Nullable="false" />
           <Property Name="modify_time" Type="DateTime" Nullable="false" Precision="3" />
           <Property Name="img" Type="Binary" MaxLength="Max" FixedLength="false" />
