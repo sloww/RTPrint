@@ -28,26 +28,24 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.txbDBIP = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
-            this.label2 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
-            this.button1 = new System.Windows.Forms.Button();
-            this.button2 = new System.Windows.Forms.Button();
-            this.textBox2 = new System.Windows.Forms.TextBox();
-            this.textBox3 = new System.Windows.Forms.TextBox();
-            this.textBox4 = new System.Windows.Forms.TextBox();
+            this.btnTest = new System.Windows.Forms.Button();
+            this.btnSave = new System.Windows.Forms.Button();
+            this.txbDBName = new System.Windows.Forms.TextBox();
+            this.txbUserName = new System.Windows.Forms.TextBox();
             this.label10 = new System.Windows.Forms.Label();
-            this.textBox5 = new System.Windows.Forms.TextBox();
+            this.txbPassword = new System.Windows.Forms.TextBox();
             this.SuspendLayout();
             // 
-            // textBox1
+            // txbDBIP
             // 
-            this.textBox1.Location = new System.Drawing.Point(109, 37);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(149, 21);
-            this.textBox1.TabIndex = 14;
+            this.txbDBIP.Location = new System.Drawing.Point(109, 37);
+            this.txbDBIP.Name = "txbDBIP";
+            this.txbDBIP.Size = new System.Drawing.Size(149, 21);
+            this.txbDBIP.TabIndex = 14;
             // 
             // label1
             // 
@@ -58,16 +56,6 @@
             this.label1.Size = new System.Drawing.Size(88, 16);
             this.label1.TabIndex = 13;
             this.label1.Text = "数据库地址";
-            // 
-            // label2
-            // 
-            this.label2.AutoSize = true;
-            this.label2.Font = new System.Drawing.Font("宋体", 12F);
-            this.label2.Location = new System.Drawing.Point(45, 111);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(56, 16);
-            this.label2.TabIndex = 16;
-            this.label2.Text = "端口号";
             // 
             // label3
             // 
@@ -89,46 +77,39 @@
             this.label4.TabIndex = 18;
             this.label4.Text = "密码";
             // 
-            // button1
+            // btnTest
             // 
-            this.button1.Font = new System.Drawing.Font("宋体", 12F);
-            this.button1.Location = new System.Drawing.Point(28, 231);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(105, 30);
-            this.button1.TabIndex = 19;
-            this.button1.Text = "测试";
-            this.button1.UseVisualStyleBackColor = true;
+            this.btnTest.Font = new System.Drawing.Font("宋体", 12F);
+            this.btnTest.Location = new System.Drawing.Point(28, 231);
+            this.btnTest.Name = "btnTest";
+            this.btnTest.Size = new System.Drawing.Size(105, 30);
+            this.btnTest.TabIndex = 19;
+            this.btnTest.Text = "测试";
+            this.btnTest.UseVisualStyleBackColor = true;
             // 
-            // button2
+            // btnSave
             // 
-            this.button2.Font = new System.Drawing.Font("宋体", 12F);
-            this.button2.Location = new System.Drawing.Point(153, 231);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(105, 30);
-            this.button2.TabIndex = 20;
-            this.button2.Text = "保存";
-            this.button2.UseVisualStyleBackColor = true;
+            this.btnSave.Font = new System.Drawing.Font("宋体", 12F);
+            this.btnSave.Location = new System.Drawing.Point(153, 231);
+            this.btnSave.Name = "btnSave";
+            this.btnSave.Size = new System.Drawing.Size(105, 30);
+            this.btnSave.TabIndex = 20;
+            this.btnSave.Text = "保存";
+            this.btnSave.UseVisualStyleBackColor = true;
             // 
-            // textBox2
+            // txbDBName
             // 
-            this.textBox2.Location = new System.Drawing.Point(109, 68);
-            this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(149, 21);
-            this.textBox2.TabIndex = 14;
+            this.txbDBName.Location = new System.Drawing.Point(109, 68);
+            this.txbDBName.Name = "txbDBName";
+            this.txbDBName.Size = new System.Drawing.Size(149, 21);
+            this.txbDBName.TabIndex = 14;
             // 
-            // textBox3
+            // txbUserName
             // 
-            this.textBox3.Location = new System.Drawing.Point(109, 105);
-            this.textBox3.Name = "textBox3";
-            this.textBox3.Size = new System.Drawing.Size(149, 21);
-            this.textBox3.TabIndex = 14;
-            // 
-            // textBox4
-            // 
-            this.textBox4.Location = new System.Drawing.Point(109, 142);
-            this.textBox4.Name = "textBox4";
-            this.textBox4.Size = new System.Drawing.Size(149, 21);
-            this.textBox4.TabIndex = 14;
+            this.txbUserName.Location = new System.Drawing.Point(109, 142);
+            this.txbUserName.Name = "txbUserName";
+            this.txbUserName.Size = new System.Drawing.Size(149, 21);
+            this.txbUserName.TabIndex = 14;
             // 
             // label10
             // 
@@ -140,12 +121,12 @@
             this.label10.TabIndex = 21;
             this.label10.Text = "数据库名称";
             // 
-            // textBox5
+            // txbPassword
             // 
-            this.textBox5.Location = new System.Drawing.Point(109, 179);
-            this.textBox5.Name = "textBox5";
-            this.textBox5.Size = new System.Drawing.Size(149, 21);
-            this.textBox5.TabIndex = 14;
+            this.txbPassword.Location = new System.Drawing.Point(109, 179);
+            this.txbPassword.Name = "txbPassword";
+            this.txbPassword.Size = new System.Drawing.Size(149, 21);
+            this.txbPassword.TabIndex = 14;
             // 
             // FDatabase
             // 
@@ -153,16 +134,14 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(285, 300);
             this.Controls.Add(this.label10);
-            this.Controls.Add(this.button2);
-            this.Controls.Add(this.button1);
+            this.Controls.Add(this.btnSave);
+            this.Controls.Add(this.btnTest);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.label3);
-            this.Controls.Add(this.label2);
-            this.Controls.Add(this.textBox5);
-            this.Controls.Add(this.textBox4);
-            this.Controls.Add(this.textBox3);
-            this.Controls.Add(this.textBox2);
-            this.Controls.Add(this.textBox1);
+            this.Controls.Add(this.txbPassword);
+            this.Controls.Add(this.txbUserName);
+            this.Controls.Add(this.txbDBName);
+            this.Controls.Add(this.txbDBIP);
             this.Controls.Add(this.label1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
             this.Name = "FDatabase";
@@ -176,17 +155,15 @@
 
         #endregion
 
-        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.TextBox txbDBIP;
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label4;
-        private System.Windows.Forms.Button button1;
-        private System.Windows.Forms.Button button2;
-        private System.Windows.Forms.TextBox textBox2;
-        private System.Windows.Forms.TextBox textBox3;
-        private System.Windows.Forms.TextBox textBox4;
+        private System.Windows.Forms.Button btnTest;
+        private System.Windows.Forms.Button btnSave;
+        private System.Windows.Forms.TextBox txbDBName;
+        private System.Windows.Forms.TextBox txbUserName;
         private System.Windows.Forms.Label label10;
-        private System.Windows.Forms.TextBox textBox5;
+        private System.Windows.Forms.TextBox txbPassword;
     }
 }

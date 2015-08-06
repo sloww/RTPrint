@@ -46,8 +46,8 @@ namespace KPrint
                     dc.count_date = dt;
                     dc.id = Guid.NewGuid();
                     dc.count = 1;
-                    db.rt_daily_count.Add(dc);
                     dc.formatdt = dt.ToString("yyMM");
+                    db.rt_daily_count.Add(dc);
                     db.Entry(dc).State = System.Data.Entity.EntityState.Added;
                 }
                 else
@@ -56,12 +56,13 @@ namespace KPrint
                     q.count++;
                     q.count_date = dt;
                     q.formatdt = dt.ToString("yyMM");
-                    //db.rt_daily_count.Attach(q);
                     db.Entry(q).State = System.Data.Entity.EntityState.Modified;
 
                 }
                 db.SaveChanges();
             }
         }
+
+
     }
 }

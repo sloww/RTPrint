@@ -33,6 +33,7 @@ namespace KPrint
                 s.model = txbModelForSearch.Text;
                 var query = from q in db.rt_product
                             where q.deleted == 0 && (q.part_No.Contains(s.part_No) && q.name.Contains(s.name) && q.model.Contains(s.model))
+                            orderby q.modify_time
                             select q;
                 if (query != null)
                 {
@@ -75,6 +76,7 @@ namespace KPrint
         {
             PublicTools.IniDatagridview(dataGridView1);
             PublicTools.RecoverColumnWidth(dataGridView1, KPrint.Properties.Settings.Default.productDatagridview);
+
         }
 
         private void FMain_FormClosing(object sender, FormClosingEventArgs e)
@@ -118,6 +120,7 @@ namespace KPrint
             {
                 ImportExcel(ofd.FileName);
             }
+            btnSearch_Click(null, null);
         }
 
         private void ImportExcel(string excelPath)
