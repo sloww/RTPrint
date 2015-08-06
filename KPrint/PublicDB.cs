@@ -75,6 +75,7 @@ namespace KPrint
 
             var db = new DB();
             db.Database.Connection.ConnectionString = getIniConn("config.ini");
+            db.Configuration.EnsureTransactionsForFunctionsAndCommands = true;
             return db;
         }
 

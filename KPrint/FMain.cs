@@ -27,6 +27,7 @@ namespace KPrint
 
             using (var db = PublicDB.getDB())
             {
+                db.Configuration.EnsureTransactionsForFunctionsAndCommands = true;
                 rt_product s = new rt_product();
                 s.part_No = txbPartNoForSearch.Text;
                 s.name = txbNameForSearch.Text;
@@ -75,13 +76,13 @@ namespace KPrint
         private void FMain_Load(object sender, EventArgs e)
         {
             PublicTools.IniDatagridview(dataGridView1);
-            PublicTools.RecoverColumnWidth(dataGridView1, KPrint.Properties.Settings.Default.productDatagridview);
-            this.LabelDB.Text = PublicDB.getIniConnInfo("config.ini");
+            PublicTools.RecoverColumnWidth(dataGridView1, "FMainDGV.config");
+            this.LabelDB.Text =string.Format("数据库信息：{0}", PublicDB.getIniConnInfo("config.ini"));
         }
 
         private void FMain_FormClosing(object sender, FormClosingEventArgs e)
         {
-            PublicTools.SaveColumnWidth(dataGridView1, KPrint.Properties.Settings.Default.productDatagridview);
+            PublicTools.SaveColumnWidth(dataGridView1, "FMainDGV.config");
         }
 
         private void btnPrint_Click(object sender, EventArgs e)
@@ -353,6 +354,8 @@ namespace KPrint
         {
             FDatabase m = new FDatabase();
             m.ShowDialog();
+            this.LabelDB.Text = string.Format("数据库信息：{0}", PublicDB.getIniConnInfo("config.ini"));
+
         }
 
     }

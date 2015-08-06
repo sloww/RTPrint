@@ -30,5 +30,6 @@ namespace KPrint
         public byte[] img { get; set; }
         public int printCount { get; set; }
         public string formatSN { get; set; }
+        public string formatPDate { get; set; }
     }
 }

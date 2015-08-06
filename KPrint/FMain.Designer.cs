@@ -130,7 +130,7 @@
             // txbModelForSearch
             // 
             this.txbModelForSearch.Font = new System.Drawing.Font("宋体", 12F);
-            this.txbModelForSearch.Location = new System.Drawing.Point(565, 20);
+            this.txbModelForSearch.Location = new System.Drawing.Point(669, 25);
             this.txbModelForSearch.MaxLength = 10;
             this.txbModelForSearch.Name = "txbModelForSearch";
             this.txbModelForSearch.Size = new System.Drawing.Size(100, 26);
@@ -140,7 +140,7 @@
             // 
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("宋体", 12F);
-            this.label3.Location = new System.Drawing.Point(514, 25);
+            this.label3.Location = new System.Drawing.Point(613, 30);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(40, 16);
             this.label3.TabIndex = 10;
@@ -149,16 +149,16 @@
             // txbNameForSearch
             // 
             this.txbNameForSearch.Font = new System.Drawing.Font("宋体", 12F);
-            this.txbNameForSearch.Location = new System.Drawing.Point(343, 20);
+            this.txbNameForSearch.Location = new System.Drawing.Point(397, 25);
             this.txbNameForSearch.Name = "txbNameForSearch";
-            this.txbNameForSearch.Size = new System.Drawing.Size(160, 26);
+            this.txbNameForSearch.Size = new System.Drawing.Size(200, 26);
             this.txbNameForSearch.TabIndex = 9;
             // 
             // label2
             // 
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("宋体", 12F);
-            this.label2.Location = new System.Drawing.Point(260, 25);
+            this.label2.Location = new System.Drawing.Point(309, 30);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(72, 16);
             this.label2.TabIndex = 8;
@@ -167,17 +167,17 @@
             // txbPartNoForSearch
             // 
             this.txbPartNoForSearch.Font = new System.Drawing.Font("宋体", 12F);
-            this.txbPartNoForSearch.Location = new System.Drawing.Point(89, 20);
+            this.txbPartNoForSearch.Location = new System.Drawing.Point(93, 25);
             this.txbPartNoForSearch.MaxLength = 20;
             this.txbPartNoForSearch.Name = "txbPartNoForSearch";
-            this.txbPartNoForSearch.Size = new System.Drawing.Size(160, 26);
+            this.txbPartNoForSearch.Size = new System.Drawing.Size(200, 26);
             this.txbPartNoForSearch.TabIndex = 7;
             // 
             // label1
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("宋体", 12F);
-            this.label1.Location = new System.Drawing.Point(6, 25);
+            this.label1.Location = new System.Drawing.Point(5, 30);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(72, 16);
             this.label1.TabIndex = 6;
@@ -276,6 +276,7 @@
             // 
             // pictureBox1
             // 
+            this.pictureBox1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.pictureBox1.Dock = System.Windows.Forms.DockStyle.Right;
             this.pictureBox1.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox1.Image")));
             this.pictureBox1.Location = new System.Drawing.Point(876, 3);
@@ -289,7 +290,7 @@
             // 
             this.txbCapacity.BackColor = System.Drawing.SystemColors.Window;
             this.txbCapacity.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.txbCapacity.Location = new System.Drawing.Point(596, 21);
+            this.txbCapacity.Location = new System.Drawing.Point(616, 21);
             this.txbCapacity.MaxLength = 3;
             this.txbCapacity.Name = "txbCapacity";
             this.txbCapacity.Size = new System.Drawing.Size(37, 26);
@@ -301,7 +302,7 @@
             // 
             this.label23.AutoSize = true;
             this.label23.Font = new System.Drawing.Font("宋体", 12F);
-            this.label23.Location = new System.Drawing.Point(526, 26);
+            this.label23.Location = new System.Drawing.Point(558, 26);
             this.label23.Name = "label23";
             this.label23.Size = new System.Drawing.Size(56, 16);
             this.label23.TabIndex = 28;
@@ -413,7 +414,7 @@
             // 
             this.txbModel.BackColor = System.Drawing.SystemColors.Window;
             this.txbModel.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.txbModel.Location = new System.Drawing.Point(701, 21);
+            this.txbModel.Location = new System.Drawing.Point(697, 21);
             this.txbModel.MaxLength = 10;
             this.txbModel.Name = "txbModel";
             this.txbModel.Size = new System.Drawing.Size(100, 26);
@@ -424,7 +425,7 @@
             // 
             this.label6.AutoSize = true;
             this.label6.Font = new System.Drawing.Font("宋体", 12F);
-            this.label6.Location = new System.Drawing.Point(647, 26);
+            this.label6.Location = new System.Drawing.Point(655, 26);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(40, 16);
             this.label6.TabIndex = 20;
@@ -434,10 +435,10 @@
             // 
             this.txbName.BackColor = System.Drawing.SystemColors.Window;
             this.txbName.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.txbName.Location = new System.Drawing.Point(352, 21);
+            this.txbName.Location = new System.Drawing.Point(356, 21);
             this.txbName.MaxLength = 20;
             this.txbName.Name = "txbName";
-            this.txbName.Size = new System.Drawing.Size(160, 26);
+            this.txbName.Size = new System.Drawing.Size(200, 26);
             this.txbName.TabIndex = 19;
             this.txbName.Text = "COVER L,FR FLOOR UNDER";
             // 
@@ -445,7 +446,7 @@
             // 
             this.label7.AutoSize = true;
             this.label7.Font = new System.Drawing.Font("宋体", 12F);
-            this.label7.Location = new System.Drawing.Point(266, 26);
+            this.label7.Location = new System.Drawing.Point(282, 26);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(72, 16);
             this.label7.TabIndex = 18;
@@ -456,10 +457,10 @@
             this.txbPart_No.BackColor = System.Drawing.SystemColors.Window;
             this.txbPart_No.Enabled = false;
             this.txbPart_No.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.txbPart_No.Location = new System.Drawing.Point(92, 21);
+            this.txbPart_No.Location = new System.Drawing.Point(80, 21);
             this.txbPart_No.MaxLength = 20;
             this.txbPart_No.Name = "txbPart_No";
-            this.txbPart_No.Size = new System.Drawing.Size(160, 26);
+            this.txbPart_No.Size = new System.Drawing.Size(200, 26);
             this.txbPart_No.TabIndex = 17;
             this.txbPart_No.Text = "74561-T6L-H010-M1";
             // 

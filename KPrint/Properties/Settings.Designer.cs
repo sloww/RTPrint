@@ -22,23 +22,5 @@ namespace KPrint.Properties {
                 return defaultInstance;
             }
         }
-        
-        [global::System.Configuration.ApplicationScopedSettingAttribute()]
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("productDatagridviewSet.txt")]
-        public string productDatagridview {
-            get {
-                return ((string)(this["productDatagridview"]));
-            }
-        }
-        
-        [global::System.Configuration.ApplicationScopedSettingAttribute()]
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("1020, 720")]
-        public global::System.Drawing.Size FmainSize {
-            get {
-                return ((global::System.Drawing.Size)(this["FmainSize"]));
-            }
-        }
     }
 }

@@ -35,6 +35,7 @@
           <Property Name="img_id" Type="uniqueidentifier" />
           <Property Name="img" Type="image" />
           <Property Name="production_date" Type="datetime" Nullable="false" />
+          <Property Name="formatPDate" Type="nvarchar" MaxLength="200" Nullable="false" />
           <Property Name="container_No" Type="int" Nullable="false" />
           <Property Name="printCount" Type="int" Nullable="false" />
           <Property Name="serial_number" Type="nvarchar" MaxLength="200" Nullable="false" />
@@ -98,6 +99,7 @@
           <Property Name="img" Type="Binary" MaxLength="Max" FixedLength="false" />
           <Property Name="printCount" Type="Int32" Nullable="false" />
           <Property Name="formatSN" Type="String" Nullable="false" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Name="formatPDate" Type="String" Nullable="false" MaxLength="200" FixedLength="false" Unicode="true" />
         </EntityType>
         <EntityType Name="rt_product">
           <Key>
@@ -148,6 +150,7 @@
           <EntitySetMapping Name="rt_print_log">
             <EntityTypeMapping TypeName="DBModel.rt_print_log">
               <MappingFragment StoreEntitySet="rt_print_log">
+                <ScalarProperty Name="formatPDate" ColumnName="formatPDate" />
                 <ScalarProperty Name="formatSN" ColumnName="formatSN" />
                 <ScalarProperty Name="printCount" ColumnName="printCount" />
                 <ScalarProperty Name="img" ColumnName="img" />

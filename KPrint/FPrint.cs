@@ -82,6 +82,7 @@ namespace KPrint
                         printObj.deleted = 0;
                         printObj.create_time = DateTime.Now;
                         printObj.container_No = i + 1;
+                        printObj.formatPDate = printObj.production_date.ToString("yyyyMMdd");
 
                         printObj.printCount = printCount;
                         printObj.formatSN = printObj.production_date.ToString("yyMM") + printObj.serial_number.PadLeft(4, '0');

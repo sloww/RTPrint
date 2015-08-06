@@ -22,14 +22,14 @@ namespace KPrint
         {
 
             PublicTools.IniDatagridview(dataGridView1);
-            PublicTools.RecoverColumnWidth(dataGridView1, KPrint.Properties.Settings.Default.productDatagridview);
+            PublicTools.RecoverColumnWidth(dataGridView1, "FPrintDGV.config");
 
 
         }
 
         private void FPrintLIst_FormClosing(object sender, FormClosingEventArgs e)
         {
-            PublicTools.SaveColumnWidth(dataGridView1, KPrint.Properties.Settings.Default.productDatagridview);
+            PublicTools.SaveColumnWidth(dataGridView1, "FPrintDGV.config");
         }
 
 
@@ -40,11 +40,21 @@ namespace KPrint
             string name = txbName.Text.Trim();
             string model = txbModel.Text.Trim();
             string remark = cbbRemark.Text.Trim();
+            string pDate = txbDT.Text.Trim();
+            DateTime dt = DateTime.Now;
+            if (DateTime.TryParse(pDate, out dt))
+            {
+                pDate = dt.ToString("yyyyMMdd");
+            }
+            else
+            {
+                pDate = "";
+            }
 
             using (var db = PublicDB.getDB())
             {
                 var q = from a in db.rt_print_log
-                        where a.deleted == 0 && a.part_No.Contains(partno) && a.name.Contains(name) && a.model.Contains(model) && a.remark.Contains(remark)
+                        where a.deleted == 0 && a.part_No.Contains(partno) && a.name.Contains(name) && a.model.Contains(model) && a.remark.Contains(remark) &&a.formatPDate.Contains(pDate)
                         orderby a.create_time
                         select a;
                 if (q != null)
@@ -133,6 +143,15 @@ namespace KPrint
 
             System.Diagnostics.Process.Start(copedExcelPath);
         }
+
+            private void txbDT_Click(object sender, EventArgs e)
+            {
+                FDateTime FDT = new FDateTime();
+
+                FDT.Location = PublicTools.local(txbDT);
+                FDT.ShowDialog();
+                txbDT.Text = FDateTime.DateTimeSelect.ToShortDateString();
+            }
         
     }
 }

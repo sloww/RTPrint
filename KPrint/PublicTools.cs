@@ -28,7 +28,23 @@ namespace KPrint
 
         }
 
+        public static Point local(Control c)
+        {
+            Point p = c.Location;
 
+            if (c.Parent != null)
+            {
+                Point pp = local(c.Parent);
+                p.X += pp.X + c.Padding.Left + c.Margin.Left;
+                p.Y += pp.Y + c.Padding.Top + c.Margin.Left;
+            }
+            else
+            {
+                p.Y += 26;
+            }
+
+            return p;
+        }
         public static void RecountRowsNum(DataGridView dgv)
         {
             foreach (DataGridViewRow r in dgv.Rows)
