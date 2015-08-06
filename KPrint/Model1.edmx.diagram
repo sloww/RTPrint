@@ -5,7 +5,7 @@
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
       <Diagram DiagramId="f4f9614c43a84cc58ea97435ecf3a1ef" Name="Diagram1" ZoomLevel="140">
-        <EntityTypeShape EntityType="DBModel.rt_img" Width="1.5" PointX="0.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="DBModel.rt_img" PointX="0.875" PointY="0.875" Width="1.5" IsExpanded="true" />
         <EntityTypeShape EntityType="DBModel.rt_print_log" Width="1.5" PointX="2.75" PointY="0.75" IsExpanded="true" />
         <EntityTypeShape EntityType="DBModel.rt_product" Width="1.5" PointX="4.75" PointY="0.75" IsExpanded="true" />
         <EntityTypeShape EntityType="DBModel.rt_daily_count" Width="1.5" PointX="6.625" PointY="0.75" />

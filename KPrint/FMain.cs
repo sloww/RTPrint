@@ -33,7 +33,7 @@ namespace KPrint
                 s.model = txbModelForSearch.Text;
                 var query = from q in db.rt_product
                             where q.deleted == 0 && (q.part_No.Contains(s.part_No) && q.name.Contains(s.name) && q.model.Contains(s.model))
-                            orderby q.modify_time
+                            orderby q.modify_time descending
                             select q;
                 if (query != null)
                 {
@@ -58,17 +58,17 @@ namespace KPrint
             ofd.Filter = "Image Files(*.JPG;*JPEG;|*.JPG;*JPEG;)";
             if (ofd.ShowDialog() == System.Windows.Forms.DialogResult.OK)
             {
-                pictureBox1.Image = Image.FromFile(ofd.FileName);
-                pictureBox1.SizeMode = PictureBoxSizeMode.StretchImage;
+                System.Drawing.Image img = Image.FromFile(ofd.FileName);
 
-                //using (System.IO.FileStream fs = new System.IO.FileStream(ofd.FileName, System.IO.FileMode.Open))
-                //{
-                //    int filelength = 0;
-                //    filelength = (int)fs.Length; //获得文件长度 
-                //    Byte[] image = new Byte[filelength]; //建立一个字节数组 
-                //    fs.Read(image, 0, filelength); //按字节流读取 
-                //    pictureBox1.Image = System.Drawing.Image.FromStream(fs);
-                //}
+                if (PublicTools.imageToByteArray(img).Length < 300000)
+                {
+                    pictureBox1.Image = img;
+                    pictureBox1.SizeMode = PictureBoxSizeMode.StretchImage;
+                }
+                else
+                {
+                    MessageBox.Show("图片大小超过300k，不允许保存到数据库");
+                }
             }
         }
 
@@ -202,11 +202,6 @@ namespace KPrint
             using (var db = PublicDB.getDB())
             {
 
-
-
-                //db.SaveChanges();
-
-
                 rt_product p = new rt_product();
                 p.part_No = txbPart_No.Text;
                 p.model = txbModel.Text;
@@ -214,17 +209,11 @@ namespace KPrint
                 p.capacity = int.Parse(txbCapacity.Text);
                 p.modify_time = DateTime.Now;
                 p.deleted = 0;
+
                 if (pictureBox1.Image != null)
                 {
-                    rt_img img = new rt_img();
-                    img.id = Guid.NewGuid();
-                    img.img = PublicTools.imageToByteArray(pictureBox1.Image);
-                    img.deleted = 0;
-                    img.modify_time = DateTime.Now;
-                    db.rt_img.Add(img);
 
-                    p.img_id = img.id;
-                    p.img = img.img;
+                    p.img = PublicTools.imageToByteArray(pictureBox1.Image);
 
                 }
 
@@ -247,10 +236,8 @@ namespace KPrint
                     q.modify_time = DateTime.Now;
                     q.deleted = 0;
                     q.remark = p.remark;
-                    q.img_id = p.img_id;
                     q.img = p.img;
                     db.Entry(q).State = System.Data.Entity.EntityState.Modified;
-                    //db.rt_product.Attach(q);
                 }
 
                 db.SaveChanges();
@@ -298,7 +285,7 @@ namespace KPrint
             }
         }
 
-        private void button6_Click(object sender, EventArgs e)
+        private void btnExport_Click(object sender, EventArgs e)
         {
             List<rt_product> q = new List<rt_product>();
             using (var db = PublicDB.getDB())

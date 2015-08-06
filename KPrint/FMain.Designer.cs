@@ -40,7 +40,7 @@
             this.txbPartNoForSearch = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.panel3 = new System.Windows.Forms.Panel();
-            this.button6 = new System.Windows.Forms.Button();
+            this.btnExport = new System.Windows.Forms.Button();
             this.btnPrintList = new System.Windows.Forms.Button();
             this.btnImport = new System.Windows.Forms.Button();
             this.btnSearch = new System.Windows.Forms.Button();
@@ -66,16 +66,16 @@
             this.label8 = new System.Windows.Forms.Label();
             this.panel2 = new System.Windows.Forms.Panel();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
+            this.statusStrip1 = new System.Windows.Forms.StatusStrip();
+            this.LabelDB = new System.Windows.Forms.ToolStripStatusLabel();
             this.Column1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.img = new System.Windows.Forms.DataGridViewImageColumn();
             this.partNoDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.nameDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.modelDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.remarkDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.capacityDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.img = new System.Windows.Forms.DataGridViewImageColumn();
+            this.remarkDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.bdsProduct = new System.Windows.Forms.BindingSource(this.components);
-            this.statusStrip1 = new System.Windows.Forms.StatusStrip();
-            this.LabelDB = new System.Windows.Forms.ToolStripStatusLabel();
             this.panel1.SuspendLayout();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
@@ -85,8 +85,8 @@
             this.panel4.SuspendLayout();
             this.panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.bdsProduct)).BeginInit();
             this.statusStrip1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.bdsProduct)).BeginInit();
             this.SuspendLayout();
             // 
             // panel1
@@ -124,23 +124,23 @@
             this.tabPage1.Padding = new System.Windows.Forms.Padding(3);
             this.tabPage1.Size = new System.Drawing.Size(996, 124);
             this.tabPage1.TabIndex = 0;
-            this.tabPage1.Text = "查询";
+            this.tabPage1.Text = "查询打印";
             this.tabPage1.UseVisualStyleBackColor = true;
             // 
             // txbModelForSearch
             // 
             this.txbModelForSearch.Font = new System.Drawing.Font("宋体", 12F);
-            this.txbModelForSearch.Location = new System.Drawing.Point(567, 20);
+            this.txbModelForSearch.Location = new System.Drawing.Point(565, 20);
             this.txbModelForSearch.MaxLength = 10;
             this.txbModelForSearch.Name = "txbModelForSearch";
-            this.txbModelForSearch.Size = new System.Drawing.Size(72, 26);
+            this.txbModelForSearch.Size = new System.Drawing.Size(100, 26);
             this.txbModelForSearch.TabIndex = 11;
             // 
             // label3
             // 
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("宋体", 12F);
-            this.label3.Location = new System.Drawing.Point(515, 25);
+            this.label3.Location = new System.Drawing.Point(514, 25);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(40, 16);
             this.label3.TabIndex = 10;
@@ -149,16 +149,16 @@
             // txbNameForSearch
             // 
             this.txbNameForSearch.Font = new System.Drawing.Font("宋体", 12F);
-            this.txbNameForSearch.Location = new System.Drawing.Point(335, 20);
+            this.txbNameForSearch.Location = new System.Drawing.Point(343, 20);
             this.txbNameForSearch.Name = "txbNameForSearch";
-            this.txbNameForSearch.Size = new System.Drawing.Size(168, 26);
+            this.txbNameForSearch.Size = new System.Drawing.Size(160, 26);
             this.txbNameForSearch.TabIndex = 9;
             // 
             // label2
             // 
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("宋体", 12F);
-            this.label2.Location = new System.Drawing.Point(251, 25);
+            this.label2.Location = new System.Drawing.Point(260, 25);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(72, 16);
             this.label2.TabIndex = 8;
@@ -167,10 +167,10 @@
             // txbPartNoForSearch
             // 
             this.txbPartNoForSearch.Font = new System.Drawing.Font("宋体", 12F);
-            this.txbPartNoForSearch.Location = new System.Drawing.Point(90, 20);
+            this.txbPartNoForSearch.Location = new System.Drawing.Point(89, 20);
             this.txbPartNoForSearch.MaxLength = 20;
             this.txbPartNoForSearch.Name = "txbPartNoForSearch";
-            this.txbPartNoForSearch.Size = new System.Drawing.Size(149, 26);
+            this.txbPartNoForSearch.Size = new System.Drawing.Size(160, 26);
             this.txbPartNoForSearch.TabIndex = 7;
             // 
             // label1
@@ -186,7 +186,7 @@
             // panel3
             // 
             this.panel3.BackColor = System.Drawing.SystemColors.Control;
-            this.panel3.Controls.Add(this.button6);
+            this.panel3.Controls.Add(this.btnExport);
             this.panel3.Controls.Add(this.btnPrintList);
             this.panel3.Controls.Add(this.btnImport);
             this.panel3.Controls.Add(this.btnSearch);
@@ -197,16 +197,16 @@
             this.panel3.Size = new System.Drawing.Size(990, 49);
             this.panel3.TabIndex = 0;
             // 
-            // button6
+            // btnExport
             // 
-            this.button6.Font = new System.Drawing.Font("宋体", 12F);
-            this.button6.Location = new System.Drawing.Point(375, 12);
-            this.button6.Name = "button6";
-            this.button6.Size = new System.Drawing.Size(105, 30);
-            this.button6.TabIndex = 5;
-            this.button6.Text = "导出 (&O)";
-            this.button6.UseVisualStyleBackColor = true;
-            this.button6.Click += new System.EventHandler(this.button6_Click);
+            this.btnExport.Font = new System.Drawing.Font("宋体", 12F);
+            this.btnExport.Location = new System.Drawing.Point(375, 12);
+            this.btnExport.Name = "btnExport";
+            this.btnExport.Size = new System.Drawing.Size(105, 30);
+            this.btnExport.TabIndex = 5;
+            this.btnExport.Text = "导出";
+            this.btnExport.UseVisualStyleBackColor = true;
+            this.btnExport.Click += new System.EventHandler(this.btnExport_Click);
             // 
             // btnPrintList
             // 
@@ -215,7 +215,7 @@
             this.btnPrintList.Name = "btnPrintList";
             this.btnPrintList.Size = new System.Drawing.Size(152, 30);
             this.btnPrintList.TabIndex = 4;
-            this.btnPrintList.Text = "查看打印记录 (&L)";
+            this.btnPrintList.Text = "查看打印记录";
             this.btnPrintList.UseVisualStyleBackColor = true;
             this.btnPrintList.Click += new System.EventHandler(this.btnPrintList_Click);
             // 
@@ -227,7 +227,7 @@
             this.btnImport.Name = "btnImport";
             this.btnImport.Size = new System.Drawing.Size(105, 30);
             this.btnImport.TabIndex = 3;
-            this.btnImport.Text = "导入 (&I)";
+            this.btnImport.Text = "导入";
             this.btnImport.UseVisualStyleBackColor = true;
             this.btnImport.Click += new System.EventHandler(this.btnImport_Click);
             // 
@@ -238,7 +238,7 @@
             this.btnSearch.Name = "btnSearch";
             this.btnSearch.Size = new System.Drawing.Size(105, 30);
             this.btnSearch.TabIndex = 0;
-            this.btnSearch.Text = "检索 (&Q)";
+            this.btnSearch.Text = "检索";
             this.btnSearch.UseVisualStyleBackColor = true;
             this.btnSearch.Click += new System.EventHandler(this.btnSearch_Click);
             // 
@@ -249,7 +249,7 @@
             this.btnPrint.Name = "btnPrint";
             this.btnPrint.Size = new System.Drawing.Size(105, 30);
             this.btnPrint.TabIndex = 2;
-            this.btnPrint.Text = "打印 (&P)";
+            this.btnPrint.Text = "打印 ";
             this.btnPrint.UseVisualStyleBackColor = true;
             this.btnPrint.Click += new System.EventHandler(this.btnPrint_Click);
             // 
@@ -287,8 +287,9 @@
             // 
             // txbCapacity
             // 
-            this.txbCapacity.Font = new System.Drawing.Font("宋体", 12F);
-            this.txbCapacity.Location = new System.Drawing.Point(611, 21);
+            this.txbCapacity.BackColor = System.Drawing.SystemColors.Window;
+            this.txbCapacity.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.txbCapacity.Location = new System.Drawing.Point(596, 21);
             this.txbCapacity.MaxLength = 3;
             this.txbCapacity.Name = "txbCapacity";
             this.txbCapacity.Size = new System.Drawing.Size(37, 26);
@@ -300,7 +301,7 @@
             // 
             this.label23.AutoSize = true;
             this.label23.Font = new System.Drawing.Font("宋体", 12F);
-            this.label23.Location = new System.Drawing.Point(546, 26);
+            this.label23.Location = new System.Drawing.Point(526, 26);
             this.label23.Name = "label23";
             this.label23.Size = new System.Drawing.Size(56, 16);
             this.label23.TabIndex = 28;
@@ -338,7 +339,7 @@
             this.btnClear.Name = "btnClear";
             this.btnClear.Size = new System.Drawing.Size(105, 30);
             this.btnClear.TabIndex = 33;
-            this.btnClear.Text = "清空 (&C)";
+            this.btnClear.Text = "清空 ";
             this.btnClear.UseVisualStyleBackColor = true;
             this.btnClear.Click += new System.EventHandler(this.btnClear_Click);
             // 
@@ -349,7 +350,7 @@
             this.btnEdit.Name = "btnEdit";
             this.btnEdit.Size = new System.Drawing.Size(105, 30);
             this.btnEdit.TabIndex = 32;
-            this.btnEdit.Text = "编辑 (&E)";
+            this.btnEdit.Text = "编辑";
             this.btnEdit.UseVisualStyleBackColor = true;
             this.btnEdit.Click += new System.EventHandler(this.btnEdit_Click);
             // 
@@ -360,7 +361,7 @@
             this.button10.Name = "button10";
             this.button10.Size = new System.Drawing.Size(105, 30);
             this.button10.TabIndex = 4;
-            this.button10.Text = "导入 (&I)";
+            this.button10.Text = "导入";
             this.button10.UseVisualStyleBackColor = true;
             // 
             // btnSave
@@ -370,7 +371,7 @@
             this.btnSave.Name = "btnSave";
             this.btnSave.Size = new System.Drawing.Size(105, 30);
             this.btnSave.TabIndex = 3;
-            this.btnSave.Text = "保存 (&S)";
+            this.btnSave.Text = "保存";
             this.btnSave.UseVisualStyleBackColor = true;
             this.btnSave.Click += new System.EventHandler(this.btnSave_Click);
             // 
@@ -381,7 +382,7 @@
             this.btnDelete.Name = "btnDelete";
             this.btnDelete.Size = new System.Drawing.Size(105, 30);
             this.btnDelete.TabIndex = 3;
-            this.btnDelete.Text = "删除 (&S)";
+            this.btnDelete.Text = "删除";
             this.btnDelete.UseVisualStyleBackColor = true;
             this.btnDelete.Click += new System.EventHandler(this.btnDelete_Click);
             // 
@@ -392,14 +393,15 @@
             this.btnADD.Name = "btnADD";
             this.btnADD.Size = new System.Drawing.Size(105, 30);
             this.btnADD.TabIndex = 2;
-            this.btnADD.Text = "新增 (&S)";
+            this.btnADD.Text = "新增";
             this.btnADD.UseVisualStyleBackColor = true;
             this.btnADD.Click += new System.EventHandler(this.btnADD_Click);
             // 
             // btnUploadImg
             // 
+            this.btnUploadImg.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.btnUploadImg.Font = new System.Drawing.Font("宋体", 12F);
-            this.btnUploadImg.Location = new System.Drawing.Point(862, 12);
+            this.btnUploadImg.Location = new System.Drawing.Point(877, 12);
             this.btnUploadImg.Name = "btnUploadImg";
             this.btnUploadImg.Size = new System.Drawing.Size(105, 30);
             this.btnUploadImg.TabIndex = 1;
@@ -409,20 +411,20 @@
             // 
             // txbModel
             // 
-            this.txbModel.Font = new System.Drawing.Font("宋体", 12F);
-            this.txbModel.Location = new System.Drawing.Point(706, 21);
+            this.txbModel.BackColor = System.Drawing.SystemColors.Window;
+            this.txbModel.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.txbModel.Location = new System.Drawing.Point(701, 21);
             this.txbModel.MaxLength = 10;
             this.txbModel.Name = "txbModel";
-            this.txbModel.Size = new System.Drawing.Size(40, 26);
+            this.txbModel.Size = new System.Drawing.Size(100, 26);
             this.txbModel.TabIndex = 21;
             this.txbModel.Text = "2CE";
-            this.txbModel.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // label6
             // 
             this.label6.AutoSize = true;
             this.label6.Font = new System.Drawing.Font("宋体", 12F);
-            this.label6.Location = new System.Drawing.Point(657, 26);
+            this.label6.Location = new System.Drawing.Point(647, 26);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(40, 16);
             this.label6.TabIndex = 20;
@@ -430,11 +432,12 @@
             // 
             // txbName
             // 
-            this.txbName.Font = new System.Drawing.Font("宋体", 10F);
-            this.txbName.Location = new System.Drawing.Point(345, 23);
+            this.txbName.BackColor = System.Drawing.SystemColors.Window;
+            this.txbName.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.txbName.Location = new System.Drawing.Point(352, 21);
             this.txbName.MaxLength = 20;
             this.txbName.Name = "txbName";
-            this.txbName.Size = new System.Drawing.Size(192, 23);
+            this.txbName.Size = new System.Drawing.Size(160, 26);
             this.txbName.TabIndex = 19;
             this.txbName.Text = "COVER L,FR FLOOR UNDER";
             // 
@@ -442,7 +445,7 @@
             // 
             this.label7.AutoSize = true;
             this.label7.Font = new System.Drawing.Font("宋体", 12F);
-            this.label7.Location = new System.Drawing.Point(264, 26);
+            this.label7.Location = new System.Drawing.Point(266, 26);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(72, 16);
             this.label7.TabIndex = 18;
@@ -450,12 +453,13 @@
             // 
             // txbPart_No
             // 
+            this.txbPart_No.BackColor = System.Drawing.SystemColors.Window;
             this.txbPart_No.Enabled = false;
-            this.txbPart_No.Font = new System.Drawing.Font("宋体", 10F);
-            this.txbPart_No.Location = new System.Drawing.Point(87, 23);
+            this.txbPart_No.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.txbPart_No.Location = new System.Drawing.Point(92, 21);
             this.txbPart_No.MaxLength = 20;
             this.txbPart_No.Name = "txbPart_No";
-            this.txbPart_No.Size = new System.Drawing.Size(168, 23);
+            this.txbPart_No.Size = new System.Drawing.Size(160, 26);
             this.txbPart_No.TabIndex = 17;
             this.txbPart_No.Text = "74561-T6L-H010-M1";
             // 
@@ -488,8 +492,8 @@
             this.partNoDataGridViewTextBoxColumn,
             this.nameDataGridViewTextBoxColumn,
             this.modelDataGridViewTextBoxColumn,
-            this.remarkDataGridViewTextBoxColumn,
             this.capacityDataGridViewTextBoxColumn,
+            this.remarkDataGridViewTextBoxColumn,
             this.img});
             this.dataGridView1.DataSource = this.bdsProduct;
             this.dataGridView1.Dock = System.Windows.Forms.DockStyle.Fill;
@@ -500,10 +504,35 @@
             this.dataGridView1.TabIndex = 0;
             this.dataGridView1.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellDoubleClick);
             // 
+            // statusStrip1
+            // 
+            this.statusStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.LabelDB});
+            this.statusStrip1.Location = new System.Drawing.Point(0, 509);
+            this.statusStrip1.Name = "statusStrip1";
+            this.statusStrip1.Size = new System.Drawing.Size(1004, 22);
+            this.statusStrip1.TabIndex = 1;
+            this.statusStrip1.Text = "statusStrip1";
+            // 
+            // LabelDB
+            // 
+            this.LabelDB.Name = "LabelDB";
+            this.LabelDB.Size = new System.Drawing.Size(164, 17);
+            this.LabelDB.Text = "数据库地址：远程测试数据库";
+            this.LabelDB.Click += new System.EventHandler(this.LabelDB_Click);
+            // 
             // Column1
             // 
             this.Column1.HeaderText = "序号";
             this.Column1.Name = "Column1";
+            // 
+            // img
+            // 
+            this.img.DataPropertyName = "img";
+            this.img.HeaderText = "图片";
+            this.img.ImageLayout = System.Windows.Forms.DataGridViewImageCellLayout.Zoom;
+            this.img.Name = "img";
+            this.img.ReadOnly = true;
             // 
             // partNoDataGridViewTextBoxColumn
             // 
@@ -523,46 +552,21 @@
             this.modelDataGridViewTextBoxColumn.HeaderText = "车型";
             this.modelDataGridViewTextBoxColumn.Name = "modelDataGridViewTextBoxColumn";
             // 
-            // remarkDataGridViewTextBoxColumn
-            // 
-            this.remarkDataGridViewTextBoxColumn.DataPropertyName = "remark";
-            this.remarkDataGridViewTextBoxColumn.HeaderText = "备注";
-            this.remarkDataGridViewTextBoxColumn.Name = "remarkDataGridViewTextBoxColumn";
-            // 
             // capacityDataGridViewTextBoxColumn
             // 
             this.capacityDataGridViewTextBoxColumn.DataPropertyName = "capacity";
             this.capacityDataGridViewTextBoxColumn.HeaderText = "收容数";
             this.capacityDataGridViewTextBoxColumn.Name = "capacityDataGridViewTextBoxColumn";
             // 
-            // img
+            // remarkDataGridViewTextBoxColumn
             // 
-            this.img.DataPropertyName = "img";
-            this.img.HeaderText = "图片";
-            this.img.ImageLayout = System.Windows.Forms.DataGridViewImageCellLayout.Zoom;
-            this.img.Name = "img";
-            this.img.ReadOnly = true;
+            this.remarkDataGridViewTextBoxColumn.DataPropertyName = "remark";
+            this.remarkDataGridViewTextBoxColumn.HeaderText = "备注";
+            this.remarkDataGridViewTextBoxColumn.Name = "remarkDataGridViewTextBoxColumn";
             // 
             // bdsProduct
             // 
             this.bdsProduct.DataSource = typeof(KPrint.rt_product);
-            // 
-            // statusStrip1
-            // 
-            this.statusStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.LabelDB});
-            this.statusStrip1.Location = new System.Drawing.Point(0, 509);
-            this.statusStrip1.Name = "statusStrip1";
-            this.statusStrip1.Size = new System.Drawing.Size(1004, 22);
-            this.statusStrip1.TabIndex = 1;
-            this.statusStrip1.Text = "statusStrip1";
-            // 
-            // LabelDB
-            // 
-            this.LabelDB.Name = "LabelDB";
-            this.LabelDB.Size = new System.Drawing.Size(164, 17);
-            this.LabelDB.Text = "数据库地址：远程测试数据库";
-            this.LabelDB.Click += new System.EventHandler(this.LabelDB_Click);
             // 
             // FMain
             // 
@@ -576,7 +580,7 @@
             this.Name = "FMain";
             this.ShowIcon = false;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "社内标签打印系统";
+            this.Text = "社内标签打印系统 v1.0";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.FMain_FormClosing);
             this.Load += new System.EventHandler(this.FMain_Load);
             this.panel1.ResumeLayout(false);
@@ -591,9 +595,9 @@
             this.panel2.ResumeLayout(false);
             this.panel2.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.bdsProduct)).EndInit();
             this.statusStrip1.ResumeLayout(false);
             this.statusStrip1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.bdsProduct)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -627,7 +631,7 @@
         private System.Windows.Forms.Button btnUploadImg;
         private System.Windows.Forms.Button btnImport;
         private System.Windows.Forms.Button btnPrintList;
-        private System.Windows.Forms.Button button6;
+        private System.Windows.Forms.Button btnExport;
         private System.Windows.Forms.StatusStrip statusStrip1;
         private System.Windows.Forms.ToolStripStatusLabel LabelDB;
         private System.Windows.Forms.Button button10;
@@ -643,8 +647,8 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn partNoDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn nameDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn modelDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn remarkDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn capacityDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn remarkDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewImageColumn img;
     }
 }

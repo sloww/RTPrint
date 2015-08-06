@@ -36,7 +36,9 @@
           <Property Name="img" Type="image" />
           <Property Name="production_date" Type="datetime" Nullable="false" />
           <Property Name="container_No" Type="int" Nullable="false" />
+          <Property Name="printCount" Type="int" Nullable="false" />
           <Property Name="serial_number" Type="nvarchar" MaxLength="200" Nullable="false" />
+          <Property Name="formatSN" Type="nvarchar" MaxLength="200" Nullable="false" />
           <Property Name="qr" Type="nvarchar" MaxLength="200" Nullable="false" />
           <Property Name="remark" Type="nvarchar" MaxLength="200" Nullable="false" />
           <Property Name="deleted" Type="int" Nullable="false" />
@@ -71,10 +73,10 @@
           <Key>
             <PropertyRef Name="id" />
           </Key>
-          <Property Name="id" Type="Guid" Nullable="false" />
-          <Property Name="img" Type="Binary" MaxLength="Max" FixedLength="false" Nullable="false" />
-          <Property Name="deleted" Type="Int32" Nullable="false" />
-          <Property Name="modify_time" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="id" Nullable="false" Type="Guid" />
+          <Property Name="img" Nullable="false" MaxLength="Max" FixedLength="false" Type="Binary" />
+          <Property Name="deleted" Nullable="false" Type="Int32" />
+          <Property Name="modify_time" Nullable="false" Precision="3" Type="DateTime" />
         </EntityType>
         <EntityType Name="rt_print_log">
           <Key>
@@ -94,6 +96,8 @@
           <Property Name="serial_number" Type="String" Nullable="false" MaxLength="200" FixedLength="false" Unicode="true" />
           <Property Name="qr" Type="String" Nullable="false" MaxLength="200" FixedLength="false" Unicode="true" />
           <Property Name="img" Type="Binary" MaxLength="Max" FixedLength="false" />
+          <Property Name="printCount" Type="Int32" Nullable="false" />
+          <Property Name="formatSN" Type="String" Nullable="false" MaxLength="200" FixedLength="false" Unicode="true" />
         </EntityType>
         <EntityType Name="rt_product">
           <Key>
@@ -144,6 +148,8 @@
           <EntitySetMapping Name="rt_print_log">
             <EntityTypeMapping TypeName="DBModel.rt_print_log">
               <MappingFragment StoreEntitySet="rt_print_log">
+                <ScalarProperty Name="formatSN" ColumnName="formatSN" />
+                <ScalarProperty Name="printCount" ColumnName="printCount" />
                 <ScalarProperty Name="img" ColumnName="img" />
                 <ScalarProperty Name="qr" ColumnName="qr" />
                 <ScalarProperty Name="serial_number" ColumnName="serial_number" />

@@ -28,5 +28,7 @@ namespace KPrint
         public string serial_number { get; set; }
         public string qr { get; set; }
         public byte[] img { get; set; }
+        public int printCount { get; set; }
+        public string formatSN { get; set; }
     }
 }

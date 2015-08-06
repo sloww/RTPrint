@@ -82,9 +82,11 @@ namespace KPrint
                         printObj.deleted = 0;
                         printObj.create_time = DateTime.Now;
                         printObj.container_No = i + 1;
-                        
+
+                        printObj.printCount = printCount;
+                        printObj.formatSN = printObj.production_date.ToString("yyMM") + printObj.serial_number.PadLeft(4, '0');
+
                         printObjs.Add(printObj);
-                        PublicDB.AddDailyCount(DateTime.Now);
 
                         if (i + 1 == printCount || i % 3 == 2)
                         {
@@ -93,13 +95,19 @@ namespace KPrint
                             printObjs.Clear();
                         }
 
-                        //todo 如果性能不佳 去掉image字段的保存
-                       // printObj.img = null;
+
                         db.rt_print_log.Add(printObj);
-                        db.Entry(printObj).State = System.Data.Entity.EntityState.Added;
-                        db.SaveChanges();
+                        
                         PublicDB.AddDailyCount(dateTimePicker1.Value);
                     }
+
+                    //去掉图片后保存
+                    foreach (var log in db.rt_print_log)
+                    {
+                        log.img = null;
+                    }
+
+                    db.SaveChanges();
                 }
             }
         }
@@ -169,13 +177,22 @@ namespace KPrint
 
             //font set
             Font smallFont = new Font("SimSun", 8);
-            Font largeFont = new Font("Arial", 36);
+            Font largeFont = new Font("Arial", 30);
             Font middleFont = new Font("SimHei", 14);
+
 
             //draw model cell
             Point cursor = location;
             g.DrawString("车型", smallFont, Brushes.Black, new Point(cursor.X + 1, cursor.Y + 1));
-            g.DrawString(printObj.model, largeFont, Brushes.Black, new Point(cursor.X + 3, cursor.Y + 10));
+            if (printObj.model.Length <= 4)
+            {
+                g.DrawString(printObj.model, largeFont, Brushes.Black, new Point(cursor.X + 3, cursor.Y + 10));
+            }
+            else
+            {
+                g.DrawString(printObj.model, middleFont, Brushes.Black, new Point(cursor.X + 3, cursor.Y + 12));
+
+            }
 
             //draw part No. cell
             cursor = new Point(location.X + 32, location.Y);
@@ -191,14 +208,14 @@ namespace KPrint
             cursor = new Point(location.X + 162, location.Y + 21);
             g.DrawString("一次检验", smallFont, Brushes.Black, new Point(cursor.X + 1, cursor.Y + 1));
             g.DrawString("合", middleFont, Brushes.Black, new Point(cursor.X + 2, cursor.Y + 5));
-            g.DrawString("格", middleFont, Brushes.Black, new Point(cursor.X + 2, cursor.Y + 15));
+            g.DrawString("否", middleFont, Brushes.Black, new Point(cursor.X + 2, cursor.Y + 15));
 
 
             //draw  check cell
             cursor = new Point(location.X + 162, location.Y + 42);
             g.DrawString("最终检验", smallFont, Brushes.Black, new Point(cursor.X + 1, cursor.Y + 1));
             g.DrawString("合", middleFont, Brushes.Black, new Point(cursor.X + 2, cursor.Y + 5));
-            g.DrawString("格", middleFont, Brushes.Black, new Point(cursor.X + 2, cursor.Y + 15));
+            g.DrawString("否", middleFont, Brushes.Black, new Point(cursor.X + 2, cursor.Y + 15));
 
             //draw Warehouse Manager cell
             cursor = new Point(location.X + 162, location.Y + 63);
@@ -212,7 +229,7 @@ namespace KPrint
             //draw production date cell
             cursor = new Point(location.X + 1, location.Y + 46);
             g.DrawString("生产日期", smallFont, Brushes.Black, new Point(cursor.X + 1, cursor.Y + 1));
-            g.DrawString(printObj.production_date.ToString(@"yyyy/MM/dd"), new Font("SimHei", 18), Brushes.Black, new Point(cursor.X + 11, cursor.Y + 4));
+            g.DrawString(printObj.production_date.ToString(@"yyyy/MM/dd"), new Font("SimHei", 18), Brushes.Black, new Point(cursor.X + 12, cursor.Y + 3));
 
             //draw Production batch cell
             cursor = new Point(location.X + 1, location.Y + 56);
@@ -226,42 +243,39 @@ namespace KPrint
             //draw Container No. cell
             cursor = new Point(location.X + 48, location.Y + 28);
             g.DrawString("容器序号", smallFont, Brushes.Black, new Point(cursor.X + 1, cursor.Y + 1));
-            g.DrawString(printObj.container_No.ToString(), new Font("Arial", 28), Brushes.Black, new Point(cursor.X + 8, cursor.Y + 6));
-            g.DrawArc(p, new Rectangle(new Point(cursor.X + 7, cursor.Y + 5), new Size(11, 11)), 0, 360);
+            g.DrawString(printObj.container_No.ToString(), new Font("Arial", 28), Brushes.Black, new Point(cursor.X + 8, cursor.Y + 5));
+            g.DrawArc(p, new Rectangle( new Point(cursor.X + 7, cursor.Y + 5), new Size(11, 11)), 0, 360);
 
 
             //draw QR cell
             cursor = new Point(location.X + 48, location.Y + 46);
             if(printObj.serial_number !=null)
-            g.DrawString(DateTime.Now.ToString("yyMM")+ printObj.serial_number.PadLeft(4,'0'), smallFont, Brushes.Black, new Point(cursor.X + 8, cursor.Y + 1));
+            g.DrawString(DateTime.Now.ToString("yyMM")+ printObj.serial_number.PadLeft(4,'0'), smallFont, Brushes.Black, new Point(cursor.X + 12, cursor.Y + 1));
             Bitmap bimg = PublicTools.CreateQRCode(printObj.qr);
-            g.DrawImage(bimg, new Point(cursor.X + 2, cursor.Y + 5));
+            g.DrawImage(bimg, new Point(cursor.X + 5, cursor.Y + 6));
 
 
             //draw production name cell
             cursor = new Point(location.X + 88, location.Y + 28);
             g.DrawString("产品名称", smallFont, Brushes.Black, new Point(cursor.X + 1, cursor.Y + 1));
-            g.DrawString(printObj.name, new Font("SimHei", 14), Brushes.Black, new Point(cursor.X + 6, cursor.Y + 5));
+            g.DrawString(printObj.name, new Font("SimHei", 14), Brushes.Black, new Point(cursor.X + 6, cursor.Y + 4));
 
             //draw img cell
             cursor = new Point(location.X + 88, location.Y + 38);
-            g.DrawString("简图", smallFont, Brushes.Black, new Point(cursor.X + 1, cursor.Y + 1));
 
             //get img 
 
             if (printObj.img != null)
             {
                 System.Drawing.Image img = PublicTools.byteArrayToImage(printObj.img);
-                g.DrawImage(img, cursor.X + 1, cursor.Y + 10, 70, 36);
+                g.DrawImage(img, cursor.X + 1, cursor.Y + 4, 70, 36);
             }
 
-        }
+            g.DrawString("简图", smallFont, Brushes.Black, new Point(cursor.X + 1, cursor.Y + 1));
 
 
-        private void dateTimePicker1_ValueChanged(object sender, EventArgs e)
-        {
-            this.DrawPictureBox(this.product, Graphics.FromImage(pictureBox1.Image), dateTimePicker1.Value);
         }
+
 
         private void lblprinter_Click(object sender, EventArgs e)
         {
