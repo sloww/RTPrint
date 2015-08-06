@@ -25,7 +25,7 @@ namespace KPrint
         private void btnSearch_Click(object sender, EventArgs e)
         {
 
-            using (var db = new DB())
+            using (var db = PublicDB.getDB())
             {
                 rt_product s = new rt_product();
                 s.part_No = txbPartNoForSearch.Text;
@@ -76,7 +76,7 @@ namespace KPrint
         {
             PublicTools.IniDatagridview(dataGridView1);
             PublicTools.RecoverColumnWidth(dataGridView1, KPrint.Properties.Settings.Default.productDatagridview);
-
+            this.LabelDB.Text = PublicDB.getIniConnInfo("config.ini");
         }
 
         private void FMain_FormClosing(object sender, FormClosingEventArgs e)
@@ -130,7 +130,7 @@ namespace KPrint
             int count = 0;
             ISheet ist = wb.GetSheetAt(0);
             int rowofPage = ist.LastRowNum + 1;
-            using (var db = new DB())
+            using (var db = PublicDB.getDB())
             {
                 for (int j = 1; j < rowofPage; j++)
                 {
@@ -199,7 +199,7 @@ namespace KPrint
             if (txbModel.Text.Length < 2) return;
             if (txbCapacity.Text.Length < 2) return;
 
-            using (var db = new DB())
+            using (var db = PublicDB.getDB())
             {
 
 
@@ -263,7 +263,7 @@ namespace KPrint
         {
             if (this.bdsProduct.DataSource != null && this.bdsProduct.Current != null)
             {
-                using (var db = new DB())
+                using (var db = PublicDB.getDB())
                 {
                     rt_product p = (rt_product)this.bdsProduct.Current;
                     p.deleted = 1;
@@ -301,7 +301,7 @@ namespace KPrint
         private void button6_Click(object sender, EventArgs e)
         {
             List<rt_product> q = new List<rt_product>();
-            using (var db = new DB())
+            using (var db = PublicDB.getDB())
             {
 
                 rt_product s = new rt_product();
@@ -360,6 +360,12 @@ namespace KPrint
             }
 
             System.Diagnostics.Process.Start(copedExcelPath);
+        }
+
+        private void LabelDB_Click(object sender, EventArgs e)
+        {
+            FDatabase m = new FDatabase();
+            m.ShowDialog();
         }
 
     }

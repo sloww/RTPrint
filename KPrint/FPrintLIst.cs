@@ -36,7 +36,7 @@ namespace KPrint
             string name = txbName.Text.Trim();
             string model = txbModel.Text.Trim();
             
-            using (var db = new DB())
+            using (var db = PublicDB.getDB())
             {
                 var q = from a in db.rt_print_log
                         where a.deleted == 0 && a.part_No.Contains(partno) && a.name.Contains(name) && a.model.Contains(model)

@@ -38,7 +38,7 @@
             this.cbdRemark = new System.Windows.Forms.ComboBox();
             this.dateTimePicker1 = new System.Windows.Forms.DateTimePicker();
             this.statusStrip1 = new System.Windows.Forms.StatusStrip();
-            this.toolStripStatusLabel1 = new System.Windows.Forms.ToolStripStatusLabel();
+            this.lblprinter = new System.Windows.Forms.ToolStripStatusLabel();
             this.label9 = new System.Windows.Forms.Label();
             this.label21 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
@@ -139,7 +139,7 @@
             // statusStrip1
             // 
             this.statusStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.toolStripStatusLabel1});
+            this.lblprinter});
             this.statusStrip1.Location = new System.Drawing.Point(601, 409);
             this.statusStrip1.Name = "statusStrip1";
             this.statusStrip1.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
@@ -147,11 +147,12 @@
             this.statusStrip1.TabIndex = 40;
             this.statusStrip1.Text = "statusStrip1";
             // 
-            // toolStripStatusLabel1
+            // lblprinter
             // 
-            this.toolStripStatusLabel1.Name = "toolStripStatusLabel1";
-            this.toolStripStatusLabel1.Size = new System.Drawing.Size(137, 17);
-            this.toolStripStatusLabel1.Text = "EPSON82(L355 Series)";
+            this.lblprinter.Name = "lblprinter";
+            this.lblprinter.Size = new System.Drawing.Size(137, 17);
+            this.lblprinter.Text = "EPSON82(L355 Series)";
+            this.lblprinter.Click += new System.EventHandler(this.lblprinter_Click);
             // 
             // label9
             // 
@@ -218,7 +219,7 @@
         private System.Windows.Forms.ComboBox cbdRemark;
         private System.Windows.Forms.DateTimePicker dateTimePicker1;
         private System.Windows.Forms.StatusStrip statusStrip1;
-        private System.Windows.Forms.ToolStripStatusLabel toolStripStatusLabel1;
+        private System.Windows.Forms.ToolStripStatusLabel lblprinter;
         private System.Windows.Forms.Label label9;
         private System.Windows.Forms.Label label21;
     }

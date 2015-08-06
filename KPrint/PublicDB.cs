@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Linq;
 using System.Text;
 
@@ -7,6 +8,7 @@ namespace KPrint
 {
     public static class PublicDB
     {
+
         //todo 后期可以用存储过程实现
 
 
@@ -19,12 +21,12 @@ namespace KPrint
         {
             var formatdt = dt.ToString("yyMM");
             int r = 0;
-            using (var db = new DB())
+            using (var db = PublicDB.getDB())
             {
                 var q = (from a in db.rt_daily_count
                          where a.formatdt == formatdt
                          select a.count).FirstOrDefault();
-                    r = q;
+                r = q;
             }
             return r;
         }
@@ -35,7 +37,7 @@ namespace KPrint
         public static void AddDailyCount(DateTime dt)
         {
             var formatdt = dt.ToString("yyMM");
-            using (var db = new DB())
+            using (var db = PublicDB.getDB())
             {
                 rt_daily_count dc = new rt_daily_count();
                 var q = (from a in db.rt_daily_count
@@ -63,6 +65,70 @@ namespace KPrint
             }
         }
 
+        public static DB getDB()
+        {
+            if (!System.IO.File.Exists("config.ini"))
+            {
+                FDatabase m = new FDatabase();
+                m.ShowDialog();
+            }
 
+            var db = new DB();
+            db.Database.Connection.ConnectionString = getIniConn("config.ini");
+            return db;
+        }
+
+        public static bool TestDB(string connString)
+        {
+            bool r = false;
+            using (var db = new  DB())
+            {
+                db.Database.Connection.ConnectionString = connString;
+                try
+                {
+                    db.Database.Connection.Open();
+                    r = (db.Database.Connection.State == ConnectionState.Open);
+                }
+                catch
+                {
+                    r = false;
+                }
+            }
+            return r;
+        }
+
+        public static string getIniConn(string iniPath)
+        {
+            INIClass iniClass = new INIClass( iniPath);
+            string connString = "";
+            if (iniClass.ExistINIFile())
+            {
+
+                string Server = EncAndDec.Decode(iniClass.IniReadValue("Database", "server"));
+                string dataBase = EncAndDec.Decode(iniClass.IniReadValue("Database", "database"));
+                string user = EncAndDec.Decode(iniClass.IniReadValue("Database", "user"));
+                string pwd = EncAndDec.Decode(iniClass.IniReadValue("Database", "password"));
+                connString = string.Format("data source={0};initial catalog={1};persist security info=True;user id={2};password={3};MultipleActiveResultSets=True;App=EntityFramework", Server, dataBase, user, pwd);
+
+            }
+            return connString;
+        }
+
+        public static string getIniConnInfo(string iniPath)
+        {
+            INIClass iniClass = new INIClass(iniPath);
+            string coninfo = "";
+            if (iniClass.ExistINIFile())
+            {
+
+                string Server = EncAndDec.Decode(iniClass.IniReadValue("Database", "server"));
+                string dataBase = EncAndDec.Decode(iniClass.IniReadValue("Database", "database"));
+                coninfo = string.Format("{0} {1}", Server, dataBase, Server, dataBase);
+
+            }
+            return coninfo;
+        }
+
+        
     }
 }

@@ -23,6 +23,27 @@ namespace KPrint
         {
             InitializeComponent();
             this.product = product;
+
+        }
+
+
+        private void FPrint_Load(object sender, EventArgs e)
+        {
+            using (var db = PublicDB.getDB())
+            {
+                var img = (from i in db.rt_img
+                           where i.id == this.product.img_id
+                           select i).FirstOrDefault();
+                if (img != null)
+                {
+                    this.product.img = img.img;
+                }
+            }
+
+            this.DrawPictureBox(this.product, Graphics.FromImage(pictureBox1.Image), dateTimePicker1.Value);
+            cbdRemark.Text = this.product.remark;
+            lblprinter.Text = PublicTools.ReadPrinterName();
+
         }
 
         private void btnPrint_Click(object sender, EventArgs e)
@@ -31,11 +52,17 @@ namespace KPrint
             if (int.TryParse(txbCount.Text, out printCount) && printCount > 0)
             {
                 PrintDocument pd = new PrintDocument();
+                if (PublicTools.ReadPrinterName() == null || PublicTools.ReadPrinterName() == "")
+                {
+                    lblprinter_Click(null, null);
+                }
+                pd.PrinterSettings.PrinterName = PublicTools.ReadPrinterName();
+                
                 List<rt_print_log> printObjs = new List<rt_print_log>();
                 pd.PrintPage += (sender2, args) => DrawPaper(printObjs, args.Graphics);
 
 
-                using (var db = new DB())
+                using (var db = PublicDB.getDB())
                 {
                     for (int i = 0; i < printCount; i++)
                     {
@@ -230,26 +257,20 @@ namespace KPrint
 
         }
 
-        private void FPrint_Load(object sender, EventArgs e)
-        {
-            using (var db = new DB())
-            {
-                var img = (from i in db.rt_img
-                           where i.id == this.product.img_id
-                           select i).FirstOrDefault();
-                if (img != null)
-                {
-                    this.product.img = img.img;
-                }
-            }
-
-            this.DrawPictureBox(this.product, Graphics.FromImage(pictureBox1.Image),dateTimePicker1.Value);
-            cbdRemark.Text = this.product.remark;
-        }
 
         private void dateTimePicker1_ValueChanged(object sender, EventArgs e)
         {
             this.DrawPictureBox(this.product, Graphics.FromImage(pictureBox1.Image), dateTimePicker1.Value);
+        }
+
+        private void lblprinter_Click(object sender, EventArgs e)
+        {
+            PrintDialog m = new PrintDialog();
+            if (m.ShowDialog() == System.Windows.Forms.DialogResult.OK)
+            {
+                PublicTools.WritePrintername(m.PrinterSettings.PrinterName);
+                lblprinter.Text = m.PrinterSettings.PrinterName;
+            }
         }
 
     }

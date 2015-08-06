@@ -66,16 +66,16 @@
             this.label8 = new System.Windows.Forms.Label();
             this.panel2 = new System.Windows.Forms.Panel();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
-            this.statusStrip1 = new System.Windows.Forms.StatusStrip();
-            this.toolStripStatusLabel1 = new System.Windows.Forms.ToolStripStatusLabel();
             this.Column1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.img = new System.Windows.Forms.DataGridViewImageColumn();
             this.partNoDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.nameDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.modelDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.remarkDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.capacityDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.img = new System.Windows.Forms.DataGridViewImageColumn();
             this.bdsProduct = new System.Windows.Forms.BindingSource(this.components);
+            this.statusStrip1 = new System.Windows.Forms.StatusStrip();
+            this.LabelDB = new System.Windows.Forms.ToolStripStatusLabel();
             this.panel1.SuspendLayout();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
@@ -85,8 +85,8 @@
             this.panel4.SuspendLayout();
             this.panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
-            this.statusStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.bdsProduct)).BeginInit();
+            this.statusStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
             // panel1
@@ -500,34 +500,10 @@
             this.dataGridView1.TabIndex = 0;
             this.dataGridView1.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellDoubleClick);
             // 
-            // statusStrip1
-            // 
-            this.statusStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.toolStripStatusLabel1});
-            this.statusStrip1.Location = new System.Drawing.Point(0, 509);
-            this.statusStrip1.Name = "statusStrip1";
-            this.statusStrip1.Size = new System.Drawing.Size(1004, 22);
-            this.statusStrip1.TabIndex = 1;
-            this.statusStrip1.Text = "statusStrip1";
-            // 
-            // toolStripStatusLabel1
-            // 
-            this.toolStripStatusLabel1.Name = "toolStripStatusLabel1";
-            this.toolStripStatusLabel1.Size = new System.Drawing.Size(164, 17);
-            this.toolStripStatusLabel1.Text = "数据库地址：远程测试数据库";
-            // 
             // Column1
             // 
             this.Column1.HeaderText = "序号";
             this.Column1.Name = "Column1";
-            // 
-            // img
-            // 
-            this.img.DataPropertyName = "img";
-            this.img.HeaderText = "图片";
-            this.img.ImageLayout = System.Windows.Forms.DataGridViewImageCellLayout.Zoom;
-            this.img.Name = "img";
-            this.img.ReadOnly = true;
             // 
             // partNoDataGridViewTextBoxColumn
             // 
@@ -559,9 +535,34 @@
             this.capacityDataGridViewTextBoxColumn.HeaderText = "收容数";
             this.capacityDataGridViewTextBoxColumn.Name = "capacityDataGridViewTextBoxColumn";
             // 
+            // img
+            // 
+            this.img.DataPropertyName = "img";
+            this.img.HeaderText = "图片";
+            this.img.ImageLayout = System.Windows.Forms.DataGridViewImageCellLayout.Zoom;
+            this.img.Name = "img";
+            this.img.ReadOnly = true;
+            // 
             // bdsProduct
             // 
             this.bdsProduct.DataSource = typeof(KPrint.rt_product);
+            // 
+            // statusStrip1
+            // 
+            this.statusStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.LabelDB});
+            this.statusStrip1.Location = new System.Drawing.Point(0, 509);
+            this.statusStrip1.Name = "statusStrip1";
+            this.statusStrip1.Size = new System.Drawing.Size(1004, 22);
+            this.statusStrip1.TabIndex = 1;
+            this.statusStrip1.Text = "statusStrip1";
+            // 
+            // LabelDB
+            // 
+            this.LabelDB.Name = "LabelDB";
+            this.LabelDB.Size = new System.Drawing.Size(164, 17);
+            this.LabelDB.Text = "数据库地址：远程测试数据库";
+            this.LabelDB.Click += new System.EventHandler(this.LabelDB_Click);
             // 
             // FMain
             // 
@@ -590,9 +591,9 @@
             this.panel2.ResumeLayout(false);
             this.panel2.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.bdsProduct)).EndInit();
             this.statusStrip1.ResumeLayout(false);
             this.statusStrip1.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.bdsProduct)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -628,7 +629,7 @@
         private System.Windows.Forms.Button btnPrintList;
         private System.Windows.Forms.Button button6;
         private System.Windows.Forms.StatusStrip statusStrip1;
-        private System.Windows.Forms.ToolStripStatusLabel toolStripStatusLabel1;
+        private System.Windows.Forms.ToolStripStatusLabel LabelDB;
         private System.Windows.Forms.Button button10;
         private System.Windows.Forms.Button btnDelete;
         private System.Windows.Forms.Button btnSave;
