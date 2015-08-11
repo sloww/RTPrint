@@ -37,8 +37,19 @@
             this.panel2 = new System.Windows.Forms.Panel();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
             this.dgcSelect = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.createtimeDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.partNoDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.nameDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.modelDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.capacityDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.containerNoDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.remarkDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.productiondateDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.printCount = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.serialnumberDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.bindingSource1 = new System.Windows.Forms.BindingSource(this.components);
             this.panel1 = new System.Windows.Forms.Panel();
+            this.txbDT = new System.Windows.Forms.TextBox();
             this.cbbRemark = new System.Windows.Forms.ComboBox();
             this.btnSearch = new System.Windows.Forms.Button();
             this.label5 = new System.Windows.Forms.Label();
@@ -49,21 +60,10 @@
             this.txbModel = new System.Windows.Forms.TextBox();
             this.txbName = new System.Windows.Forms.TextBox();
             this.label3 = new System.Windows.Forms.Label();
-            this.txbDT = new System.Windows.Forms.TextBox();
-            this.createtimeDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.partNoDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.nameDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.modelDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.capacityDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.containerNoDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.remarkDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.productiondateDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.serialnumberDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.bindingSource1 = new System.Windows.Forms.BindingSource(this.components);
             this.panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
-            this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.bindingSource1)).BeginInit();
+            this.panel1.SuspendLayout();
             this.SuspendLayout();
             // 
             // button6
@@ -144,11 +144,75 @@
             this.dgcSelect.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
             this.dgcSelect.Width = 50;
             // 
+            // createtimeDataGridViewTextBoxColumn
+            // 
+            this.createtimeDataGridViewTextBoxColumn.DataPropertyName = "create_time";
+            dataGridViewCellStyle1.Format = "G";
+            dataGridViewCellStyle1.NullValue = null;
+            this.createtimeDataGridViewTextBoxColumn.DefaultCellStyle = dataGridViewCellStyle1;
+            this.createtimeDataGridViewTextBoxColumn.HeaderText = "打印时间";
+            this.createtimeDataGridViewTextBoxColumn.Name = "createtimeDataGridViewTextBoxColumn";
+            // 
+            // partNoDataGridViewTextBoxColumn
+            // 
+            this.partNoDataGridViewTextBoxColumn.DataPropertyName = "part_No";
+            this.partNoDataGridViewTextBoxColumn.HeaderText = "零件编号";
+            this.partNoDataGridViewTextBoxColumn.Name = "partNoDataGridViewTextBoxColumn";
+            // 
+            // nameDataGridViewTextBoxColumn
+            // 
+            this.nameDataGridViewTextBoxColumn.DataPropertyName = "name";
+            this.nameDataGridViewTextBoxColumn.HeaderText = "产品名称";
+            this.nameDataGridViewTextBoxColumn.Name = "nameDataGridViewTextBoxColumn";
+            // 
+            // modelDataGridViewTextBoxColumn
+            // 
+            this.modelDataGridViewTextBoxColumn.DataPropertyName = "model";
+            this.modelDataGridViewTextBoxColumn.HeaderText = "车型";
+            this.modelDataGridViewTextBoxColumn.Name = "modelDataGridViewTextBoxColumn";
+            // 
+            // capacityDataGridViewTextBoxColumn
+            // 
+            this.capacityDataGridViewTextBoxColumn.DataPropertyName = "capacity";
+            this.capacityDataGridViewTextBoxColumn.HeaderText = "收容数";
+            this.capacityDataGridViewTextBoxColumn.Name = "capacityDataGridViewTextBoxColumn";
+            // 
+            // containerNoDataGridViewTextBoxColumn
+            // 
+            this.containerNoDataGridViewTextBoxColumn.DataPropertyName = "container_No";
+            this.containerNoDataGridViewTextBoxColumn.HeaderText = "容器编号";
+            this.containerNoDataGridViewTextBoxColumn.Name = "containerNoDataGridViewTextBoxColumn";
+            // 
+            // remarkDataGridViewTextBoxColumn
+            // 
+            this.remarkDataGridViewTextBoxColumn.DataPropertyName = "remark";
+            this.remarkDataGridViewTextBoxColumn.HeaderText = "备注";
+            this.remarkDataGridViewTextBoxColumn.Name = "remarkDataGridViewTextBoxColumn";
+            // 
+            // productiondateDataGridViewTextBoxColumn
+            // 
+            this.productiondateDataGridViewTextBoxColumn.DataPropertyName = "production_date";
+            dataGridViewCellStyle2.Format = "d";
+            dataGridViewCellStyle2.NullValue = null;
+            this.productiondateDataGridViewTextBoxColumn.DefaultCellStyle = dataGridViewCellStyle2;
+            this.productiondateDataGridViewTextBoxColumn.HeaderText = "生产日期";
+            this.productiondateDataGridViewTextBoxColumn.Name = "productiondateDataGridViewTextBoxColumn";
+            // 
             // printCount
             // 
             this.printCount.DataPropertyName = "printCount";
             this.printCount.HeaderText = "同批打印数";
             this.printCount.Name = "printCount";
+            // 
+            // serialnumberDataGridViewTextBoxColumn
+            // 
+            this.serialnumberDataGridViewTextBoxColumn.DataPropertyName = "formatSN";
+            this.serialnumberDataGridViewTextBoxColumn.HeaderText = "序列号";
+            this.serialnumberDataGridViewTextBoxColumn.Name = "serialnumberDataGridViewTextBoxColumn";
+            // 
+            // bindingSource1
+            // 
+            this.bindingSource1.DataSource = typeof(KPrint.rt_print_log);
             // 
             // panel1
             // 
@@ -170,8 +234,17 @@
             this.panel1.Size = new System.Drawing.Size(1003, 108);
             this.panel1.TabIndex = 2;
             // 
+            // txbDT
+            // 
+            this.txbDT.Location = new System.Drawing.Point(896, 24);
+            this.txbDT.Name = "txbDT";
+            this.txbDT.Size = new System.Drawing.Size(96, 21);
+            this.txbDT.TabIndex = 17;
+            this.txbDT.Click += new System.EventHandler(this.txbDT_Click);
+            // 
             // cbbRemark
             // 
+            this.cbbRemark.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cbbRemark.FormattingEnabled = true;
             this.cbbRemark.Items.AddRange(new object[] {
             "",
@@ -266,78 +339,6 @@
             this.label3.TabIndex = 10;
             this.label3.Text = "车型";
             // 
-            // txbDT
-            // 
-            this.txbDT.Location = new System.Drawing.Point(896, 24);
-            this.txbDT.Name = "txbDT";
-            this.txbDT.Size = new System.Drawing.Size(96, 21);
-            this.txbDT.TabIndex = 17;
-            this.txbDT.Click += new System.EventHandler(this.txbDT_Click);
-            // 
-            // createtimeDataGridViewTextBoxColumn
-            // 
-            this.createtimeDataGridViewTextBoxColumn.DataPropertyName = "create_time";
-            dataGridViewCellStyle1.Format = "G";
-            dataGridViewCellStyle1.NullValue = null;
-            this.createtimeDataGridViewTextBoxColumn.DefaultCellStyle = dataGridViewCellStyle1;
-            this.createtimeDataGridViewTextBoxColumn.HeaderText = "打印时间";
-            this.createtimeDataGridViewTextBoxColumn.Name = "createtimeDataGridViewTextBoxColumn";
-            // 
-            // partNoDataGridViewTextBoxColumn
-            // 
-            this.partNoDataGridViewTextBoxColumn.DataPropertyName = "part_No";
-            this.partNoDataGridViewTextBoxColumn.HeaderText = "零件编号";
-            this.partNoDataGridViewTextBoxColumn.Name = "partNoDataGridViewTextBoxColumn";
-            // 
-            // nameDataGridViewTextBoxColumn
-            // 
-            this.nameDataGridViewTextBoxColumn.DataPropertyName = "name";
-            this.nameDataGridViewTextBoxColumn.HeaderText = "产品名称";
-            this.nameDataGridViewTextBoxColumn.Name = "nameDataGridViewTextBoxColumn";
-            // 
-            // modelDataGridViewTextBoxColumn
-            // 
-            this.modelDataGridViewTextBoxColumn.DataPropertyName = "model";
-            this.modelDataGridViewTextBoxColumn.HeaderText = "车型";
-            this.modelDataGridViewTextBoxColumn.Name = "modelDataGridViewTextBoxColumn";
-            // 
-            // capacityDataGridViewTextBoxColumn
-            // 
-            this.capacityDataGridViewTextBoxColumn.DataPropertyName = "capacity";
-            this.capacityDataGridViewTextBoxColumn.HeaderText = "收容数";
-            this.capacityDataGridViewTextBoxColumn.Name = "capacityDataGridViewTextBoxColumn";
-            // 
-            // containerNoDataGridViewTextBoxColumn
-            // 
-            this.containerNoDataGridViewTextBoxColumn.DataPropertyName = "container_No";
-            this.containerNoDataGridViewTextBoxColumn.HeaderText = "容器编号";
-            this.containerNoDataGridViewTextBoxColumn.Name = "containerNoDataGridViewTextBoxColumn";
-            // 
-            // remarkDataGridViewTextBoxColumn
-            // 
-            this.remarkDataGridViewTextBoxColumn.DataPropertyName = "remark";
-            this.remarkDataGridViewTextBoxColumn.HeaderText = "备注";
-            this.remarkDataGridViewTextBoxColumn.Name = "remarkDataGridViewTextBoxColumn";
-            // 
-            // productiondateDataGridViewTextBoxColumn
-            // 
-            this.productiondateDataGridViewTextBoxColumn.DataPropertyName = "production_date";
-            dataGridViewCellStyle2.Format = "d";
-            dataGridViewCellStyle2.NullValue = null;
-            this.productiondateDataGridViewTextBoxColumn.DefaultCellStyle = dataGridViewCellStyle2;
-            this.productiondateDataGridViewTextBoxColumn.HeaderText = "生产日期";
-            this.productiondateDataGridViewTextBoxColumn.Name = "productiondateDataGridViewTextBoxColumn";
-            // 
-            // serialnumberDataGridViewTextBoxColumn
-            // 
-            this.serialnumberDataGridViewTextBoxColumn.DataPropertyName = "formatSN";
-            this.serialnumberDataGridViewTextBoxColumn.HeaderText = "序列号";
-            this.serialnumberDataGridViewTextBoxColumn.Name = "serialnumberDataGridViewTextBoxColumn";
-            // 
-            // bindingSource1
-            // 
-            this.bindingSource1.DataSource = typeof(KPrint.rt_print_log);
-            // 
             // FPrintLIst
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
@@ -355,9 +356,9 @@
             this.panel2.ResumeLayout(false);
             this.panel2.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.bindingSource1)).EndInit();
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.bindingSource1)).EndInit();
             this.ResumeLayout(false);
 
         }

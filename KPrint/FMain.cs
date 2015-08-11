@@ -36,10 +36,16 @@ namespace KPrint
                             where q.deleted == 0 && (q.part_No.Contains(s.part_No) && q.name.Contains(s.name) && q.model.Contains(s.model))
                             orderby q.modify_time descending
                             select q;
-                if (query != null)
+                if (query != null && query.Count()>0)
                 {
                     bdsProduct.DataSource = query.ToArray();
                     PublicTools.RecountRowsNum(dataGridView1);
+                }
+                else
+                {
+                    bdsProduct.DataSource = new List<rt_product>();
+
+                    MessageBox.Show("没有查到相关记录");
                 }
             }
         }
@@ -126,53 +132,67 @@ namespace KPrint
 
         private void ImportExcel(string excelPath)
         {
-            IWorkbook wb = WorkbookFactory.Create(excelPath);
-
-            int count = 0;
-            ISheet ist = wb.GetSheetAt(0);
-            int rowofPage = ist.LastRowNum + 1;
-            using (var db = PublicDB.getDB())
+            try
             {
-                for (int j = 1; j < rowofPage; j++)
+                IWorkbook wb = WorkbookFactory.Create(excelPath);
+
+                int count = 0;
+                ISheet ist = wb.GetSheetAt(0);
+                int rowofPage = ist.LastRowNum + 1;
+                using (var db = PublicDB.getDB())
                 {
-                    count++;
-                    IRow irow = ist.GetRow(j);
-
-                    if (irow == null) continue;
-
-                    string partNo = irow.GetCell(0).StringCellValue;
-                    if (partNo.Length < 4) continue;
-
-                    var result = (from a in db.rt_product
-                                  where a.part_No.Equals(partNo) && a.deleted == 0
-                                  select a).FirstOrDefault();
-                    if (result == null)
+                    for (int j = 1; j < rowofPage; j++)
                     {
-                        rt_product p = new rt_product();
-                        p.id = Guid.NewGuid();
-                        p.part_No = irow.GetCell(0).StringCellValue;
-                        p.name = irow.GetCell(1).StringCellValue;
-                        p.model = irow.GetCell(2).StringCellValue;
-                        p.capacity = (int)irow.GetCell(3).NumericCellValue;
-                        p.deleted = 0;
-                        p.remark = "";
-                        p.modify_time = DateTime.Now;
-                        db.rt_product.Add(p);
-                    }
-                    else
-                    {
-                        result.name = irow.GetCell(1).StringCellValue;
-                        result.name = irow.GetCell(1).StringCellValue;
-                        result.model = irow.GetCell(2).StringCellValue;
-                        result.capacity = (int)irow.GetCell(3).NumericCellValue;
-                        result.deleted = 0;
-                        result.remark = "";
-                        result.modify_time = DateTime.Now;
-                        db.Entry(result).State = System.Data.Entity.EntityState.Modified;
-                    }
+                        count++;
+                        IRow irow = ist.GetRow(j);
 
+                        if (irow == null) continue;
+
+                        string partNo = irow.GetCell(0).StringCellValue;
+                        if (partNo.Length < 4) continue;
+
+                        var result = (from a in db.rt_product
+                                      where a.part_No.Equals(partNo) && a.deleted == 0
+                                      select a).FirstOrDefault();
+                        if (result == null)
+                        {
+                            rt_product p = new rt_product();
+                            p.id = Guid.NewGuid();
+                            p.part_No = irow.GetCell(0).StringCellValue;
+                            p.name = irow.GetCell(1).StringCellValue;
+                            p.model = irow.GetCell(2).StringCellValue;
+                            p.capacity = (int)irow.GetCell(3).NumericCellValue;
+                            p.deleted = 0;
+                            p.remark = "";
+                            p.modify_time = DateTime.Now;
+                            db.rt_product.Add(p);
+                        }
+                        else
+                        {
+                            result.name = irow.GetCell(1).StringCellValue;
+                            result.name = irow.GetCell(1).StringCellValue;
+                            result.model = irow.GetCell(2).StringCellValue;
+                            try
+                            {
+                                result.capacity = (int)irow.GetCell(3).NumericCellValue;
+                            }
+                            catch
+                            {
+                                result.capacity = int.Parse(irow.GetCell(3).StringCellValue);
+                            }
+                            result.deleted = 0;
+                            result.remark = "";
+                            result.modify_time = DateTime.Now;
+                            db.Entry(result).State = System.Data.Entity.EntityState.Modified;
+                        }
+
+                    }
+                    db.SaveChanges();
                 }
-                db.SaveChanges();
+            }
+            catch
+            {
+                MessageBox.Show("导入失败");
             }
         }
 
@@ -194,11 +214,35 @@ namespace KPrint
 
         private void btnSave_Click(object sender, EventArgs e)
         {
-            //todo 可改为正则校验
-            if (txbName.Text.Length < 5) return;
-            if (txbPart_No.Text.Length < 5) return;
-            if (txbModel.Text.Length < 2) return;
-            if (txbCapacity.Text.Length < 2) return;
+            if (txbPart_No.Text.Trim().Length == 0)
+            {
+                MessageBox.Show("零件编号字段不可为空");
+                txbPart_No.Focus();
+                txbPart_No.SelectAll();
+                return;
+            }
+            if (txbName.Text.Trim().Length == 0)
+            {
+                MessageBox.Show("产品名称字段不可为空");
+                txbName.Focus();
+                txbName.SelectAll();
+                return;
+            }
+
+            if (txbModel.Text.Trim().Length == 0)
+            {
+                MessageBox.Show("车型字段不可为空");
+                txbModel.Focus();
+                txbModel.SelectAll();
+                return;
+            }
+            if (txbCapacity.Text.Trim().Length ==0)
+            {
+                MessageBox.Show("收容数字段不可为空");
+                txbCapacity.SelectAll();
+                txbCapacity.Focus();
+                return;
+            }
 
             using (var db = PublicDB.getDB())
             {
@@ -355,6 +399,40 @@ namespace KPrint
             FDatabase m = new FDatabase();
             m.ShowDialog();
             this.LabelDB.Text = string.Format("数据库信息：{0}", PublicDB.getIniConnInfo("config.ini"));
+
+        }
+
+        private void txbModelForSearch_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if ( Char.IsLetterOrDigit(e.KeyChar) ||Char.IsControl(e.KeyChar))
+            {
+                e.Handled = false;
+            }
+            else
+            {
+                e.Handled = true;
+            }
+        }
+
+        private void txbCapacity_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (Char.IsDigit(e.KeyChar) || Char.IsControl(e.KeyChar))
+            {
+                e.Handled = false;
+            }
+            else
+            {
+                e.Handled = true;
+            }
+        }
+
+        private void txbModelForSearch_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void button10_Click(object sender, EventArgs e)
+        {
 
         }
 

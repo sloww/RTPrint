@@ -52,7 +52,7 @@
             this.pictureBox1.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox1.Image")));
             this.pictureBox1.Location = new System.Drawing.Point(0, 0);
             this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(601, 380);
+            this.pictureBox1.Size = new System.Drawing.Size(587, 380);
             this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.pictureBox1.TabIndex = 36;
             this.pictureBox1.TabStop = false;
@@ -61,10 +61,12 @@
             // 
             this.txbCount.Font = new System.Drawing.Font("宋体", 12F);
             this.txbCount.Location = new System.Drawing.Point(745, 161);
+            this.txbCount.MaxLength = 4;
             this.txbCount.Name = "txbCount";
             this.txbCount.Size = new System.Drawing.Size(104, 26);
             this.txbCount.TabIndex = 33;
             this.txbCount.Text = "1";
+            this.txbCount.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txbCount_KeyPress);
             // 
             // label6
             // 
@@ -113,6 +115,7 @@
             "试做",
             "量产",
             "初期量产"});
+            this.cbdRemark.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cbdRemark.FlatStyle = System.Windows.Forms.FlatStyle.System;
             this.cbdRemark.Font = new System.Drawing.Font("宋体", 12F);
             this.cbdRemark.FormattingEnabled = true;
@@ -124,7 +127,6 @@
             this.cbdRemark.Name = "cbdRemark";
             this.cbdRemark.Size = new System.Drawing.Size(104, 24);
             this.cbdRemark.TabIndex = 38;
-            this.cbdRemark.Text = "试做";
             // 
             // dateTimePicker1
             // 
@@ -139,10 +141,10 @@
             // 
             this.statusStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.lblprinter});
-            this.statusStrip1.Location = new System.Drawing.Point(601, 358);
+            this.statusStrip1.Location = new System.Drawing.Point(587, 358);
             this.statusStrip1.Name = "statusStrip1";
             this.statusStrip1.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
-            this.statusStrip1.Size = new System.Drawing.Size(305, 22);
+            this.statusStrip1.Size = new System.Drawing.Size(319, 22);
             this.statusStrip1.TabIndex = 40;
             this.statusStrip1.Text = "statusStrip1";
             // 

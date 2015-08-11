@@ -66,10 +66,10 @@
             this.label8 = new System.Windows.Forms.Label();
             this.panel2 = new System.Windows.Forms.Panel();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
-            this.statusStrip1 = new System.Windows.Forms.StatusStrip();
-            this.LabelDB = new System.Windows.Forms.ToolStripStatusLabel();
             this.Column1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.img = new System.Windows.Forms.DataGridViewImageColumn();
+            this.statusStrip1 = new System.Windows.Forms.StatusStrip();
+            this.LabelDB = new System.Windows.Forms.ToolStripStatusLabel();
             this.partNoDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.nameDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.modelDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -129,12 +129,16 @@
             // 
             // txbModelForSearch
             // 
+            this.txbModelForSearch.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
             this.txbModelForSearch.Font = new System.Drawing.Font("宋体", 12F);
+            this.txbModelForSearch.ImeMode = System.Windows.Forms.ImeMode.Disable;
             this.txbModelForSearch.Location = new System.Drawing.Point(669, 25);
             this.txbModelForSearch.MaxLength = 10;
             this.txbModelForSearch.Name = "txbModelForSearch";
             this.txbModelForSearch.Size = new System.Drawing.Size(100, 26);
             this.txbModelForSearch.TabIndex = 11;
+            this.txbModelForSearch.TextChanged += new System.EventHandler(this.txbModelForSearch_TextChanged);
+            this.txbModelForSearch.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txbModelForSearch_KeyPress);
             // 
             // label3
             // 
@@ -150,6 +154,7 @@
             // 
             this.txbNameForSearch.Font = new System.Drawing.Font("宋体", 12F);
             this.txbNameForSearch.Location = new System.Drawing.Point(397, 25);
+            this.txbNameForSearch.MaxLength = 20;
             this.txbNameForSearch.Name = "txbNameForSearch";
             this.txbNameForSearch.Size = new System.Drawing.Size(200, 26);
             this.txbNameForSearch.TabIndex = 9;
@@ -297,6 +302,7 @@
             this.txbCapacity.TabIndex = 29;
             this.txbCapacity.Text = "60";
             this.txbCapacity.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.txbCapacity.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txbCapacity_KeyPress);
             // 
             // label23
             // 
@@ -364,6 +370,7 @@
             this.button10.TabIndex = 4;
             this.button10.Text = "导入";
             this.button10.UseVisualStyleBackColor = true;
+            this.button10.Click += new System.EventHandler(this.button10_Click);
             // 
             // btnSave
             // 
@@ -413,6 +420,7 @@
             // txbModel
             // 
             this.txbModel.BackColor = System.Drawing.SystemColors.Window;
+            this.txbModel.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
             this.txbModel.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.txbModel.Location = new System.Drawing.Point(697, 21);
             this.txbModel.MaxLength = 10;
@@ -420,6 +428,7 @@
             this.txbModel.Size = new System.Drawing.Size(100, 26);
             this.txbModel.TabIndex = 21;
             this.txbModel.Text = "2CE";
+            this.txbModel.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txbModelForSearch_KeyPress);
             // 
             // label6
             // 
@@ -505,6 +514,19 @@
             this.dataGridView1.TabIndex = 0;
             this.dataGridView1.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellDoubleClick);
             // 
+            // Column1
+            // 
+            this.Column1.HeaderText = "序号";
+            this.Column1.Name = "Column1";
+            // 
+            // img
+            // 
+            this.img.DataPropertyName = "img";
+            this.img.HeaderText = "图片";
+            this.img.ImageLayout = System.Windows.Forms.DataGridViewImageCellLayout.Zoom;
+            this.img.Name = "img";
+            this.img.ReadOnly = true;
+            // 
             // statusStrip1
             // 
             this.statusStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
@@ -521,19 +543,6 @@
             this.LabelDB.Size = new System.Drawing.Size(164, 17);
             this.LabelDB.Text = "数据库地址：远程测试数据库";
             this.LabelDB.Click += new System.EventHandler(this.LabelDB_Click);
-            // 
-            // Column1
-            // 
-            this.Column1.HeaderText = "序号";
-            this.Column1.Name = "Column1";
-            // 
-            // img
-            // 
-            this.img.DataPropertyName = "img";
-            this.img.HeaderText = "图片";
-            this.img.ImageLayout = System.Windows.Forms.DataGridViewImageCellLayout.Zoom;
-            this.img.Name = "img";
-            this.img.ReadOnly = true;
             // 
             // partNoDataGridViewTextBoxColumn
             // 

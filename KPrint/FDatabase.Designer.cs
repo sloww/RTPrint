@@ -47,6 +47,7 @@
             this.txbDBIP.Name = "txbDBIP";
             this.txbDBIP.Size = new System.Drawing.Size(248, 26);
             this.txbDBIP.TabIndex = 0;
+            this.txbDBIP.TextChanged += new System.EventHandler(this.txbDBIP_TextChanged);
             // 
             // label1
             // 
@@ -107,6 +108,7 @@
             this.txbDBName.Name = "txbDBName";
             this.txbDBName.Size = new System.Drawing.Size(248, 26);
             this.txbDBName.TabIndex = 1;
+            this.txbDBName.TextChanged += new System.EventHandler(this.txbDBIP_TextChanged);
             // 
             // txbUserName
             // 
@@ -115,6 +117,7 @@
             this.txbUserName.Name = "txbUserName";
             this.txbUserName.Size = new System.Drawing.Size(248, 26);
             this.txbUserName.TabIndex = 2;
+            this.txbUserName.TextChanged += new System.EventHandler(this.txbDBIP_TextChanged);
             // 
             // label10
             // 
@@ -134,6 +137,7 @@
             this.txbPassword.PasswordChar = '*';
             this.txbPassword.Size = new System.Drawing.Size(248, 26);
             this.txbPassword.TabIndex = 3;
+            this.txbPassword.TextChanged += new System.EventHandler(this.txbDBIP_TextChanged);
             // 
             // FDatabase
             // 

@@ -65,7 +65,7 @@ namespace KPrint
             }
         }
 
-        public static DB getDB()
+        public static DB getDB(int timeOut)
         {
             if (!System.IO.File.Exists("config.ini"))
             {
@@ -74,9 +74,14 @@ namespace KPrint
             }
 
             var db = new DB();
-            db.Database.Connection.ConnectionString = getIniConn("config.ini");
+            db.Database.Connection.ConnectionString = getIniConn("config.ini", timeOut);
             db.Configuration.EnsureTransactionsForFunctionsAndCommands = true;
             return db;
+        }
+
+        public static DB getDB()
+        {
+          return  getDB(60);
         }
 
         public static bool TestDB(string connString)
@@ -90,15 +95,16 @@ namespace KPrint
                     db.Database.Connection.Open();
                     r = (db.Database.Connection.State == ConnectionState.Open);
                 }
-                catch
+                catch(Exception ee)
                 {
+                    System.Windows.Forms.MessageBox.Show(ee.Message);
                     r = false;
                 }
             }
             return r;
         }
 
-        public static string getIniConn(string iniPath)
+        public static string getIniConn(string iniPath,int timeOut)
         {
             INIClass iniClass = new INIClass( iniPath);
             string connString = "";
@@ -109,7 +115,7 @@ namespace KPrint
                 string dataBase = EncAndDec.Decode(iniClass.IniReadValue("Database", "database"));
                 string user = EncAndDec.Decode(iniClass.IniReadValue("Database", "user"));
                 string pwd = EncAndDec.Decode(iniClass.IniReadValue("Database", "password"));
-                connString = string.Format("data source={0};initial catalog={1};persist security info=True;user id={2};password={3};MultipleActiveResultSets=True;App=EntityFramework", Server, dataBase, user, pwd);
+                connString = string.Format("data source={0};initial catalog={1};persist security info=True;user id={2};password={3};MultipleActiveResultSets=True;App=EntityFramework;Connection Timeout={4};", Server, dataBase, user, pwd,timeOut);
 
             }
             return connString;

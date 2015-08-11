@@ -44,6 +44,26 @@ namespace KPrint
             cbdRemark.Text = this.product.remark;
             lblprinter.Text = PublicTools.ReadPrinterName();
 
+            string tmpPrinterName=PublicTools.ReadPrinterName();
+
+            bool isPrinterExist=false;
+            foreach (var printerName in PublicTools.GetLocalPrinters())
+            {
+                if(printerName.Equals(tmpPrinterName))
+                {
+                    isPrinterExist=true;
+                    break;
+                }
+            }
+            if (isPrinterExist)
+            {
+                lblprinter.Text = PublicTools.ReadPrinterName();
+            }
+            else
+            {
+                lblprinter_Click(null, null);
+            }
+
         }
 
         private void btnPrint_Click(object sender, EventArgs e)
@@ -56,8 +76,9 @@ namespace KPrint
                 {
                     lblprinter_Click(null, null);
                 }
+                //设定打印机
                 pd.PrinterSettings.PrinterName = PublicTools.ReadPrinterName();
-                
+
                 List<rt_print_log> printObjs = new List<rt_print_log>();
                 pd.PrintPage += (sender2, args) => DrawPaper(printObjs, args.Graphics);
 
@@ -70,9 +91,9 @@ namespace KPrint
                         printObj.id = Guid.NewGuid();
 
                         this.CopyProductToPrintLog(printObj, this.product);
-                        printObj.serial_number = (PublicDB.GetDailyCount(dateTimePicker1.Value)+1).ToString();
+                        printObj.serial_number = (PublicDB.GetDailyCount(dateTimePicker1.Value) + 1).ToString();
                         printObj.production_date = dateTimePicker1.Value;
-                        printObj.qr = product.part_No.PadLeft(20, '0') + product.capacity.ToString().PadLeft(3, '0') + DateTime.Now.ToString("yyMM") + PublicDB.GetDailyCount(DateTime.Now).ToString().PadLeft(4,'0');
+                        printObj.qr = product.part_No.PadLeft(20, '0') + product.capacity.ToString().PadLeft(3, '0') + DateTime.Now.ToString("yyMM") + PublicDB.GetDailyCount(DateTime.Now).ToString().PadLeft(4, '0');
                         printObj.remark = cbdRemark.Text;
 
                         this.product.remark = cbdRemark.Text;
@@ -91,14 +112,23 @@ namespace KPrint
 
                         if (i + 1 == printCount || i % 3 == 2)
                         {
-                            pd.Print();
+                            try
+                            {
+                                pd.Print();
+                            }
+                            catch (InvalidPrinterException ee)
+                            {
+                                MessageBox.Show(ee.Message);
+                                lblprinter_Click(null, null);
+
+                            }
 
                             printObjs.Clear();
                         }
 
 
                         db.rt_print_log.Add(printObj);
-                        
+
                         PublicDB.AddDailyCount(dateTimePicker1.Value);
                     }
 
@@ -110,6 +140,12 @@ namespace KPrint
 
                     db.SaveChanges();
                 }
+            }
+            else
+            {
+                MessageBox.Show("数量输入不正确");
+                txbCount.SelectAll();
+                txbCount.Focus();
             }
         }
 
@@ -152,7 +188,7 @@ namespace KPrint
         {
 
 
-            Point location = new Point(10, 10+yoffset);
+            Point location = new Point(2, 8+yoffset);
             g.PageUnit = GraphicsUnit.Millimeter;
             Pen p = new Pen(Brushes.Black, 0.3f);
             g.DrawRectangle(p, new Rectangle(location, new Size(190, 84)));
@@ -285,6 +321,18 @@ namespace KPrint
             {
                 PublicTools.WritePrintername(m.PrinterSettings.PrinterName);
                 lblprinter.Text = m.PrinterSettings.PrinterName;
+            }
+        }
+
+        private void txbCount_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (Char.IsDigit(e.KeyChar) || Char.IsControl(e.KeyChar))
+            {
+                e.Handled = false;
+            }
+            else
+            {
+                e.Handled = true;
             }
         }
 

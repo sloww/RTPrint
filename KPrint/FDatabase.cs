@@ -18,6 +18,7 @@ namespace KPrint
 
         private void FDatabase_Load(object sender, EventArgs e)
         {
+            txbDBIP_TextChanged(null, null);
         }
 
         private void btnSave_Click(object sender, EventArgs e)
@@ -40,7 +41,7 @@ namespace KPrint
 
         private void btnTest_Click(object sender, EventArgs e)
         {
-            string connString = string.Format("data source={0};initial catalog={1};persist security info=True;user id={2};password={3};MultipleActiveResultSets=True;App=EntityFramework", txbDBIP.Text, txbDBName.Text, txbUserName.Text, txbPassword.Text );
+            string connString = string.Format("data source={0};initial catalog={1};persist security info=True;user id={2};password={3};MultipleActiveResultSets=True;App=EntityFramework;Connection Timeout=5;", txbDBIP.Text, txbDBName.Text, txbUserName.Text, txbPassword.Text);
 
             if (PublicDB.TestDB(connString))
             {
@@ -50,6 +51,21 @@ namespace KPrint
             {
                 MessageBox.Show("连接数据失败");
 
+            }
+        }
+
+        private void txbDBIP_TextChanged(object sender, EventArgs e)
+        {
+
+            if (txbDBIP.Text.Trim().Length > 0 && txbDBName.Text.Trim().Length > 0 && txbPassword.Text.Trim().Length > 0 && txbUserName.Text.Trim().Length > 0)
+            {
+                btnTest.Enabled = true;
+                btnSave.Enabled = true;
+            }
+            else
+            {
+                btnTest.Enabled = false;
+                btnSave.Enabled = false;
             }
         }
     }

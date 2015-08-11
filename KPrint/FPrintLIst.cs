@@ -33,7 +33,7 @@ namespace KPrint
         }
 
 
-        private List<rt_print_log> GetPintObjs()
+        private List<rt_print_log> GetPrintObjs()
         {
             List<rt_print_log> pintObjs = new List<rt_print_log>();
             string partno = txbPartNo.Text.Trim();
@@ -54,13 +54,21 @@ namespace KPrint
             using (var db = PublicDB.getDB())
             {
                 var q = from a in db.rt_print_log
-                        where a.deleted == 0 && a.part_No.Contains(partno) && a.name.Contains(name) && a.model.Contains(model) && a.remark.Contains(remark) &&a.formatPDate.Contains(pDate)
+                        where a.deleted == 0 && a.part_No.Contains(partno) && a.name.Contains(name) && a.model.Contains(model) && a.formatPDate.Contains(pDate)
                         orderby a.create_time
                         select a;
                 if (q != null)
                 {
-                    pintObjs = q.ToList();
+                    if (remark != "")
+                    {
+                        pintObjs = q.Where(a => a.remark == remark).ToList();
+                    }
+                    else
+                    {
+                        pintObjs = q.ToList();
+                    }
                 }
+
 
             }
             return pintObjs;
@@ -68,15 +76,29 @@ namespace KPrint
 
         private void btnSearch_Click(object sender, EventArgs e)
         {
-            dataGridView1.DataSource = GetPintObjs();
-            PublicTools.RecountRowsNum(dataGridView1);
+            var PrintObjs=GetPrintObjs();
+            if (PrintObjs == null || PrintObjs.Count == 0)
+            {
+                PrintObjs = new List<rt_print_log>();
+                dataGridView1.DataSource = GetPrintObjs();
+                MessageBox.Show("没有查到相关记录");
+            }
+            else
+            {
+
+                dataGridView1.DataSource = GetPrintObjs();
+                PublicTools.RecountRowsNum(dataGridView1);
+
+            }
+
+
 
         }
 
 
             private void btnExport_Click(object sender, EventArgs e)
         {
-            List<rt_print_log> q = GetPintObjs();
+            List<rt_print_log> q = GetPrintObjs();
 
             if (q.Count == 0) return;
 
