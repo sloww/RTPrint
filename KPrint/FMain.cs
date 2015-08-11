@@ -33,7 +33,7 @@ namespace KPrint
                 s.name = txbNameForSearch.Text;
                 s.model = txbModelForSearch.Text;
                 var query = from q in db.rt_product
-                            where q.deleted == 0 && (q.part_No.Contains(s.part_No) && q.name.Contains(s.name) && q.model.Contains(s.model))
+                            where q.deleted == 0 && (q.part_No.StartsWith(s.part_No) && q.name.StartsWith(s.name) && q.model.StartsWith(s.model))
                             orderby q.modify_time descending
                             select q;
                 if (query != null && query.Count()>0)
@@ -204,6 +204,11 @@ namespace KPrint
             txbCapacity.Text = "";
             pictureBox1.Image = null;
             txbPart_No.Enabled = false;
+
+            txbNameForSearch.Text = "";
+            txbNameForSearch.Text = "";
+            txbModelForSearch.Text = "";
+            
 
         }
 
@@ -378,7 +383,8 @@ namespace KPrint
                 ICell icell2 = irow.CreateCell(2);
                 icell2.SetCellValue(q[i].model);
                 ICell icell3 = irow.CreateCell(3);
-                icell3.SetCellValue(q[i].capacity.ToString());
+                icell3.SetCellType(CellType.Numeric); 
+                icell3.SetCellValue(q[i].capacity);
 
             }
             foreach (var item in q)
@@ -434,6 +440,30 @@ namespace KPrint
         private void button10_Click(object sender, EventArgs e)
         {
 
+        }
+
+        private void txbPartNoForSearch_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (Char.IsLetterOrDigit(e.KeyChar) || Char.IsControl(e.KeyChar) || e.KeyChar=='-')
+            {
+                e.Handled = false;
+            }
+            else
+            {
+                e.Handled = true;
+            }
+        }
+
+        private void txbPart_No_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (Char.IsLetterOrDigit(e.KeyChar) || Char.IsControl(e.KeyChar) || e.KeyChar == '-')
+            {
+                e.Handled = false;
+            }
+            else
+            {
+                e.Handled = true;
+            }
         }
 
     }

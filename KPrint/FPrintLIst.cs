@@ -54,7 +54,7 @@ namespace KPrint
             using (var db = PublicDB.getDB())
             {
                 var q = from a in db.rt_print_log
-                        where a.deleted == 0 && a.part_No.Contains(partno) && a.name.Contains(name) && a.model.Contains(model) && a.formatPDate.Contains(pDate)
+                        where a.deleted == 0 && a.part_No.StartsWith(partno) && a.name.StartsWith(name) && a.model.StartsWith(model) && a.formatPDate.Contains(pDate)
                         orderby a.create_time
                         select a;
                 if (q != null)
@@ -173,6 +173,23 @@ namespace KPrint
                 FDT.Location = PublicTools.local(txbDT);
                 FDT.ShowDialog();
                 txbDT.Text = FDateTime.DateTimeSelect.ToShortDateString();
+            }
+
+            private void txbName_KeyPress(object sender, KeyPressEventArgs e)
+            {
+
+            }
+
+            private void txbPartNo_KeyPress(object sender, KeyPressEventArgs e)
+            {
+                if (Char.IsLetterOrDigit(e.KeyChar) || Char.IsControl(e.KeyChar) || e.KeyChar == '-')
+                {
+                    e.Handled = false;
+                }
+                else
+                {
+                    e.Handled = true;
+                }
             }
         
     }

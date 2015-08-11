@@ -171,12 +171,15 @@
             // 
             // txbPartNoForSearch
             // 
+            this.txbPartNoForSearch.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
             this.txbPartNoForSearch.Font = new System.Drawing.Font("宋体", 12F);
+            this.txbPartNoForSearch.ImeMode = System.Windows.Forms.ImeMode.Disable;
             this.txbPartNoForSearch.Location = new System.Drawing.Point(93, 25);
             this.txbPartNoForSearch.MaxLength = 20;
             this.txbPartNoForSearch.Name = "txbPartNoForSearch";
             this.txbPartNoForSearch.Size = new System.Drawing.Size(200, 26);
             this.txbPartNoForSearch.TabIndex = 7;
+            this.txbPartNoForSearch.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txbPartNoForSearch_KeyPress);
             // 
             // label1
             // 
@@ -295,6 +298,7 @@
             // 
             this.txbCapacity.BackColor = System.Drawing.SystemColors.Window;
             this.txbCapacity.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.txbCapacity.ImeMode = System.Windows.Forms.ImeMode.Disable;
             this.txbCapacity.Location = new System.Drawing.Point(616, 21);
             this.txbCapacity.MaxLength = 3;
             this.txbCapacity.Name = "txbCapacity";
@@ -422,6 +426,7 @@
             this.txbModel.BackColor = System.Drawing.SystemColors.Window;
             this.txbModel.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
             this.txbModel.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.txbModel.ImeMode = System.Windows.Forms.ImeMode.Disable;
             this.txbModel.Location = new System.Drawing.Point(697, 21);
             this.txbModel.MaxLength = 10;
             this.txbModel.Name = "txbModel";
@@ -464,14 +469,17 @@
             // txbPart_No
             // 
             this.txbPart_No.BackColor = System.Drawing.SystemColors.Window;
+            this.txbPart_No.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
             this.txbPart_No.Enabled = false;
             this.txbPart_No.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.txbPart_No.ImeMode = System.Windows.Forms.ImeMode.Disable;
             this.txbPart_No.Location = new System.Drawing.Point(80, 21);
             this.txbPart_No.MaxLength = 20;
             this.txbPart_No.Name = "txbPart_No";
             this.txbPart_No.Size = new System.Drawing.Size(200, 26);
             this.txbPart_No.TabIndex = 17;
             this.txbPart_No.Text = "74561-T6L-H010-M1";
+            this.txbPart_No.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txbPart_No_KeyPress);
             // 
             // label8
             // 

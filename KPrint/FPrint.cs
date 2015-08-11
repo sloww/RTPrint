@@ -13,15 +13,13 @@ namespace KPrint
 {
     public partial class FPrint : Form
     {
+        private Image image;
         private rt_product product = new rt_product();
-        public FPrint()
-        {
-            InitializeComponent();
-        }
 
         public FPrint(rt_product product)
         {
             InitializeComponent();
+            image = pictureBox1.Image;
             this.product = product;
 
         }
@@ -42,6 +40,7 @@ namespace KPrint
 
             this.DrawPictureBox(this.product, Graphics.FromImage(pictureBox1.Image), dateTimePicker1.Value);
             cbdRemark.Text = this.product.remark;
+
             lblprinter.Text = PublicTools.ReadPrinterName();
 
             string tmpPrinterName=PublicTools.ReadPrinterName();
@@ -68,6 +67,13 @@ namespace KPrint
 
         private void btnPrint_Click(object sender, EventArgs e)
         {
+            if (cbdRemark.Text.Length== 0)
+            {
+                MessageBox.Show("备注为空，请填写");
+                cbdRemark.Focus();
+                cbdRemark.DroppedDown = true;
+                return;
+            }
             int printCount = 0;
             if (int.TryParse(txbCount.Text, out printCount) && printCount > 0)
             {
@@ -93,7 +99,7 @@ namespace KPrint
                         this.CopyProductToPrintLog(printObj, this.product);
                         printObj.serial_number = (PublicDB.GetDailyCount(dateTimePicker1.Value) + 1).ToString();
                         printObj.production_date = dateTimePicker1.Value;
-                        printObj.qr = product.part_No.PadLeft(20, '0') + product.capacity.ToString().PadLeft(3, '0') + DateTime.Now.ToString("yyMM") + PublicDB.GetDailyCount(DateTime.Now).ToString().PadLeft(4, '0');
+                        printObj.qr = product.part_No.PadRight(20, ' ') + product.capacity.ToString().PadLeft(3, '0') + printObj.production_date.ToString("yyMM") + printObj.serial_number.PadLeft(4, '0');
                         printObj.remark = cbdRemark.Text;
 
                         this.product.remark = cbdRemark.Text;
@@ -214,7 +220,7 @@ namespace KPrint
 
             //font set
             Font smallFont = new Font("SimSun", 8);
-            Font largeFont = new Font("Arial", 30);
+            Font largeFont = new Font("Fixedsys", 30);
             Font middleFont = new Font("SimHei", 14);
 
 
@@ -235,7 +241,19 @@ namespace KPrint
             cursor = new Point(location.X + 32, location.Y);
             g.DrawString("零件编号", smallFont, Brushes.Black, new Point(cursor.X + 1, cursor.Y + 1));
             g.DrawString("武汉日特固特防音配件有限公司 产品标示卡", smallFont, Brushes.Black, new Point(cursor.X + 32, cursor.Y + 1));
-            g.DrawString(printObj.part_No, largeFont, Brushes.Black, new Point(cursor.X + 6, cursor.Y + 10));
+
+            if (printObj.part_No.Length > 16)
+            {
+                g.DrawString(printObj.part_No, new Font("Fixedsys", 18), Brushes.Black, new Point(cursor.X + 2, cursor.Y + 10));
+            }
+            else if (printObj.part_No.Length > 12)
+            {
+                g.DrawString(printObj.part_No, new Font("Fixedsys", 22), Brushes.Black, new Point(cursor.X + 2, cursor.Y + 10));
+            }
+            else
+            {
+                g.DrawString(printObj.part_No, largeFont, Brushes.Black, new Point(cursor.X + 6, cursor.Y + 10));
+            }
 
             //draw operator cell
             cursor = new Point(location.X + 162, location.Y);
@@ -295,7 +313,21 @@ namespace KPrint
             //draw production name cell
             cursor = new Point(location.X + 88, location.Y + 28);
             g.DrawString("产品名称", smallFont, Brushes.Black, new Point(cursor.X + 1, cursor.Y + 1));
-            g.DrawString(printObj.name, new Font("SimHei", 14), Brushes.Black, new Point(cursor.X + 6, cursor.Y + 4));
+            if (printObj.name.Length > 16)
+            {
+                g.DrawString(printObj.name, new Font("SimHei", 9), Brushes.Black, new Point(cursor.X + 1, cursor.Y + 4));
+
+            }
+
+            else if (printObj.name.Length > 12)
+            {
+                g.DrawString(printObj.name, new Font("SimHei", 12), Brushes.Black, new Point(cursor.X + 1, cursor.Y + 4));
+
+            }
+            else
+            {
+                g.DrawString(printObj.name, new Font("SimHei", 13), Brushes.Black, new Point(cursor.X + 6, cursor.Y + 4));
+            }
 
             //draw img cell
             cursor = new Point(location.X + 88, location.Y + 38);
@@ -334,6 +366,15 @@ namespace KPrint
             {
                 e.Handled = true;
             }
+        }
+
+        private void dateTimePicker1_ValueChanged(object sender, EventArgs e)
+        {
+            Image tmp = (Image)image.Clone();
+
+            this.DrawPictureBox(this.product, Graphics.FromImage(tmp), dateTimePicker1.Value);
+            pictureBox1.Image = tmp;
+            
         }
 
     }
