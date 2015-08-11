@@ -73,7 +73,7 @@
             this.button6.Name = "button6";
             this.button6.Size = new System.Drawing.Size(105, 30);
             this.button6.TabIndex = 5;
-            this.button6.Text = "导出 (&O)";
+            this.button6.Text = "导出";
             this.button6.UseVisualStyleBackColor = true;
             this.button6.Click += new System.EventHandler(this.btnExport_Click);
             // 
@@ -199,7 +199,7 @@
             this.btnSearch.Name = "btnSearch";
             this.btnSearch.Size = new System.Drawing.Size(105, 30);
             this.btnSearch.TabIndex = 0;
-            this.btnSearch.Text = "检索 (&Q)";
+            this.btnSearch.Text = "检索 ";
             this.btnSearch.UseVisualStyleBackColor = true;
             this.btnSearch.Click += new System.EventHandler(this.btnSearch_Click);
             // 

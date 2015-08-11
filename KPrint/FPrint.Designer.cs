@@ -127,6 +127,7 @@
             this.cbdRemark.Name = "cbdRemark";
             this.cbdRemark.Size = new System.Drawing.Size(104, 24);
             this.cbdRemark.TabIndex = 38;
+            this.cbdRemark.SelectedIndexChanged += new System.EventHandler(this.cbdRemark_SelectedIndexChanged);
             // 
             // dateTimePicker1
             // 

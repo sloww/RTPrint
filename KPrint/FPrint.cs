@@ -19,7 +19,7 @@ namespace KPrint
         public FPrint(rt_product product)
         {
             InitializeComponent();
-            image = pictureBox1.Image;
+            image = (Image)(pictureBox1.Image).Clone();
             this.product = product;
 
         }
@@ -65,6 +65,8 @@ namespace KPrint
 
         }
 
+
+
         private void btnPrint_Click(object sender, EventArgs e)
         {
             if (cbdRemark.Text.Length== 0)
@@ -84,6 +86,7 @@ namespace KPrint
                 }
                 //设定打印机
                 pd.PrinterSettings.PrinterName = PublicTools.ReadPrinterName();
+                pd.PrintController = new System.Drawing.Printing.StandardPrintController();
 
                 List<rt_print_log> printObjs = new List<rt_print_log>();
                 pd.PrintPage += (sender2, args) => DrawPaper(printObjs, args.Graphics);
@@ -146,6 +149,8 @@ namespace KPrint
 
                     db.SaveChanges();
                 }
+
+                this.Close();
             }
             else
             {
@@ -242,18 +247,12 @@ namespace KPrint
             g.DrawString("零件编号", smallFont, Brushes.Black, new Point(cursor.X + 1, cursor.Y + 1));
             g.DrawString("武汉日特固特防音配件有限公司 产品标示卡", smallFont, Brushes.Black, new Point(cursor.X + 32, cursor.Y + 1));
 
-            if (printObj.part_No.Length > 16)
-            {
-                g.DrawString(printObj.part_No, new Font("Fixedsys", 18), Brushes.Black, new Point(cursor.X + 2, cursor.Y + 10));
-            }
-            else if (printObj.part_No.Length > 12)
-            {
-                g.DrawString(printObj.part_No, new Font("Fixedsys", 22), Brushes.Black, new Point(cursor.X + 2, cursor.Y + 10));
-            }
-            else
-            {
-                g.DrawString(printObj.part_No, largeFont, Brushes.Black, new Point(cursor.X + 6, cursor.Y + 10));
-            }
+            Font fitFont = largeFont;
+            int startOffset = 0;
+
+            PublicTools.SetFitCharFont(largeFont, (int)(130*3.8), printObj.part_No, out fitFont, out startOffset);
+            g.DrawString(printObj.part_No, fitFont, Brushes.Black, new Point(startOffset + cursor.X, cursor.Y + 10));
+
 
             //draw operator cell
             cursor = new Point(location.X + 162, location.Y);
@@ -293,7 +292,9 @@ namespace KPrint
             //draw remark cell
             cursor = new Point(location.X + 1, location.Y + 66);
             g.DrawString("备注", smallFont, Brushes.Black, new Point(cursor.X + 1, cursor.Y + 1));
-            g.DrawString(printObj.remark, new Font ("SimSun",28), Brushes.Black, new Point(cursor.X + 6, cursor.Y + 4));
+            PublicTools.SetFitCharFont(largeFont, (int)(40 * 3.8), printObj.remark, out fitFont, out startOffset);
+
+            g.DrawString(printObj.remark, fitFont, Brushes.Black, new Point(cursor.X + startOffset + 6, cursor.Y + 4));
 
             //draw Container No. cell
             cursor = new Point(location.X + 48, location.Y + 28);
@@ -313,22 +314,10 @@ namespace KPrint
             //draw production name cell
             cursor = new Point(location.X + 88, location.Y + 28);
             g.DrawString("产品名称", smallFont, Brushes.Black, new Point(cursor.X + 1, cursor.Y + 1));
-            if (printObj.name.Length > 16)
-            {
-                g.DrawString(printObj.name, new Font("SimHei", 9), Brushes.Black, new Point(cursor.X + 1, cursor.Y + 4));
 
-            }
-
-            else if (printObj.name.Length > 12)
-            {
-                g.DrawString(printObj.name, new Font("SimHei", 12), Brushes.Black, new Point(cursor.X + 1, cursor.Y + 4));
-
-            }
-            else
-            {
-                g.DrawString(printObj.name, new Font("SimHei", 13), Brushes.Black, new Point(cursor.X + 6, cursor.Y + 4));
-            }
-
+            PublicTools.SetFitCharFont(middleFont, (int)(75 * 3.8), printObj.name, out fitFont, out startOffset);
+            g.DrawString(printObj.name, fitFont, Brushes.Black, new Point(cursor.X + startOffset, cursor.Y + 4));
+ 
             //draw img cell
             cursor = new Point(location.X + 88, location.Y + 38);
 
@@ -341,7 +330,6 @@ namespace KPrint
             }
 
             g.DrawString("简图", smallFont, Brushes.Black, new Point(cursor.X + 1, cursor.Y + 1));
-
 
         }
 
@@ -370,11 +358,23 @@ namespace KPrint
 
         private void dateTimePicker1_ValueChanged(object sender, EventArgs e)
         {
-            Image tmp = (Image)image.Clone();
 
+            this.ReDrawPreImg();
+        }
+
+        private void cbdRemark_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            product.remark = cbdRemark.Text;
+            this.ReDrawPreImg();
+        }
+
+        private void ReDrawPreImg()
+        {
+
+            Image tmp = (Image)image.Clone();
+            pictureBox1.Image = null;
             this.DrawPictureBox(this.product, Graphics.FromImage(tmp), dateTimePicker1.Value);
             pictureBox1.Image = tmp;
-            
         }
 
     }

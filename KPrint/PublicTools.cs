@@ -14,6 +14,26 @@ namespace KPrint
 {
     public static class PublicTools
     {
+
+        public static void SetFitCharFont(Font MaxFont, int TotolSpace, string StringCon, out Font FitFont, out int StartOffset)
+        {
+            FitFont = MaxFont;
+            StartOffset = 1;
+            while (true)
+            {
+                int StringWidth=TextRenderer.MeasureText(StringCon, FitFont).Width;
+                if (StringWidth < TotolSpace - 2)
+                {
+                    break;
+                }
+                else
+                {
+                    FitFont = new Font(FitFont.FontFamily, FitFont.Size - 2, FitFont.Unit);
+                }
+            }
+
+            StartOffset = (TotolSpace - TextRenderer.MeasureText(StringCon, FitFont).Width) / (int)(2*3.8);
+        }
         public static byte[] imageToByteArray(System.Drawing.Image imageIn)
         {
             MemoryStream ms = new MemoryStream();

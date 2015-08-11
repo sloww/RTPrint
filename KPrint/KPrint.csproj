@@ -228,7 +228,6 @@
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Bitmap1.bmp" />
     <Content Include="demo.bmp" />
     <Content Include="Icon1.ico" />
     <Content Include="Model1.Context.tt">
