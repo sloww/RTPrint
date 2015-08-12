@@ -8,9 +8,9 @@ using System.Runtime.InteropServices;
 [assembly: AssemblyTitle("KPrint")]
 [assembly: AssemblyDescription("")]
 [assembly: AssemblyConfiguration("")]
-[assembly: AssemblyCompany("")]
+[assembly: AssemblyCompany("Advanced Auto Identification Solutions (Shanghai) Co., Ltd")]
 [assembly: AssemblyProduct("KPrint")]
-[assembly: AssemblyCopyright("Copyright ©  2015")]
+[assembly: AssemblyCopyright("Copyright ©   2015")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
 
