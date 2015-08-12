@@ -84,6 +84,7 @@ namespace KPrint
             PublicTools.IniDatagridview(dataGridView1);
             PublicTools.RecoverColumnWidth(dataGridView1, "FMainDGV.config");
             this.LabelDB.Text =string.Format("数据库信息：{0}", PublicDB.getIniConnInfo("config.ini"));
+            txbPartNoForSearch.Focus();
         }
 
         private void FMain_FormClosing(object sender, FormClosingEventArgs e)
@@ -444,7 +445,7 @@ namespace KPrint
 
         private void txbPartNoForSearch_KeyPress(object sender, KeyPressEventArgs e)
         {
-            if (Char.IsLetterOrDigit(e.KeyChar) || Char.IsControl(e.KeyChar) || e.KeyChar=='-')
+            if (Char.IsLetterOrDigit(e.KeyChar) || Char.IsControl(e.KeyChar) || e.KeyChar == '-' || e.KeyChar == (char)Keys.Tab)
             {
                 e.Handled = false;
             }
@@ -452,6 +453,7 @@ namespace KPrint
             {
                 e.Handled = true;
             }
+
         }
 
         private void txbPart_No_KeyPress(object sender, KeyPressEventArgs e)

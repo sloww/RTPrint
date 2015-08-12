@@ -306,7 +306,7 @@ namespace KPrint
             //draw QR cell
             cursor = new Point(location.X + 48, location.Y + 46);
             if(printObj.serial_number !=null)
-            g.DrawString(DateTime.Now.ToString("yyMM")+ printObj.serial_number.PadLeft(4,'0'), smallFont, Brushes.Black, new Point(cursor.X + 12, cursor.Y + 1));
+                g.DrawString(printObj.production_date.ToString("yyMM") + printObj.serial_number.PadLeft(4, '0'), smallFont, Brushes.Black, new Point(cursor.X + 12, cursor.Y + 1));
             Bitmap bimg = PublicTools.CreateQRCode(printObj.qr);
             g.DrawImage(bimg, new Point(cursor.X + 5, cursor.Y + 6));
 

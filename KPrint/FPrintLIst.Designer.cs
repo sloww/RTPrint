@@ -72,7 +72,7 @@
             this.button6.Location = new System.Drawing.Point(157, 64);
             this.button6.Name = "button6";
             this.button6.Size = new System.Drawing.Size(105, 30);
-            this.button6.TabIndex = 5;
+            this.button6.TabIndex = 6;
             this.button6.Text = "导出";
             this.button6.UseVisualStyleBackColor = true;
             this.button6.Click += new System.EventHandler(this.btnExport_Click);
@@ -175,7 +175,7 @@
             this.txbDT.Location = new System.Drawing.Point(896, 24);
             this.txbDT.Name = "txbDT";
             this.txbDT.Size = new System.Drawing.Size(96, 21);
-            this.txbDT.TabIndex = 17;
+            this.txbDT.TabIndex = 4;
             this.txbDT.Click += new System.EventHandler(this.txbDT_Click);
             // 
             // cbbRemark
@@ -190,7 +190,7 @@
             this.cbbRemark.Location = new System.Drawing.Point(685, 24);
             this.cbbRemark.Name = "cbbRemark";
             this.cbbRemark.Size = new System.Drawing.Size(121, 20);
-            this.cbbRemark.TabIndex = 16;
+            this.cbbRemark.TabIndex = 3;
             // 
             // btnSearch
             // 
@@ -198,7 +198,7 @@
             this.btnSearch.Location = new System.Drawing.Point(15, 64);
             this.btnSearch.Name = "btnSearch";
             this.btnSearch.Size = new System.Drawing.Size(105, 30);
-            this.btnSearch.TabIndex = 0;
+            this.btnSearch.TabIndex = 5;
             this.btnSearch.Text = "检索 ";
             this.btnSearch.UseVisualStyleBackColor = true;
             this.btnSearch.Click += new System.EventHandler(this.btnSearch_Click);
@@ -231,7 +231,7 @@
             this.txbPartNo.MaxLength = 20;
             this.txbPartNo.Name = "txbPartNo";
             this.txbPartNo.Size = new System.Drawing.Size(149, 21);
-            this.txbPartNo.TabIndex = 7;
+            this.txbPartNo.TabIndex = 0;
             this.txbPartNo.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txbPartNo_KeyPress);
             // 
             // label4
@@ -256,11 +256,13 @@
             // 
             // txbModel
             // 
+            this.txbModel.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
             this.txbModel.ImeMode = System.Windows.Forms.ImeMode.Disable;
             this.txbModel.Location = new System.Drawing.Point(555, 24);
+            this.txbModel.MaxLength = 10;
             this.txbModel.Name = "txbModel";
             this.txbModel.Size = new System.Drawing.Size(72, 21);
-            this.txbModel.TabIndex = 11;
+            this.txbModel.TabIndex = 2;
             // 
             // txbName
             // 
@@ -268,7 +270,7 @@
             this.txbName.MaxLength = 20;
             this.txbName.Name = "txbName";
             this.txbName.Size = new System.Drawing.Size(168, 21);
-            this.txbName.TabIndex = 9;
+            this.txbName.TabIndex = 1;
             this.txbName.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txbName_KeyPress);
             // 
             // label3

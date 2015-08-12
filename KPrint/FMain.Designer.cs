@@ -107,16 +107,16 @@
             this.tabControl1.Name = "tabControl1";
             this.tabControl1.SelectedIndex = 0;
             this.tabControl1.Size = new System.Drawing.Size(1004, 150);
-            this.tabControl1.TabIndex = 1;
+            this.tabControl1.TabIndex = 0;
             this.tabControl1.Selecting += new System.Windows.Forms.TabControlCancelEventHandler(this.tabControl1_Selecting);
             // 
             // tabPage1
             // 
             this.tabPage1.Controls.Add(this.txbModelForSearch);
-            this.tabPage1.Controls.Add(this.label3);
             this.tabPage1.Controls.Add(this.txbNameForSearch);
-            this.tabPage1.Controls.Add(this.label2);
             this.tabPage1.Controls.Add(this.txbPartNoForSearch);
+            this.tabPage1.Controls.Add(this.label3);
+            this.tabPage1.Controls.Add(this.label2);
             this.tabPage1.Controls.Add(this.label1);
             this.tabPage1.Controls.Add(this.panel3);
             this.tabPage1.Location = new System.Drawing.Point(4, 22);
@@ -136,7 +136,7 @@
             this.txbModelForSearch.MaxLength = 10;
             this.txbModelForSearch.Name = "txbModelForSearch";
             this.txbModelForSearch.Size = new System.Drawing.Size(100, 26);
-            this.txbModelForSearch.TabIndex = 11;
+            this.txbModelForSearch.TabIndex = 2;
             this.txbModelForSearch.TextChanged += new System.EventHandler(this.txbModelForSearch_TextChanged);
             this.txbModelForSearch.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txbModelForSearch_KeyPress);
             // 
@@ -157,7 +157,7 @@
             this.txbNameForSearch.MaxLength = 20;
             this.txbNameForSearch.Name = "txbNameForSearch";
             this.txbNameForSearch.Size = new System.Drawing.Size(200, 26);
-            this.txbNameForSearch.TabIndex = 9;
+            this.txbNameForSearch.TabIndex = 1;
             // 
             // label2
             // 
@@ -178,7 +178,7 @@
             this.txbPartNoForSearch.MaxLength = 20;
             this.txbPartNoForSearch.Name = "txbPartNoForSearch";
             this.txbPartNoForSearch.Size = new System.Drawing.Size(200, 26);
-            this.txbPartNoForSearch.TabIndex = 7;
+            this.txbPartNoForSearch.TabIndex = 0;
             this.txbPartNoForSearch.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txbPartNoForSearch_KeyPress);
             // 
             // label1
@@ -197,13 +197,13 @@
             this.panel3.Controls.Add(this.btnExport);
             this.panel3.Controls.Add(this.btnPrintList);
             this.panel3.Controls.Add(this.btnImport);
-            this.panel3.Controls.Add(this.btnSearch);
             this.panel3.Controls.Add(this.btnPrint);
+            this.panel3.Controls.Add(this.btnSearch);
             this.panel3.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.panel3.Location = new System.Drawing.Point(3, 72);
             this.panel3.Name = "panel3";
             this.panel3.Size = new System.Drawing.Size(990, 49);
-            this.panel3.TabIndex = 0;
+            this.panel3.TabIndex = 3;
             // 
             // btnExport
             // 
@@ -211,7 +211,7 @@
             this.btnExport.Location = new System.Drawing.Point(375, 12);
             this.btnExport.Name = "btnExport";
             this.btnExport.Size = new System.Drawing.Size(105, 30);
-            this.btnExport.TabIndex = 5;
+            this.btnExport.TabIndex = 3;
             this.btnExport.Text = "导出";
             this.btnExport.UseVisualStyleBackColor = true;
             this.btnExport.Click += new System.EventHandler(this.btnExport_Click);
@@ -234,7 +234,7 @@
             this.btnImport.Location = new System.Drawing.Point(252, 12);
             this.btnImport.Name = "btnImport";
             this.btnImport.Size = new System.Drawing.Size(105, 30);
-            this.btnImport.TabIndex = 3;
+            this.btnImport.TabIndex = 2;
             this.btnImport.Text = "导入";
             this.btnImport.UseVisualStyleBackColor = true;
             this.btnImport.Click += new System.EventHandler(this.btnImport_Click);
@@ -256,7 +256,7 @@
             this.btnPrint.Location = new System.Drawing.Point(129, 12);
             this.btnPrint.Name = "btnPrint";
             this.btnPrint.Size = new System.Drawing.Size(105, 30);
-            this.btnPrint.TabIndex = 2;
+            this.btnPrint.TabIndex = 1;
             this.btnPrint.Text = "打印 ";
             this.btnPrint.UseVisualStyleBackColor = true;
             this.btnPrint.Click += new System.EventHandler(this.btnPrint_Click);
@@ -303,7 +303,7 @@
             this.txbCapacity.MaxLength = 3;
             this.txbCapacity.Name = "txbCapacity";
             this.txbCapacity.Size = new System.Drawing.Size(37, 26);
-            this.txbCapacity.TabIndex = 29;
+            this.txbCapacity.TabIndex = 7;
             this.txbCapacity.Text = "60";
             this.txbCapacity.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             this.txbCapacity.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txbCapacity_KeyPress);
@@ -349,7 +349,7 @@
             this.btnClear.Location = new System.Drawing.Point(6, 12);
             this.btnClear.Name = "btnClear";
             this.btnClear.Size = new System.Drawing.Size(105, 30);
-            this.btnClear.TabIndex = 33;
+            this.btnClear.TabIndex = 1;
             this.btnClear.Text = "清空 ";
             this.btnClear.UseVisualStyleBackColor = true;
             this.btnClear.Click += new System.EventHandler(this.btnClear_Click);
@@ -360,7 +360,7 @@
             this.btnEdit.Location = new System.Drawing.Point(250, 12);
             this.btnEdit.Name = "btnEdit";
             this.btnEdit.Size = new System.Drawing.Size(105, 30);
-            this.btnEdit.TabIndex = 32;
+            this.btnEdit.TabIndex = 3;
             this.btnEdit.Text = "编辑";
             this.btnEdit.UseVisualStyleBackColor = true;
             this.btnEdit.Click += new System.EventHandler(this.btnEdit_Click);
@@ -382,7 +382,7 @@
             this.btnSave.Location = new System.Drawing.Point(616, 12);
             this.btnSave.Name = "btnSave";
             this.btnSave.Size = new System.Drawing.Size(105, 30);
-            this.btnSave.TabIndex = 3;
+            this.btnSave.TabIndex = 6;
             this.btnSave.Text = "保存";
             this.btnSave.UseVisualStyleBackColor = true;
             this.btnSave.Click += new System.EventHandler(this.btnSave_Click);
@@ -393,7 +393,7 @@
             this.btnDelete.Location = new System.Drawing.Point(494, 12);
             this.btnDelete.Name = "btnDelete";
             this.btnDelete.Size = new System.Drawing.Size(105, 30);
-            this.btnDelete.TabIndex = 3;
+            this.btnDelete.TabIndex = 5;
             this.btnDelete.Text = "删除";
             this.btnDelete.UseVisualStyleBackColor = true;
             this.btnDelete.Click += new System.EventHandler(this.btnDelete_Click);
@@ -416,7 +416,7 @@
             this.btnUploadImg.Location = new System.Drawing.Point(877, 12);
             this.btnUploadImg.Name = "btnUploadImg";
             this.btnUploadImg.Size = new System.Drawing.Size(105, 30);
-            this.btnUploadImg.TabIndex = 1;
+            this.btnUploadImg.TabIndex = 0;
             this.btnUploadImg.Text = "选择图片";
             this.btnUploadImg.UseVisualStyleBackColor = true;
             this.btnUploadImg.Click += new System.EventHandler(this.btnUploadImg_Click);
@@ -431,7 +431,7 @@
             this.txbModel.MaxLength = 10;
             this.txbModel.Name = "txbModel";
             this.txbModel.Size = new System.Drawing.Size(100, 26);
-            this.txbModel.TabIndex = 21;
+            this.txbModel.TabIndex = 8;
             this.txbModel.Text = "2CE";
             this.txbModel.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txbModelForSearch_KeyPress);
             // 
@@ -453,7 +453,7 @@
             this.txbName.MaxLength = 20;
             this.txbName.Name = "txbName";
             this.txbName.Size = new System.Drawing.Size(200, 26);
-            this.txbName.TabIndex = 19;
+            this.txbName.TabIndex = 6;
             this.txbName.Text = "COVER L,FR FLOOR UNDER";
             // 
             // label7
@@ -477,7 +477,7 @@
             this.txbPart_No.MaxLength = 20;
             this.txbPart_No.Name = "txbPart_No";
             this.txbPart_No.Size = new System.Drawing.Size(200, 26);
-            this.txbPart_No.TabIndex = 17;
+            this.txbPart_No.TabIndex = 5;
             this.txbPart_No.Text = "74561-T6L-H010-M1";
             this.txbPart_No.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txbPart_No_KeyPress);
             // 
@@ -598,7 +598,7 @@
             this.Name = "FMain";
             this.ShowIcon = false;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "社内标签打印系统 v1.0";
+            this.Text = "社内标签打印系统 v1.01";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.FMain_FormClosing);
             this.Load += new System.EventHandler(this.FMain_Load);
             this.panel1.ResumeLayout(false);
