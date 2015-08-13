@@ -301,14 +301,22 @@ namespace KPrint
             g.DrawString("容器序号", smallFont, Brushes.Black, new Point(cursor.X + 1, cursor.Y + 1));
             if (printObj.container_No < 10)
             {
-                g.DrawString(printObj.container_No.ToString(), new Font("Arial", 28), Brushes.Black, new Point(cursor.X + 8, cursor.Y + 5));
+                g.DrawString(printObj.container_No.ToString(), new Font("Arial", 28), Brushes.Black, new Point(cursor.X + 11, cursor.Y + 5));
+                g.DrawArc(p, new Rectangle(new Point(cursor.X + 10, cursor.Y + 5), new Size(11, 11)), 0, 360);
+
+            }
+            else if (printObj.container_No < 100)
+            {
+                g.DrawString(printObj.container_No.ToString(), new Font("Arial", 20), Brushes.Black, new Point(cursor.X + 10, cursor.Y + 6));
+                g.DrawArc(p, new Rectangle(new Point(cursor.X + 10, cursor.Y + 5), new Size(11, 11)), 0, 360);
+
+
             }
             else
             {
-                g.DrawString(printObj.container_No.ToString(), new Font("Arial", 14), Brushes.Black, new Point(cursor.X + 9, cursor.Y + 7));
-
+                g.DrawString(printObj.container_No.ToString(), new Font("Arial", 14), Brushes.Black, new Point(cursor.X + 10, cursor.Y + 7));
+                g.DrawArc(p, new Rectangle(new Point(cursor.X + 10, cursor.Y + 5), new Size(11, 11)), 0, 360);
             }
-            g.DrawArc(p, new Rectangle( new Point(cursor.X + 7, cursor.Y + 5), new Size(11, 11)), 0, 360);
 
 
             //draw QR cell

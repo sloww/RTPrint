@@ -316,6 +316,7 @@ namespace KPrint
         /// <returns></returns>
         private string Decode(string data, string KEY_64, string IV_64)
         {
+            if (data == "") return "";
             KEY_64 = ToMD5(KEY_64);
             IV_64 = ToMD5(IV_64);
             byte[] byKey = System.Text.ASCIIEncoding.ASCII.GetBytes(KEY_64);
@@ -391,6 +392,7 @@ namespace KPrint
         /// <param name="Key">键</param>
         public string IniReadValue(string Section, string Key)
         {
+            if (ExistINIFile() == false) return "";
             StringBuilder temp = new StringBuilder(500);
             int i = GetPrivateProfileString(Section, Key, "", temp, 500, this.inipath);
             return temp.ToString();
@@ -401,7 +403,8 @@ namespace KPrint
         /// <returns>布尔值</returns>
         public bool ExistINIFile()
         {
-            return File.Exists(inipath);
+            bool tmp=File.Exists(inipath);
+            return tmp;
         }
     }
 

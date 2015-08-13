@@ -34,17 +34,17 @@
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabPage1 = new System.Windows.Forms.TabPage();
             this.txbModelForSearch = new System.Windows.Forms.TextBox();
-            this.label3 = new System.Windows.Forms.Label();
             this.txbNameForSearch = new System.Windows.Forms.TextBox();
-            this.label2 = new System.Windows.Forms.Label();
             this.txbPartNoForSearch = new System.Windows.Forms.TextBox();
+            this.label3 = new System.Windows.Forms.Label();
+            this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.panel3 = new System.Windows.Forms.Panel();
             this.btnExport = new System.Windows.Forms.Button();
             this.btnPrintList = new System.Windows.Forms.Button();
             this.btnImport = new System.Windows.Forms.Button();
-            this.btnSearch = new System.Windows.Forms.Button();
             this.btnPrint = new System.Windows.Forms.Button();
+            this.btnSearch = new System.Windows.Forms.Button();
             this.tabPage2 = new System.Windows.Forms.TabPage();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.txbCapacity = new System.Windows.Forms.TextBox();
@@ -53,7 +53,6 @@
             this.panel4 = new System.Windows.Forms.Panel();
             this.btnClear = new System.Windows.Forms.Button();
             this.btnEdit = new System.Windows.Forms.Button();
-            this.button10 = new System.Windows.Forms.Button();
             this.btnSave = new System.Windows.Forms.Button();
             this.btnDelete = new System.Windows.Forms.Button();
             this.btnADD = new System.Windows.Forms.Button();
@@ -103,6 +102,7 @@
             this.tabControl1.Controls.Add(this.tabPage1);
             this.tabControl1.Controls.Add(this.tabPage2);
             this.tabControl1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.tabControl1.HotTrack = true;
             this.tabControl1.Location = new System.Drawing.Point(0, 0);
             this.tabControl1.Name = "tabControl1";
             this.tabControl1.SelectedIndex = 0;
@@ -140,16 +140,6 @@
             this.txbModelForSearch.TextChanged += new System.EventHandler(this.txbModelForSearch_TextChanged);
             this.txbModelForSearch.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txbModelForSearch_KeyPress);
             // 
-            // label3
-            // 
-            this.label3.AutoSize = true;
-            this.label3.Font = new System.Drawing.Font("宋体", 12F);
-            this.label3.Location = new System.Drawing.Point(613, 30);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(40, 16);
-            this.label3.TabIndex = 10;
-            this.label3.Text = "车型";
-            // 
             // txbNameForSearch
             // 
             this.txbNameForSearch.Font = new System.Drawing.Font("宋体", 12F);
@@ -158,16 +148,6 @@
             this.txbNameForSearch.Name = "txbNameForSearch";
             this.txbNameForSearch.Size = new System.Drawing.Size(200, 26);
             this.txbNameForSearch.TabIndex = 1;
-            // 
-            // label2
-            // 
-            this.label2.AutoSize = true;
-            this.label2.Font = new System.Drawing.Font("宋体", 12F);
-            this.label2.Location = new System.Drawing.Point(309, 30);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(72, 16);
-            this.label2.TabIndex = 8;
-            this.label2.Text = "产品名称";
             // 
             // txbPartNoForSearch
             // 
@@ -180,6 +160,26 @@
             this.txbPartNoForSearch.Size = new System.Drawing.Size(200, 26);
             this.txbPartNoForSearch.TabIndex = 0;
             this.txbPartNoForSearch.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txbPartNoForSearch_KeyPress);
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Font = new System.Drawing.Font("宋体", 12F);
+            this.label3.Location = new System.Drawing.Point(613, 30);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(40, 16);
+            this.label3.TabIndex = 10;
+            this.label3.Text = "车型";
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Font = new System.Drawing.Font("宋体", 12F);
+            this.label2.Location = new System.Drawing.Point(309, 30);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(72, 16);
+            this.label2.TabIndex = 8;
+            this.label2.Text = "产品名称";
             // 
             // label1
             // 
@@ -239,17 +239,6 @@
             this.btnImport.UseVisualStyleBackColor = true;
             this.btnImport.Click += new System.EventHandler(this.btnImport_Click);
             // 
-            // btnSearch
-            // 
-            this.btnSearch.Font = new System.Drawing.Font("宋体", 12F);
-            this.btnSearch.Location = new System.Drawing.Point(6, 12);
-            this.btnSearch.Name = "btnSearch";
-            this.btnSearch.Size = new System.Drawing.Size(105, 30);
-            this.btnSearch.TabIndex = 0;
-            this.btnSearch.Text = "检索";
-            this.btnSearch.UseVisualStyleBackColor = true;
-            this.btnSearch.Click += new System.EventHandler(this.btnSearch_Click);
-            // 
             // btnPrint
             // 
             this.btnPrint.Font = new System.Drawing.Font("宋体", 12F);
@@ -260,6 +249,17 @@
             this.btnPrint.Text = "打印 ";
             this.btnPrint.UseVisualStyleBackColor = true;
             this.btnPrint.Click += new System.EventHandler(this.btnPrint_Click);
+            // 
+            // btnSearch
+            // 
+            this.btnSearch.Font = new System.Drawing.Font("宋体", 12F);
+            this.btnSearch.Location = new System.Drawing.Point(6, 12);
+            this.btnSearch.Name = "btnSearch";
+            this.btnSearch.Size = new System.Drawing.Size(105, 30);
+            this.btnSearch.TabIndex = 0;
+            this.btnSearch.Text = "检索";
+            this.btnSearch.UseVisualStyleBackColor = true;
+            this.btnSearch.Click += new System.EventHandler(this.btnSearch_Click);
             // 
             // tabPage2
             // 
@@ -332,7 +332,6 @@
             this.panel4.BackColor = System.Drawing.SystemColors.Control;
             this.panel4.Controls.Add(this.btnClear);
             this.panel4.Controls.Add(this.btnEdit);
-            this.panel4.Controls.Add(this.button10);
             this.panel4.Controls.Add(this.btnSave);
             this.panel4.Controls.Add(this.btnDelete);
             this.panel4.Controls.Add(this.btnADD);
@@ -365,21 +364,10 @@
             this.btnEdit.UseVisualStyleBackColor = true;
             this.btnEdit.Click += new System.EventHandler(this.btnEdit_Click);
             // 
-            // button10
-            // 
-            this.button10.Font = new System.Drawing.Font("宋体", 12F);
-            this.button10.Location = new System.Drawing.Point(372, 12);
-            this.button10.Name = "button10";
-            this.button10.Size = new System.Drawing.Size(105, 30);
-            this.button10.TabIndex = 4;
-            this.button10.Text = "导入";
-            this.button10.UseVisualStyleBackColor = true;
-            this.button10.Click += new System.EventHandler(this.button10_Click);
-            // 
             // btnSave
             // 
             this.btnSave.Font = new System.Drawing.Font("宋体", 12F);
-            this.btnSave.Location = new System.Drawing.Point(616, 12);
+            this.btnSave.Location = new System.Drawing.Point(494, 12);
             this.btnSave.Name = "btnSave";
             this.btnSave.Size = new System.Drawing.Size(105, 30);
             this.btnSave.TabIndex = 6;
@@ -390,7 +378,7 @@
             // btnDelete
             // 
             this.btnDelete.Font = new System.Drawing.Font("宋体", 12F);
-            this.btnDelete.Location = new System.Drawing.Point(494, 12);
+            this.btnDelete.Location = new System.Drawing.Point(372, 12);
             this.btnDelete.Name = "btnDelete";
             this.btnDelete.Size = new System.Drawing.Size(105, 30);
             this.btnDelete.TabIndex = 5;
@@ -598,7 +586,7 @@
             this.Name = "FMain";
             this.ShowIcon = false;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "社内标签打印系统 v1.01";
+            this.Text = "社内标签打印系统 v1.0.0";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.FMain_FormClosing);
             this.Load += new System.EventHandler(this.FMain_Load);
             this.panel1.ResumeLayout(false);
@@ -652,7 +640,6 @@
         private System.Windows.Forms.Button btnExport;
         private System.Windows.Forms.StatusStrip statusStrip1;
         private System.Windows.Forms.ToolStripStatusLabel LabelDB;
-        private System.Windows.Forms.Button button10;
         private System.Windows.Forms.Button btnDelete;
         private System.Windows.Forms.Button btnSave;
         private System.Windows.Forms.TextBox txbCapacity;

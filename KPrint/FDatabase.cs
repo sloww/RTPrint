@@ -18,6 +18,16 @@ namespace KPrint
 
         private void FDatabase_Load(object sender, EventArgs e)
         {
+            INIClass iniClass = new INIClass("config.ini");
+            if (iniClass.ExistINIFile())
+            {
+                txbDBIP.Text = EncAndDec.Decode(iniClass.IniReadValue("Database", "server"));
+                txbDBName.Text = EncAndDec.Decode(iniClass.IniReadValue("Database", "database"));
+                txbUserName.Text = EncAndDec.Decode(iniClass.IniReadValue("Database", "user"));
+                txbPassword.Text = EncAndDec.Decode(iniClass.IniReadValue("Database", "password"));
+            }
+
+
             txbDBIP_TextChanged(null, null);
         }
 

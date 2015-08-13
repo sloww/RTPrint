@@ -16,7 +16,7 @@ namespace KPrint
 {
     public partial class FMain : Form
     {
-
+        bool isAdsStatus = false;
         public FMain()
         {
             InitializeComponent();
@@ -32,20 +32,27 @@ namespace KPrint
                 s.part_No = txbPartNoForSearch.Text;
                 s.name = txbNameForSearch.Text;
                 s.model = txbModelForSearch.Text;
-                var query = from q in db.rt_product
-                            where q.deleted == 0 && (q.part_No.StartsWith(s.part_No) && q.name.StartsWith(s.name) && q.model.StartsWith(s.model))
-                            orderby q.modify_time descending
-                            select q;
-                if (query != null && query.Count()>0)
+                try
                 {
-                    bdsProduct.DataSource = query.ToArray();
-                    PublicTools.RecountRowsNum(dataGridView1);
-                }
-                else
-                {
-                    bdsProduct.DataSource = new List<rt_product>();
+                    var query = from q in db.rt_product
+                                where q.deleted == 0 && (q.part_No.StartsWith(s.part_No) && q.name.StartsWith(s.name) && q.model.StartsWith(s.model))
+                                orderby q.modify_time descending
+                                select q;
+                    if (query != null && query.Count() > 0)
+                    {
+                        bdsProduct.DataSource = query.ToArray();
+                        PublicTools.RecountRowsNum(dataGridView1);
+                    }
+                    else
+                    {
+                        bdsProduct.DataSource = new List<rt_product>();
 
-                    MessageBox.Show("没有查到相关记录");
+                        MessageBox.Show("没有查到相关记录");
+                    }
+                }
+                catch (Exception ee)
+                {
+                    MessageBox.Show("数据库连接失败，请检查网络或配置");
                 }
             }
         }
@@ -56,6 +63,41 @@ namespace KPrint
             txbPart_No.Enabled = true;
             txbPart_No.SelectAll();
 
+            isAdsStatus = true;
+            ChanageAddState();
+
+
+
+        }
+
+        private void ChanageAddState()
+        {
+            if (isAdsStatus)
+            {
+                txbPart_No.ImeMode = System.Windows.Forms.ImeMode.Disable;
+                txbPart_No.MaxLength = 20;
+                txbPart_No.CharacterCasing = CharacterCasing.Upper;
+                txbPart_No.KeyPress += txbPart_No_KeyPress;
+                txbPart_No.Enabled = true;
+                btnClear.Text = "撤销";
+                btnADD.Enabled = false;
+                btnEdit.Enabled = false;
+                btnDelete.Enabled = false;
+                btnImport.Enabled = false;
+                btnSave.Enabled = true;
+
+            }
+            else
+            {
+                txbPart_No.Enabled = false;
+                btnClear.Text = "清空";
+                btnEdit.Enabled = true;
+                btnADD.Enabled = true;
+                btnDelete.Enabled = true;
+                btnImport.Enabled = true;
+                btnSave.Enabled = true;
+
+            }
         }
 
         private void btnUploadImg_Click(object sender, EventArgs e)
@@ -65,16 +107,23 @@ namespace KPrint
             ofd.Filter = "Image Files(*.JPG;*JPEG;|*.JPG;*JPEG;)";
             if (ofd.ShowDialog() == System.Windows.Forms.DialogResult.OK)
             {
-                System.Drawing.Image img = Image.FromFile(ofd.FileName);
+                try
+                {
+                    System.Drawing.Image img = Image.FromFile(ofd.FileName);
 
-                if (PublicTools.imageToByteArray(img).Length < 300000)
-                {
-                    pictureBox1.Image = img;
-                    pictureBox1.SizeMode = PictureBoxSizeMode.StretchImage;
+                    if (PublicTools.imageToByteArray(img).Length < 300000)
+                    {
+                        pictureBox1.Image = img;
+                        pictureBox1.SizeMode = PictureBoxSizeMode.StretchImage;
+                    }
+                    else
+                    {
+                        MessageBox.Show("图片大小超过300k，不允许保存到数据库");
+                    }
                 }
-                else
+                catch (Exception ee)
                 {
-                    MessageBox.Show("图片大小超过300k，不允许保存到数据库");
+                    MessageBox.Show("图片上传不正确");
                 }
             }
         }
@@ -209,6 +258,12 @@ namespace KPrint
             txbNameForSearch.Text = "";
             txbNameForSearch.Text = "";
             txbModelForSearch.Text = "";
+
+            if (isAdsStatus)
+            {
+                isAdsStatus = false;
+                ChanageAddState();
+            }
             
 
         }
@@ -293,8 +348,14 @@ namespace KPrint
 
                 db.SaveChanges();
             }
+            txbPartNoForSearch.Text = txbPart_No.Text;
+            txbNameForSearch.Text = "";
+            txbModelForSearch.Text = "";
+
             btnClear_Click(null, null);
+            
             btnSearch_Click(null, null);
+            
         }
 
         private void btnDelete_Click(object sender, EventArgs e)
@@ -406,6 +467,14 @@ namespace KPrint
             FDatabase m = new FDatabase();
             m.ShowDialog();
             this.LabelDB.Text = string.Format("数据库信息：{0}", PublicDB.getIniConnInfo("config.ini"));
+            txbNameForSearch.Text = "";
+            txbPartNoForSearch.Text = "";
+            txbPartNoForSearch.Focus();
+            txbModelForSearch.Text = "";
+            bdsProduct.DataSource = new List<rt_product>();
+
+
+
 
         }
 
@@ -434,11 +503,6 @@ namespace KPrint
         }
 
         private void txbModelForSearch_TextChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void button10_Click(object sender, EventArgs e)
         {
 
         }
