@@ -182,18 +182,20 @@ namespace KPrint
 
         private void ImportExcel(string excelPath)
         {
+            rt_product pForErrorInfo = new rt_product();
+            int error=0;
+            bool isError = false;
             try
             {
                 IWorkbook wb = WorkbookFactory.Create(excelPath);
 
-                int count = 0;
                 ISheet ist = wb.GetSheetAt(0);
                 int rowofPage = ist.LastRowNum + 1;
                 using (var db = PublicDB.getDB())
                 {
                     for (int j = 1; j < rowofPage; j++)
                     {
-                        count++;
+                        error = j;
                         IRow irow = ist.GetRow(j);
 
                         if (irow == null) continue;
@@ -208,42 +210,77 @@ namespace KPrint
                         {
                             rt_product p = new rt_product();
                             p.id = Guid.NewGuid();
-                            p.part_No = irow.GetCell(0).StringCellValue;
+                            p.part_No = ((string)irow.GetCell(0).StringCellValue).ToUpper();
                             p.name = irow.GetCell(1).StringCellValue;
                             p.model = irow.GetCell(2).StringCellValue;
                             p.capacity = (int)irow.GetCell(3).NumericCellValue;
                             p.deleted = 0;
                             p.remark = "";
                             p.modify_time = DateTime.Now;
+                            pForErrorInfo = p;
+                            if (isOK(p) == false)
+                            {
+                                isError = true;
+                                break;
+
+                            }
                             db.rt_product.Add(p);
+                            db.SaveChanges();
+
                         }
                         else
                         {
                             result.name = irow.GetCell(1).StringCellValue;
                             result.name = irow.GetCell(1).StringCellValue;
                             result.model = irow.GetCell(2).StringCellValue;
-                            try
-                            {
-                                result.capacity = (int)irow.GetCell(3).NumericCellValue;
-                            }
-                            catch
-                            {
-                                result.capacity = int.Parse(irow.GetCell(3).StringCellValue);
-                            }
+                            result.capacity = (int)irow.GetCell(3).NumericCellValue;
                             result.deleted = 0;
                             result.remark = "";
                             result.modify_time = DateTime.Now;
+                            pForErrorInfo = result;
+                            if (isOK(result) == false)
+                            {
+                                isError = true;
+                                break;
+                            }
                             db.Entry(result).State = System.Data.Entity.EntityState.Modified;
+
+                            db.SaveChanges();
+
                         }
 
                     }
-                    db.SaveChanges();
                 }
             }
             catch
             {
-                MessageBox.Show("导入失败");
+                isError = true;
+
             }
+            if (isError )
+            {
+                string errorInfo = "";
+                if (error > 0)
+                {
+                    errorInfo = string.Format("导入失败,第{0}行，编号为{1}", error, pForErrorInfo.part_No);
+                }
+                else
+                {
+                    errorInfo = "导入文件打开错误，是否已被打开占用？";
+                }
+                MessageBox.Show(errorInfo);
+            }
+        }
+
+        private bool isOK(rt_product p)
+        {
+            if (p.part_No.Length == 0) return false;
+            if (p.part_No.Length > 20) return false;
+            if (p.name.Length > 20) return false;
+            if (p.model.Length > 10) return false;
+            if (p.capacity == 0) return false;
+            if (p.capacity > 999) return false;
+            return true;
         }
 
         private void btnClear_Click(object sender, EventArgs e)
@@ -360,8 +397,10 @@ namespace KPrint
 
         private void btnDelete_Click(object sender, EventArgs e)
         {
+
             if (this.bdsProduct.DataSource != null && this.bdsProduct.Current != null)
             {
+                if (MessageBox.Show("是否要删除编号为 " + ((rt_product)this.bdsProduct.Current).part_No + " 的零件？", "操作提示", MessageBoxButtons.YesNo, MessageBoxIcon.Question, MessageBoxDefaultButton.Button2) == System.Windows.Forms.DialogResult.No) return;
                 using (var db = PublicDB.getDB())
                 {
                     rt_product p = (rt_product)this.bdsProduct.Current;

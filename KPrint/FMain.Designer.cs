@@ -65,16 +65,16 @@
             this.label8 = new System.Windows.Forms.Label();
             this.panel2 = new System.Windows.Forms.Panel();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
-            this.Column1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.img = new System.Windows.Forms.DataGridViewImageColumn();
+            this.bdsProduct = new System.Windows.Forms.BindingSource(this.components);
             this.statusStrip1 = new System.Windows.Forms.StatusStrip();
             this.LabelDB = new System.Windows.Forms.ToolStripStatusLabel();
+            this.Column1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.partNoDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.nameDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.modelDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.capacityDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.remarkDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.bdsProduct = new System.Windows.Forms.BindingSource(this.components);
+            this.img = new System.Windows.Forms.DataGridViewImageColumn();
             this.panel1.SuspendLayout();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
@@ -84,8 +84,8 @@
             this.panel4.SuspendLayout();
             this.panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
-            this.statusStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.bdsProduct)).BeginInit();
+            this.statusStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
             // panel1
@@ -510,18 +510,9 @@
             this.dataGridView1.TabIndex = 0;
             this.dataGridView1.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellDoubleClick);
             // 
-            // Column1
+            // bdsProduct
             // 
-            this.Column1.HeaderText = "序号";
-            this.Column1.Name = "Column1";
-            // 
-            // img
-            // 
-            this.img.DataPropertyName = "img";
-            this.img.HeaderText = "图片";
-            this.img.ImageLayout = System.Windows.Forms.DataGridViewImageCellLayout.Zoom;
-            this.img.Name = "img";
-            this.img.ReadOnly = true;
+            this.bdsProduct.DataSource = typeof(KPrint.rt_product);
             // 
             // statusStrip1
             // 
@@ -539,6 +530,11 @@
             this.LabelDB.Size = new System.Drawing.Size(164, 17);
             this.LabelDB.Text = "数据库地址：远程测试数据库";
             this.LabelDB.Click += new System.EventHandler(this.LabelDB_Click);
+            // 
+            // Column1
+            // 
+            this.Column1.HeaderText = "序号";
+            this.Column1.Name = "Column1";
             // 
             // partNoDataGridViewTextBoxColumn
             // 
@@ -569,10 +565,15 @@
             this.remarkDataGridViewTextBoxColumn.DataPropertyName = "remark";
             this.remarkDataGridViewTextBoxColumn.HeaderText = "备注";
             this.remarkDataGridViewTextBoxColumn.Name = "remarkDataGridViewTextBoxColumn";
+            this.remarkDataGridViewTextBoxColumn.Visible = false;
             // 
-            // bdsProduct
+            // img
             // 
-            this.bdsProduct.DataSource = typeof(KPrint.rt_product);
+            this.img.DataPropertyName = "img";
+            this.img.HeaderText = "图片";
+            this.img.ImageLayout = System.Windows.Forms.DataGridViewImageCellLayout.Zoom;
+            this.img.Name = "img";
+            this.img.ReadOnly = true;
             // 
             // FMain
             // 
@@ -601,9 +602,9 @@
             this.panel2.ResumeLayout(false);
             this.panel2.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.bdsProduct)).EndInit();
             this.statusStrip1.ResumeLayout(false);
             this.statusStrip1.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.bdsProduct)).EndInit();
             this.ResumeLayout(false);
 
         }
