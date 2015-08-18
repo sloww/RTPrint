@@ -182,8 +182,8 @@ namespace KPrint
 
             private void txbPartNo_KeyPress(object sender, KeyPressEventArgs e)
             {
-                if (Char.IsLetterOrDigit(e.KeyChar) || Char.IsControl(e.KeyChar) || e.KeyChar == '-')
-                {
+            if (char.IsLetterOrDigit(e.KeyChar) || Char.IsControl(e.KeyChar) || e.KeyChar == '-'  || e.KeyChar == ' ')
+            {
                     e.Handled = false;
                 }
                 else
@@ -191,6 +191,17 @@ namespace KPrint
                     e.Handled = true;
                 }
             }
-        
+
+        private void txbModel_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (char.IsLetterOrDigit(e.KeyChar) || Char.IsControl(e.KeyChar) || e.KeyChar == '-' || e.KeyChar == '.' || e.KeyChar == ' ')
+            {
+                e.Handled = false;
+            }
+            else
+            {
+                e.Handled = true;
+            }
+        }
     }
 }

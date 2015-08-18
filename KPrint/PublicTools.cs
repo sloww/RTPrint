@@ -1,4 +1,5 @@
-﻿using System;
+﻿using NPOI.SS.UserModel;
+using System;
 using System.Collections.Generic;
 using System.Drawing;
 using System.Drawing.Printing;
@@ -15,6 +16,84 @@ namespace KPrint
     public static class PublicTools
     {
 
+        public static int GetCellIntFromChar(char x)
+        {
+            int offsetLower = ((int)'a') - 1;
+            int offsetUpper = ((int)'A') - 1;
+
+            if (Char.IsLower(x))
+            {
+                return ((int)x) - offsetLower;
+            }
+
+            if (Char.IsUpper(x))
+            {
+                return ((int)x) - offsetUpper;
+            }
+
+            return int.MinValue;
+        }
+
+        public static double GetCellNumic(IRow row, int y)
+        {
+            double _r = double.MinValue;
+
+            ICell cell = row.Cells[y - 1];
+            if (cell != null)
+                switch (cell.CellType)
+                {
+                    case CellType.String:
+                        {
+                            
+                            _r = double.Parse(cell.StringCellValue.Trim());
+
+                        }
+                        break;
+                    case CellType.Numeric:
+                        {
+                            _r = cell.NumericCellValue;
+                        }
+                        break;
+                    default:
+                        {
+                            _r = 0;
+                        }
+                        break;
+                }
+
+            return _r;
+
+        }
+
+        public static double GetCellNumic(ISheet sheet, char x, int y)
+        {
+            double _r = double.MinValue;
+
+            ICell cell = sheet.GetRow(y - 1).GetCell(GetCellIntFromChar(x) - 1);
+            if (cell != null)
+                switch (cell.CellType)
+                {
+                    case CellType.String:
+                        {
+                            _r = double.Parse(cell.StringCellValue.Trim());
+
+                        }
+                        break;
+                    case CellType.Numeric:
+                        {
+                            _r = cell.NumericCellValue;
+                        }
+                        break;
+                    default:
+                        {
+
+                        }
+                        break;
+                }
+
+            return _r;
+
+        }
         public static void SetFitCharFont(Font MaxFont, int TotolSpace, string StringCon, out Font FitFont, out int StartOffset)
         {
             FitFont = MaxFont;
@@ -87,7 +166,7 @@ namespace KPrint
             dgv.AllowUserToAddRows = false;
             dgv.AllowUserToResizeRows = false;
             dgv.BackgroundColor = Color.FromKnownColor(KnownColor.Control);
-            dgv.BorderStyle = BorderStyle.None;
+            dgv.BorderStyle = System.Windows.Forms.BorderStyle.None;
             dgv.DefaultCellStyle.WrapMode = DataGridViewTriState.True;
             dgv.AutoSizeRowsMode = DataGridViewAutoSizeRowsMode.AllCellsExceptHeaders;
             dgv.DefaultCellStyle.Padding = new Padding(2);

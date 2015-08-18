@@ -263,11 +263,12 @@
             this.txbModel.Name = "txbModel";
             this.txbModel.Size = new System.Drawing.Size(72, 21);
             this.txbModel.TabIndex = 2;
+            this.txbModel.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txbModel_KeyPress);
             // 
             // txbName
             // 
             this.txbName.Location = new System.Drawing.Point(329, 24);
-            this.txbName.MaxLength = 20;
+            this.txbName.MaxLength = 30;
             this.txbName.Name = "txbName";
             this.txbName.Size = new System.Drawing.Size(168, 21);
             this.txbName.TabIndex = 1;

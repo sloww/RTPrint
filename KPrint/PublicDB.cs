@@ -67,11 +67,12 @@ namespace KPrint
 
         public static DB getDB(int timeOut)
         {
+            /*
             if (!System.IO.File.Exists("config.ini"))
             {
                 FDatabase m = new FDatabase();
                 m.ShowDialog();
-            }
+            }*/
 
             var db = new DB();
             db.Database.Connection.ConnectionString = getIniConn("config.ini", timeOut);

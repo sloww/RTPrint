@@ -11,6 +11,7 @@ using NPOI.XSSF.UserModel;
 using NPOI.SS.Util;
 using NPOI.HSSF.UserModel;
 using System.IO;
+using System.Text.RegularExpressions;
 
 namespace KPrint
 {
@@ -212,8 +213,15 @@ namespace KPrint
                             p.id = Guid.NewGuid();
                             p.part_No = ((string)irow.GetCell(0).StringCellValue).ToUpper();
                             p.name = irow.GetCell(1).StringCellValue;
-                            p.model = irow.GetCell(2).StringCellValue;
-                            p.capacity = (int)irow.GetCell(3).NumericCellValue;
+                            p.model = irow.GetCell(2).StringCellValue.ToUpper();
+                            try {
+                                p.capacity = (int)(PublicTools.GetCellNumic(irow, 4));
+                            }
+                            catch
+                            {
+                                p.capacity = 0;
+
+                            }
                             p.deleted = 0;
                             p.remark = "";
                             p.modify_time = DateTime.Now;
@@ -230,10 +238,10 @@ namespace KPrint
                         }
                         else
                         {
+                            result.part_No = partNo.ToUpper();
                             result.name = irow.GetCell(1).StringCellValue;
-                            result.name = irow.GetCell(1).StringCellValue;
-                            result.model = irow.GetCell(2).StringCellValue;
-                            result.capacity = (int)irow.GetCell(3).NumericCellValue;
+                            result.model = irow.GetCell(2).StringCellValue.ToUpper();
+                            result.capacity = (int)(PublicTools.GetCellNumic(irow, 4));
                             result.deleted = 0;
                             result.remark = "";
                             result.modify_time = DateTime.Now;
@@ -276,10 +284,18 @@ namespace KPrint
         {
             if (p.part_No.Length == 0) return false;
             if (p.part_No.Length > 20) return false;
-            if (p.name.Length > 20) return false;
+            if (p.name.Length > 30) return false;
             if (p.model.Length > 10) return false;
-            if (p.capacity == 0) return false;
+            if (p.capacity < 0) return false;
             if (p.capacity > 999) return false;
+
+            Regex r = new Regex(@"^[\sa-zA-Z0-9-]{1,20}$");
+            if (r.IsMatch(p.part_No) == false)
+                return false;
+
+            Regex r2 = new Regex(@"^[.\sa-zA-Z0-9-]{1,10}$");
+            if (r2.IsMatch(p.model) == false)
+                return false;
             return true;
         }
 
@@ -312,6 +328,7 @@ namespace KPrint
 
         private void btnSave_Click(object sender, EventArgs e)
         {
+
             if (txbPart_No.Text.Trim().Length == 0)
             {
                 MessageBox.Show("零件编号字段不可为空");
@@ -336,7 +353,8 @@ namespace KPrint
             }
             if (txbCapacity.Text.Trim().Length ==0)
             {
-                MessageBox.Show("收容数字段不可为空");
+                MessageBox.Show("收容数范围为1-999，请检查");
+                
                 txbCapacity.SelectAll();
                 txbCapacity.Focus();
                 return;
@@ -352,6 +370,12 @@ namespace KPrint
                 p.capacity = int.Parse(txbCapacity.Text);
                 p.modify_time = DateTime.Now;
                 p.deleted = 0;
+
+                if (isOK(p) == false)
+                {
+                    MessageBox.Show("输入数值不和规范，请重新检查输入");
+                    return;
+                }
 
                 if (pictureBox1.Image != null)
                 {
@@ -519,7 +543,7 @@ namespace KPrint
 
         private void txbModelForSearch_KeyPress(object sender, KeyPressEventArgs e)
         {
-            if ( Char.IsLetterOrDigit(e.KeyChar) ||Char.IsControl(e.KeyChar))
+            if (char.IsLetterOrDigit(e.KeyChar) ||Char.IsControl(e.KeyChar) || e.KeyChar =='-' || e.KeyChar == '.' || e.KeyChar == ' ')
             {
                 e.Handled = false;
             }
@@ -548,7 +572,7 @@ namespace KPrint
 
         private void txbPartNoForSearch_KeyPress(object sender, KeyPressEventArgs e)
         {
-            if (Char.IsLetterOrDigit(e.KeyChar) || Char.IsControl(e.KeyChar) || e.KeyChar == '-' || e.KeyChar == (char)Keys.Tab)
+            if (char.IsLetterOrDigit(e.KeyChar) || Char.IsControl(e.KeyChar) || e.KeyChar == '-'|| e.KeyChar == ' ')
             {
                 e.Handled = false;
             }
@@ -561,7 +585,7 @@ namespace KPrint
 
         private void txbPart_No_KeyPress(object sender, KeyPressEventArgs e)
         {
-            if (Char.IsLetterOrDigit(e.KeyChar) || Char.IsControl(e.KeyChar) || e.KeyChar == '-')
+            if (char.IsLetterOrDigit(e.KeyChar) || Char.IsControl(e.KeyChar) || e.KeyChar == '-'|| e.KeyChar == ' ')
             {
                 e.Handled = false;
             }
@@ -571,5 +595,9 @@ namespace KPrint
             }
         }
 
+        private void txbPartNoForSearch_TextChanged(object sender, EventArgs e)
+        {
+
+        }
     }
 }

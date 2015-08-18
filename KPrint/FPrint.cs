@@ -202,6 +202,7 @@ namespace KPrint
             Point location = new Point(2, 8+yoffset);
             g.PageUnit = GraphicsUnit.Millimeter;
             Pen p = new Pen(Brushes.Black, 0.3f);
+            Pen p2 = new Pen(Brushes.Black, 0.6f);
             g.DrawRectangle(p, new Rectangle(location, new Size(190, 84)));
 
             g.DrawLine(p, new Point(location.X, location.Y + 28), new Point(location.X + 162, location.Y + 28));
@@ -301,21 +302,21 @@ namespace KPrint
             g.DrawString("容器序号", smallFont, Brushes.Black, new Point(cursor.X + 1, cursor.Y + 1));
             if (printObj.container_No < 10)
             {
-                g.DrawString(printObj.container_No.ToString(), new Font("Arial", 28), Brushes.Black, new Point(cursor.X + 11, cursor.Y + 5));
-                g.DrawArc(p, new Rectangle(new Point(cursor.X + 10, cursor.Y + 5), new Size(11, 11)), 0, 360);
+                g.DrawString(printObj.container_No.ToString(), new Font("Arial", 28), Brushes.Black, new Point(cursor.X + 15, cursor.Y + 5));
+                g.DrawArc(p2, new Rectangle(new Point(cursor.X + 14, cursor.Y + 5), new Size(11, 11)), 0, 360);
 
             }
             else if (printObj.container_No < 100)
             {
-                g.DrawString(printObj.container_No.ToString(), new Font("Arial", 20), Brushes.Black, new Point(cursor.X + 10, cursor.Y + 6));
-                g.DrawArc(p, new Rectangle(new Point(cursor.X + 10, cursor.Y + 5), new Size(11, 11)), 0, 360);
+                g.DrawString(printObj.container_No.ToString(), new Font("Arial", 20), Brushes.Black, new Point(cursor.X + 15, cursor.Y + 6));
+                g.DrawArc(p2, new Rectangle(new Point(cursor.X + 14, cursor.Y + 5), new Size(11, 11)), 0, 360);
 
 
             }
             else
             {
-                g.DrawString(printObj.container_No.ToString(), new Font("Arial", 14), Brushes.Black, new Point(cursor.X + 10, cursor.Y + 7));
-                g.DrawArc(p, new Rectangle(new Point(cursor.X + 10, cursor.Y + 5), new Size(11, 11)), 0, 360);
+                g.DrawString(printObj.container_No.ToString(), new Font("Arial", 14), Brushes.Black, new Point(cursor.X + 15, cursor.Y + 7));
+                g.DrawArc(p2, new Rectangle(new Point(cursor.X + 14, cursor.Y + 5), new Size(11, 11)), 0, 360);
             }
 
 
