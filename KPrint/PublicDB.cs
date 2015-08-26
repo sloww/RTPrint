@@ -30,6 +30,20 @@ namespace KPrint
             }
             return r;
         }
+
+        public static int GetDailyCount(DateTime dt,Guid guid)
+        {
+            var formatdt = dt.ToString("yyMM")+guid.ToString();
+            int r = 0;
+            using (var db = PublicDB.getDB())
+            {
+                var q = (from a in db.rt_daily_count
+                         where a.formatdt == formatdt
+                         select a.count).FirstOrDefault();
+                r = q;
+            }
+            return r;
+        }
         /// <summary>
         /// 为指定日期的流水号增加1
         /// </summary>
@@ -58,6 +72,37 @@ namespace KPrint
                     q.count++;
                     q.count_date = dt;
                     q.formatdt = dt.ToString("yyMM");
+                    db.Entry(q).State = System.Data.Entity.EntityState.Modified;
+
+                }
+                db.SaveChanges();
+            }
+        }
+
+        public static void AddDailyCount(DateTime dt,Guid guid)
+        {
+            var formatdt = dt.ToString("yyMM") + guid.ToString();
+            using (var db = PublicDB.getDB())
+            {
+                rt_daily_count dc = new rt_daily_count();
+                var q = (from a in db.rt_daily_count
+                         where a.formatdt == formatdt
+                         select a).FirstOrDefault();
+                if (q == null)
+                {
+                    dc.count_date = dt;
+                    dc.id = Guid.NewGuid();
+                    dc.count = 1;
+                    dc.formatdt = formatdt;
+                    db.rt_daily_count.Add(dc);
+                    db.Entry(dc).State = System.Data.Entity.EntityState.Added;
+                }
+                else
+                {
+
+                    q.count++;
+                    q.count_date = dt;
+                    q.formatdt = formatdt;
                     db.Entry(q).State = System.Data.Entity.EntityState.Modified;
 
                 }

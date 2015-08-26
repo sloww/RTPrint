@@ -53,10 +53,10 @@ namespace KPrint
 
             using (var db = PublicDB.getDB())
             {
-                var q = from a in db.rt_print_log
+                var q = (from a in db.rt_print_log
                         where a.deleted == 0 && a.part_No.StartsWith(partno) && a.name.StartsWith(name) && a.model.StartsWith(model) && a.formatPDate.Contains(pDate)
-                        orderby a.create_time
-                        select a;
+                        orderby a.create_time descending
+                        select a).Take(10000);
                 if (q != null)
                 {
                     if (remark != "")

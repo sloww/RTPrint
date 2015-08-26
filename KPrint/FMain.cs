@@ -53,7 +53,7 @@ namespace KPrint
                 }
                 catch (Exception ee)
                 {
-                    MessageBox.Show("数据库连接失败，请检查网络或配置");
+                    MessageBox.Show("数据库连接失败，请检查网络或配置. "+ee.Message);
                 }
             }
         }
@@ -309,7 +309,7 @@ namespace KPrint
             txbPart_No.Enabled = false;
 
             txbNameForSearch.Text = "";
-            txbNameForSearch.Text = "";
+            txbPartNoForSearch.Text = "";
             txbModelForSearch.Text = "";
 
             if (isAdsStatus)
@@ -323,6 +323,7 @@ namespace KPrint
 
         private void tabControl1_Selecting(object sender, TabControlCancelEventArgs e)
         {
+           
             btnClear_Click(null, null);
         }
 

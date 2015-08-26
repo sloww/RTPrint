@@ -39,7 +39,7 @@ namespace KPrint
             }
 
             this.DrawPictureBox(this.product, Graphics.FromImage(pictureBox1.Image), dateTimePicker1.Value);
-            cbdRemark.Text = this.product.remark;
+            cbdRemark.Text = "量产";
 
             lblprinter.Text = PublicTools.ReadPrinterName();
 
@@ -98,11 +98,10 @@ namespace KPrint
                     {
                         rt_print_log printObj = new rt_print_log();
                         printObj.id = Guid.NewGuid();
-
                         this.CopyProductToPrintLog(printObj, this.product);
-                        printObj.serial_number = (PublicDB.GetDailyCount(dateTimePicker1.Value) + 1).ToString();
+                        printObj.serial_number = (PublicDB.GetDailyCount(dateTimePicker1.Value, product.id) + 1).ToString();
                         printObj.production_date = dateTimePicker1.Value;
-                        printObj.qr = product.part_No.PadRight(20, ' ') + product.capacity.ToString().PadLeft(3, '0') + printObj.production_date.ToString("yyMM") + printObj.serial_number.PadLeft(4, '0');
+                        printObj.qr = product.part_No.PadRight(20, ' ').Replace("-","")+ product.capacity.ToString().PadLeft(3, '0') + printObj.production_date.ToString("yyMM") + printObj.serial_number.PadLeft(4, '0');
                         printObj.remark = cbdRemark.Text;
 
                         this.product.remark = cbdRemark.Text;
@@ -138,7 +137,7 @@ namespace KPrint
 
                         db.rt_print_log.Add(printObj);
 
-                        PublicDB.AddDailyCount(dateTimePicker1.Value);
+                        PublicDB.AddDailyCount(dateTimePicker1.Value,product.id);
                     }
 
                     //去掉图片后保存
